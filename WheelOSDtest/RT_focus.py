@@ -22,7 +22,8 @@ mon.save()
 # Load initial setting ----
 
 # Preparing Window
-my_win = visual.Window(size=(800, 600), pos=(0,0), monitor = mon, units = 'pix')
+my_win = visual.Window(size=(800, 600), pos=(0,0), monitor = mon, units = 'pix', 
+                       screen = 1)
 
 # Preparing Joystick & Mouse
 # - Joysticks setting
