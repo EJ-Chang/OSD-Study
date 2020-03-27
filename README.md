@@ -1,5 +1,5 @@
-#OSD-Study
+##OSD-Study
+----
 
-
-## Hardware: button types
-## UI/Design
+#### Hardware: button types
+#### UI/Design
