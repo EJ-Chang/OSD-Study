@@ -42,7 +42,7 @@ mouse.clickReset() # Reset to its initials
 # Preparing experiment stimulus
 imageList = []
 
-path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/Stimulus"
+path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"
 for file in os.listdir(path):
     if file.endswith(".png"):
         imageList.append(os.path.join(path, file))
