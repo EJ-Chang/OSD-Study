@@ -64,7 +64,7 @@ while expStatus == 1:
 
     if bttnPress_status == NOT_STARTED:
         bttnPress_status = STARTED
-        (x, y) = mouse.getWheelRel()
+        # (x, y) = mouse.getWheelRel() 
 
     # Set break button
     if bttnPress_status == STARTED:
