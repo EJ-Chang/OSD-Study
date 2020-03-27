@@ -7,7 +7,7 @@ Written by EJ_Chang on Jan 6 2020
 
 from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
-import os # Make reading files from directory available
+import os, random
 
 
 # Make screen profile ----
@@ -23,7 +23,6 @@ mon.save()
 
 
 # Load initial setting ----
-
 # Preparing Window
 my_win = visual.Window(size=(800, 600), pos=(0,0), monitor = mon, units = 'pix', 
                        screen = 1)
@@ -38,40 +37,44 @@ joystick.backend = 'pyglet'
 mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
 
-
 # Preparing experiment stimulus
 imageList = []
-
 path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"
 for file in os.listdir(path):
     if file.endswith(".png"):
         imageList.append(os.path.join(path, file))
-imageList = sorted(imageList)
-
-img = visual.ImageStim(win = my_win, image = imageList[0], units = 'pix')
-img.autoDraw = True
+imageList = sorted(imageList) # Make a list of stimulus pics
+# img = visual.ImageStim(win = my_win, image = imageList[0], units = 'pix')
+# img.autoDraw = True
 message = visual.TextStim(my_win, units ='norm', pos=[0.7, 0.1], 
  text='Wheel', height = 0.2)
-message.autoDraw = True  # Automatically draw every frame
-
-
+# message.autoDraw = True  # Automatically draw every frame
 
 # Preparing experiment timer
 experiment_timer = core.Clock()
 experiment_timer.reset()
 MAX_DURATION = 5 # Unit: second
+expStatus = 1
+# nTrial = 1
 
 # Preparing experiment trials
+for nTrial in range(12):
+    img = visual.ImageStim(win = my_win, image = imageList[random.randrange(12)], 
+                           units = 'pix')
+    img.draw()
+    my_win.flip()
+    core.wait(1)
+    # buttons = mouse.getPressed()
+    # if buttons[0] == 1:
+    #     nTrial = nTrial + 1
+    # if nTrial >= 4:
+    #     break        
 
-my_win.flip()
-core.wait(2.0)
 # message.text = 'D Pad'  # Change properties of existing stim
-img = visual.ImageStim(win = my_win, image = imageList[2], units = 'pix')
-img.autoDraw = True
-
-
-my_win.flip()
-core.wait(2.0)
+# img = visual.ImageStim(win = my_win, image = imageList[2], units = 'pix')
+# img.autoDraw = True
+# my_win.flip()
+# core.wait(2.0)
 
 """
 TODO:
