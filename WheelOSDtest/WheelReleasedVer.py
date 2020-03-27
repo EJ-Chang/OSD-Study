@@ -7,7 +7,7 @@ Modified by EJ_Chang on Jan 6 2020
 """
 
 from psychopy import visual, event, core
-from psychopy.hardware import joystick
+from psychopy.hardware import joystick # Adding Joysticks
 
 
 # Preparing window
