@@ -1,0 +1,653 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pre",
+				"preTimeStamp"
+			],
+			[
+				"pr",
+				"prevY"
+			],
+			[
+				"p",
+				"prevY"
+			],
+			[
+				"Indi",
+				"IndiY"
+			],
+			[
+				"joy",
+				"joy"
+			],
+			[
+				"u",
+				"Up_select"
+			],
+			[
+				"bo",
+				"botton_b"
+			],
+			[
+				"n",
+				"nAxes"
+			],
+			[
+				"img",
+				"imageList"
+			],
+			[
+				"im",
+				"imageList"
+			],
+			[
+				"Behavioral",
+				"Behavioral_Pos"
+			],
+			[
+				"ta",
+				"task_length"
+			],
+			[
+				"task",
+				"task_stat"
+			],
+			[
+				"st",
+				"startSecs"
+			],
+			[
+				"wf",
+				"waitingForReason"
+			],
+			[
+				"image",
+				"image_name"
+			],
+			[
+				"the",
+				"theImage"
+			],
+			[
+				"mis",
+				"mission_stat"
+			],
+			[
+				"key",
+				"keyCode"
+			],
+			[
+				"kb",
+				"KbName"
+			],
+			[
+				"wa",
+				"waitingForReport"
+			],
+			[
+				"else",
+				"elseif\telseif"
+			],
+			[
+				"que",
+				"quest_stat"
+			],
+			[
+				"Key",
+				"keyCode"
+			],
+			[
+				"qu",
+				"quest_message"
+			],
+			[
+				"Kb",
+				"KbName"
+			],
+			[
+				"no",
+				"noKey"
+			],
+			[
+				"X",
+				"X_norm"
+			],
+			[
+				"get",
+				"get_profile"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Volumes/GoogleDrive/My Drive/TrendSurvey.dat",
+			"settings":
+			{
+				"buffer_size": 9948,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Syntax Check"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"select theme",
+				"UI: Select Theme"
+			],
+			[
+				"eve",
+				"Evernote: New empty note"
+			],
+			[
+				"updat",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"EVERNOTE",
+				"Evernote: New empty note"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"evernote",
+				"Evernote: Open Evernote Note"
+			],
+			[
+				"package",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"re",
+				"Package Control: Remove Package"
+			],
+			[
+				"package ",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"evernote ",
+				"Evernote: Update Evernote Note"
+			],
+			[
+				"evernote new",
+				"Evernote: New empty note"
+			],
+			[
+				"ever",
+				"Evernote: List recent notes"
+			],
+			[
+				"IN",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"UP",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"OPEN",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"un",
+				"Package Control: List Unmanaged Packages"
+			],
+			[
+				"open",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Install Package Control"
+			]
+		],
+		"width": 496.0
+	},
+	"console":
+	{
+		"height": 253.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/Code Backup"
+	],
+	"file_history":
+	[
+		"/Volumes/GoogleDrive/My Drive/TrendSurvey.dat",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/DPadReleasedVer.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/WheelReleasedVer.py",
+		"/Users/YJC/README.md",
+		"/Users/YJC/.zshrc",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/momoisnotsingle.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/test_wheel.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/mouseTest.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/OSDwithWheel.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/ButtonReleasedVer.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/OSDwithJoystick.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/test_wheel (1).py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/OSDtest.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/ProjectorS2/S2_Usability.m",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/psychopyExample.py",
+		"/Users/YJC/Dropbox/Personal/Solarized (Ditalic).tmTheme",
+		"/Applications/Psychtoolbox/License.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/ProArtOSDtest.m",
+		"/Users/YJC/GoogleDrive/Previous Research/SYS HFR/ColorExp/ColourDisExp_v2.m",
+		"/Users/YJC/GoogleDrive/Previous Research/SYS HFR/ColorExp/ColourDisExp_2160.m",
+		"/Users/YJC/Downloads/NotoSansCJKtc-hinted/README",
+		"/Users/YJC/Dropbox/HFD/Readme.txt",
+		"/Users/YJC/Dropbox/HFD/Female Gamer/ROGfanEventFemaleGamer.R",
+		"/Users/YJC/Dropbox/HFD/Female Gamer/ROGsurveyFemaleCut.dat",
+		"/Users/YJC/Dropbox/HFD/Female Gamer/ROGsurvey.dat",
+		"/Users/YJC/Dropbox/HFD/Female Gamer/multiplot.R",
+		"/Users/YJC/Dropbox/HFD/Female Gamer/ROGsurveyFemaleCut.dat.dat",
+		"/Users/YJC/Dropbox/HFD/Female Gamer/ROGsurvey.dat.dat",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/GestureDemo_v2.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/BehavioralExp.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Preparation.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/WarmUp.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/DemoExp.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/WalkThrough.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/OSDIcon_vs_FingerPosition.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Result/BehavioralAnalysis.R",
+		"/Users/YJC/Library/Application Support/Sublime Merge/Packages/User/Preferences.sublime-settings",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Result/GestureData/FingerAnalysis.R",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Result/visualized_data_correlation.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Merge_Gesture.m",
+		"/Volumes/My Book/Readme.txt",
+		"/Users/YJC/Downloads/futura/sharefonts.net.txt",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Result/FingerInArea.dat",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Result/FingerInArea_1off.dat",
+		"/Users/YJC/Downloads/bignoodletitling/big_noodle_titling.txt",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/GestureDemo.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Merge_Behavioral.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Result/FingerAnalysis.R",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Result/GestureAnalysis.r",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/KeyPressJudge.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/FingerPosition.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/TestSwitchR.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/GestureDemo_2.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/BasicTask.m",
+		"/Users/YJC/Downloads/Operator-Mono-master/readme.md",
+		"/Users/YJC/Downloads/solarized/osx-terminal.app-colors-solarized/README.md",
+		"/Users/YJC/Downloads/solarized/emacs-colors-solarized/README.md",
+		"/Users/YJC/Downloads/solarized/seestyle-colors-solarized/README.md",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/BasicTask.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Monitor UT/Quest.m",
+		"/Users/YJC/Dropbox/HFD/PyExperiments/printWords.py",
+		"/Users/YJC/Dropbox/HFD/PyExperiments/1stExp.py",
+		"/Users/YJC/Dropbox/HFD/201809 Gaming Chair/[分析]GamingChair.dat",
+		"/Users/YJC/Dropbox/HFD/201809 Gaming Chair/[分析]購買動機.dat",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Quest.m",
+		"/Users/YJC/Desktop/IMRDR.tex",
+		"/Users/YJC/Desktop/try.tex",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/Quest_win.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/testSwitch.m",
+		"/Users/YJC/Dropbox/solarized-matlab-master/README.md",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/ColourDisExp_v2.m",
+		"/Users/YJC/Dropbox/UsabilityTestingQuest/ColorLegend.m",
+		"/Users/YJC/Downloads/中文.txt",
+		"/Users/YJC/Dropbox/HFD/食安問卷/實際篩選結果.txt",
+		"/Users/YJC/Dropbox/HFD/食安問卷/家訪名單篩選條件.txt",
+		"/Users/YJC/Dropbox/HFD/食安問卷/Email list.txt",
+		"/Users/YJC/Dropbox/HFD/食安問卷/家訪名單篩選條件",
+		"/Users/YJC/Dropbox/HFD/食安問卷/十人名單.txt",
+		"/Users/YJC/Google 雲端硬碟/Gthesis/EJ Thesis/Result.tex",
+		"/Users/YJC/Documents/owtest.py",
+		"/Users/YJC/Desktop/Career Overview - Overwatch.htm",
+		"/Users/YJC/Dropbox (OPDC-HFD)/import asyncio, aiohttp.py",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/Email list.txt",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/十人名單.txt",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/Email list",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/食安問卷/source.txt",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/食安問卷/source_all.txt",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/User/Markdown.sublime-settings",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/食安問卷/source",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/食安問卷/6QNoTech.txt",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/食安問卷/6QAll.txt",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/食安問卷/6QTech.txt",
+		"/Users/YJC/DJpython/lib/python2.7/site-packages/pip/_vendor/html5lib/constants.py",
+		"/Users/YJC/Dropbox (OPDC-HFD)/HFD/2017 Wirforce/WirforceSurvey.txt",
+		"/Users/YJC/Documents/Coursera Python/owtest.py",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Solarized Color Scheme/Solarized (light).tmTheme",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Evernote/Evernote.sublime-settings",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/User/Evernote.sublime-settings",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
+		"/Users/YJC/Dropbox (OPDC-HFD)/DeepR/Maps_ggplot.R",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 173.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"previous_y",
+			"ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE",
+			"plugi",
+			"DEFAULT",
+			"DEFAULT_USER",
+			"prevY",
+			"prevX",
+			"IndiY",
+			"int(x), int(y),",
+			"x == -1 or buttons[1] ==1",
+			"x == 1",
+			"y <= -1",
+			"y >= 1",
+			"1"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"previous_y",
+			"previous_X",
+			"j,",
+			"j == [(1,0)]",
+			"j == [(-1,0)]",
+			"j == [(0,1)]",
+			"j == [(0,-1)]"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Volumes/GoogleDrive/My Drive/TrendSurvey.dat",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9948,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9324,
+								9324
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 37.0
+	},
+	"input":
+	{
+		"height": 75.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 210.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "OSD.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"洗滌蔬果選擇彈性者"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 235.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
