@@ -44,11 +44,7 @@ for file in os.listdir(path):
     if file.endswith(".png"):
         imageList.append(os.path.join(path, file))
 imageList = sorted(imageList) # Make a list of stimulus pics
-# img = visual.ImageStim(win = my_win, image = imageList[0], units = 'pix')
-# img.autoDraw = True
-message = visual.TextStim(my_win, units ='norm', pos=[0.7, 0.1], 
- text='Wheel', height = 0.2)
-# message.autoDraw = True  # Automatically draw every frame
+
 
 # Preparing experiment timer
 experiment_timer = core.Clock()
@@ -59,22 +55,20 @@ expStatus = 1
 
 # Preparing experiment trials
 for nTrial in range(12):
+# while expStatus == 1:
     img = visual.ImageStim(win = my_win, image = imageList[random.randrange(12)], 
                            units = 'pix')
     img.draw()
     my_win.flip()
-    core.wait(1)
-    # buttons = mouse.getPressed()
-    # if buttons[0] == 1:
+    core.wait(1) # TODO: turn into waiting for mouse click
+    buttons, times = mouse.getPressed(getTime = True) # Needs a while loop
+    if buttons[0] == 1:
+        print(times)
+    elif buttons[2] == 1:
+        break
     #     nTrial = nTrial + 1
     # if nTrial >= 4:
     #     break        
-
-# message.text = 'D Pad'  # Change properties of existing stim
-# img = visual.ImageStim(win = my_win, image = imageList[2], units = 'pix')
-# img.autoDraw = True
-# my_win.flip()
-# core.wait(2.0)
 
 """
 TODO:
