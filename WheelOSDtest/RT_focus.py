@@ -53,23 +53,38 @@ MAX_DURATION = 5 # Unit: second
 expStatus = 1
 # nTrial = 1
 
+
 # Preparing experiment trials
-for nTrial in range(12):
-# while expStatus == 1:
+# for nTrial in range(12):
+while expStatus == 1:
+
     img = visual.ImageStim(win = my_win, image = imageList[random.randrange(12)], 
-                           units = 'pix')
+                       units = 'pix')
     img.draw()
     my_win.flip()
-    core.wait(1) # TODO: turn into waiting for mouse click
-    buttons, times = mouse.getPressed(getTime = True) # Needs a while loop
-    if buttons[0] == 1:
-        print(times)
-    elif buttons[2] == 1:
-        break
-    #     nTrial = nTrial + 1
-    # if nTrial >= 4:
-    #     break        
 
+
+    # Set break button
+    buttons, times = mouse.getPressed(getTime = True)
+    if buttons[2] == 1:
+        print(times)
+        break
+    elif buttons[1] == 1 : # Need response interval = 250
+        if buttons !=  pre_Mouse:
+            layerNum = layerNum + 1
+            print(times)
+    pre_Mouse = buttons
+    
+    # Set response keysa
+    (x, y) = mouse.getWheelRel()
+    trialTime = experiment_timer.getTime()
+    buttons = mouse.getPressed()
+
+
+    my_win.flip()
+
+# == == ==  EXp Ends == ==  == 
+my_win.close()
 """
 TODO:
 # Practice Trials ----
