@@ -52,17 +52,19 @@ experiment_timer.reset()
 MAX_DURATION = 5 # Unit: second
 expStatus = 1
 # nTrial = 1
-
+nStimulus = 1
+item = 1
+pre_Mouse = []
+# Get stimulus randomly sorted
+stimulus_seq = random.shuffle(imageList)
 
 # Preparing experiment trials
 # for nTrial in range(12):
 while expStatus == 1:
-
-    img = visual.ImageStim(win = my_win, image = imageList[random.randrange(12)], 
-                       units = 'pix')
+    img = visual.ImageStim(win = my_win, image = stimulus_seq[item], 
+                           units = 'pix')
     img.draw()
     my_win.flip()
-
 
     # Set break button
     buttons, times = mouse.getPressed(getTime = True)
@@ -70,18 +72,10 @@ while expStatus == 1:
         print(times)
         break
     elif buttons[1] == 1 : # Need response interval = 250
-        if buttons !=  pre_Mouse:
-            layerNum = layerNum + 1
-            print(times)
-    pre_Mouse = buttons
-    
-    # Set response keysa
-    (x, y) = mouse.getWheelRel()
-    trialTime = experiment_timer.getTime()
-    buttons = mouse.getPressed()
+        item = item + 1
+        print(times)
 
-
-    my_win.flip()
+    # my_win.flip()
 
 # == == ==  EXp Ends == ==  == 
 my_win.close()
