@@ -51,15 +51,7 @@ experiment_timer = core.Clock()
 experiment_timer.reset()
 MAX_DURATION = 5 # Unit: second
 
-# nTrial = 1
-nStimulus = 1
-item = 0
-pre_Mouse = []
-# Get stimulus randomly sorted
-random.shuffle(imageList)
-stimulus_seq = tuple(imageList)
-print(len(stimulus_seq))
-
+# Def block START ====
 def response_key(userInput, userInput_time, stimuli):
     global expStatus, item
     if userInput[2] == 1:
@@ -71,9 +63,21 @@ def response_key(userInput, userInput_time, stimuli):
         stimuli = stimuli + 1
         if stimuli > len(stimulus_seq) - 1:
             stimuli = len(stimulus_seq) - 1
-        print('Next stimuli.')
+        print('Next stimuli.') # TODO: set key blocking
         item = stimuli
+# Def block END ====
+
+# nTrial = 1
+nStimulus = 1
+item = 0
+pre_Mouse = []
+# Get stimulus randomly sorted
+random.shuffle(imageList)
+stimulus_seq = tuple(imageList)
+print(len(stimulus_seq))
 expStatus = 1
+
+
 # Preparing experiment trials
 # for nTrial in range(12):
 while expStatus == 1:
@@ -87,16 +91,6 @@ while expStatus == 1:
 
     response_key(buttons, times, item)
 
-
-    # if buttons[2] == 1:
-    #     print(times)
-    #     break
-    # elif buttons[0] == 1 : # Need response interval = 250
-    #     item = item + 1
-    #     if item > 11:
-    #         item = 11 # Python initiates from 0
-    #     print(times)
-    # my_win.flip()
 
 # == == ==  EXp Ends == ==  == 
 my_win.close()
