@@ -74,7 +74,6 @@ while expStatus == 1:
     elif buttons[1] == 1 : # Need response interval = 250
         item = item + 1
         print(times)
-
     # my_win.flip()
 
 # == == ==  EXp Ends == ==  == 

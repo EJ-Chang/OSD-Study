@@ -13,8 +13,7 @@ imageList = sorted(imageList)
 presentList = []
 # print(imageList[2])
 seq = [1,2,3,4,5,6,7,8,9,10,11,12]
-
-for n in range(3):
+for seq in range(3):
     random.shuffle(seq)
     print(seq)
     presentList.append(seq)
