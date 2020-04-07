@@ -75,9 +75,8 @@ while expStatus == 1:
     if buttons != pre_Mouse:
         item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
         # Gain response key & time
-        # print(item, expStatus)
 
-    pre_Mouse = buttons
+    pre_Mouse = buttons # Button status
 
 # == == ==  EXp Ends == ==  == 
 my_win.close()
