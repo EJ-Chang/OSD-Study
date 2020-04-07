@@ -51,20 +51,6 @@ experiment_timer = core.Clock()
 experiment_timer.reset()
 MAX_DURATION = 5 # Unit: second
 
-# # Def block START ====
-# def response_key(userInput, inputTime, stimuli, nStimulus):
-#     global expStatus, item
-#     if userInput[2] == 1:
-#         print(inputTime)
-#         expStatus = 0
-#     elif userInput[0] == 1:
-#         stimuli = stimuli + 1
-#         if stimuli > nStimulus - 1:
-#             stimuli = nStimulus - 1
-#         print('Next stimuli.') # TODO: set key blocking
-#         item = stimuli
-# # Def block END ====
-
 # nTrial = 1
 nStimulus = 1
 item = 0
@@ -77,7 +63,6 @@ nStimulus = len(stimulus_seq)
 expStatus = 1
 
 # Preparing experiment trials
-# for nTrial in range(12):
 while expStatus == 1:
     img = visual.ImageStim(win = my_win, image = stimulus_seq[item], 
                            units = 'pix')
@@ -90,10 +75,9 @@ while expStatus == 1:
     if buttons != pre_Mouse:
         item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
         # Gain response key & time
-        print(item, expStatus)
+        # print(item, expStatus)
 
     pre_Mouse = buttons
-
 
 # == == ==  EXp Ends == ==  == 
 my_win.close()
