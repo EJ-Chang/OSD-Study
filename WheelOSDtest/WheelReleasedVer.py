@@ -50,7 +50,7 @@ layerNum = 1
 bttnPress = mouse
 NOT_STARTED = 0
 STARTED = 1
-bttnPress_status = NOT_STARTED
+bttnPress_status = STARTED
 pre_X = 0
 pre_Y = 0
 pre_Mouse = (0, 0, 0)
@@ -62,8 +62,8 @@ while expStatus == 1:
     img.draw()
     slctHL.draw()
 
-    if bttnPress_status == NOT_STARTED:
-        bttnPress_status = STARTED
+    # if bttnPress_status == NOT_STARTED:
+        # bttnPress_status = STARTED
         # (x, y) = mouse.getWheelRel() 
 
     # Set break button
