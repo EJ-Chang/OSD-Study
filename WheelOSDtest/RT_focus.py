@@ -8,7 +8,7 @@ Written by EJ_Chang on Jan 6 2020
 from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
 import os, random
-# from ResponseTrigger import response_key
+from ResponseTrigger import response_key
 
 # Make screen profile ----
 widthPix = 2560 # screen width in px
@@ -51,19 +51,19 @@ experiment_timer = core.Clock()
 experiment_timer.reset()
 MAX_DURATION = 5 # Unit: second
 
-# Def block START ====
-def response_key(userInput, inputTime, stimuli, nStimulus):
-    global expStatus, item
-    if userInput[2] == 1:
-        print(inputTime)
-        expStatus = 0
-    elif userInput[0] == 1:
-        stimuli = stimuli + 1
-        if stimuli > nStimulus - 1:
-            stimuli = nStimulus - 1
-        print('Next stimuli.') # TODO: set key blocking
-        item = stimuli
-# Def block END ====
+# # Def block START ====
+# def response_key(userInput, inputTime, stimuli, nStimulus):
+#     global expStatus, item
+#     if userInput[2] == 1:
+#         print(inputTime)
+#         expStatus = 0
+#     elif userInput[0] == 1:
+#         stimuli = stimuli + 1
+#         if stimuli > nStimulus - 1:
+#             stimuli = nStimulus - 1
+#         print('Next stimuli.') # TODO: set key blocking
+#         item = stimuli
+# # Def block END ====
 
 # nTrial = 1
 nStimulus = 1
@@ -72,8 +72,8 @@ pre_Mouse = []
 # Get stimulus randomly sorted
 random.shuffle(imageList)
 stimulus_seq = tuple(imageList)
+print(stimulus_seq)
 nStimulus = len(stimulus_seq)
-print(nStimulus)
 expStatus = 1
 
 # Preparing experiment trials
@@ -86,8 +86,13 @@ while expStatus == 1:
 
     # Set break button
     buttons, times = mouse.getPressed(getTime = True)
+    # keyStatus =  [buttons, times, item, nStimulus]
+    if buttons != pre_Mouse:
+        item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
+        # Gain response key & time
+        print(item, expStatus)
 
-    response_key(buttons, times, item, nStimulus) # Gain response key & time
+    pre_Mouse = buttons
 
 
 # == == ==  EXp Ends == ==  == 
