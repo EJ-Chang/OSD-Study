@@ -56,35 +56,33 @@ print(stimulus_seq)
 # Preparing experiment timer
 experiment_timer = core.Clock()
 experiment_timer.reset()
-MAX_DURATION = 5 # Unit: second
 
-# Preparing initial numbers
+# Setting initial numbers
 item = 0
 pre_Mouse = []
 expStatus = 1
+response = []
 
-# Preparing experiment trials
+# Start experiment 
 while expStatus == 1:
     img = visual.ImageStim(win = my_win, image = imageList[stimulus_seq[item]], 
                            units = 'pix')
     img.draw()
     my_win.flip()
 
-    # Get press
+    # Get response
     buttons, times = mouse.getPressed(getTime = True)
+    (x, y) = mouse.getWheelRel()
 
     if buttons != pre_Mouse:
         item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
-        # Gain response key & time
+        # response.append([stimulus_seq[item], buttons])
+        # Determine response key & time
 
-    pre_Mouse = buttons # Button status flag
+    pre_Mouse = buttons # Button status update
 
-# == == ==  EXp Ends == ==  == 
+
+# Exp END ========
+print(response)
+# Save & close
 my_win.close()
-"""
-TODO:
-# Practice Trials ----
-# Experiment Trials ----
-# baseline
-# Save files & Thanks ----
-"""
