@@ -20,7 +20,7 @@ OSD-Study
 
 ## To-Do list
 
-- [] Practice Trials ----  
-- [] Experiment Trials ----  
-    - [] baseline
-- [] Save files & Thanks ----  
+- [ ] Practice Trials ----  
+- [ ] Experiment Trials ----  
+    - [ ] baseline
+- [ ] Save files & Thanks ----  
