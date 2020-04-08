@@ -1,18 +1,26 @@
 OSD-Study
 ===========
 
-#### Hardware: button types
+### Hardware: button types
 
 1. Mouse wheel
 2. D-pad
 3. Joystick
 4. Spinwheel on DSLR
 
-#### UI/Design
+### UI/Design
 
-#### To-Do list
+1. List-like
+2. Wheel-like 
 
-1. Practice Trials ----  
-2. Experiment Trials ----  
-    1. baseline
-3. Save files & Thanks ----  
+#### Experiment Design
+
+1. RT focused
+2. ACC focused
+
+## To-Do list
+
+- [] Practice Trials ----  
+- [] Experiment Trials ----  
+    - [] baseline
+- [] Save files & Thanks ----  
