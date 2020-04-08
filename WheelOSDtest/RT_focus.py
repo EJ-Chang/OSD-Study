@@ -45,38 +45,39 @@ for file in os.listdir(path):
         imageList.append(os.path.join(path, file))
 imageList = sorted(imageList) # Make a list of stimulus pics
 
+# Randomizing the list
+nStimulus = len(imageList)  # nStimulus = 12
+playList = list(range(nStimulus)) # playList = [0,1,2,...11]
+random.shuffle(playList) # Shuffle the playList
+stimulus_seq = tuple(playList) # Make it unchangable
+print(stimulus_seq)
+
 
 # Preparing experiment timer
 experiment_timer = core.Clock()
 experiment_timer.reset()
 MAX_DURATION = 5 # Unit: second
 
-# nTrial = 1
-nStimulus = 1
+# Preparing initial numbers
 item = 0
 pre_Mouse = []
-# Get stimulus randomly sorted
-random.shuffle(imageList)
-stimulus_seq = tuple(imageList)
-print(stimulus_seq)
-nStimulus = len(stimulus_seq)
 expStatus = 1
 
 # Preparing experiment trials
 while expStatus == 1:
-    img = visual.ImageStim(win = my_win, image = stimulus_seq[item], 
+    img = visual.ImageStim(win = my_win, image = imageList[stimulus_seq[item]], 
                            units = 'pix')
     img.draw()
     my_win.flip()
 
-    # Set break button
+    # Get press
     buttons, times = mouse.getPressed(getTime = True)
-    # keyStatus =  [buttons, times, item, nStimulus]
+
     if buttons != pre_Mouse:
         item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
         # Gain response key & time
 
-    pre_Mouse = buttons # Button status
+    pre_Mouse = buttons # Button status flag
 
 # == == ==  EXp Ends == ==  == 
 my_win.close()
@@ -84,5 +85,6 @@ my_win.close()
 TODO:
 # Practice Trials ----
 # Experiment Trials ----
+# baseline
 # Save files & Thanks ----
 """

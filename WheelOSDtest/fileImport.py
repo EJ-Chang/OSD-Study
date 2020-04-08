@@ -22,11 +22,17 @@ from testFunc import sum_UP
 #     # presentList = [presentList[index] for index in seq]
 #     print(presentList[n])  
 
-sum_UP(1,2)
+# sum_UP(1,2)
 
-aa, bb = sum_UP(2,4)
-cc = sum_UP(2,4)
+# aa, bb = sum_UP(2,4)
+# cc = sum_UP(2,4)
 
-print(aa)
-print(bb)
-print(cc)
+# print(aa)
+# print(bb)
+# print(cc)
+
+testVar = range(3)
+testList = list(testVar)
+random.shuffle(testList)
+print(testVar)
+print(testList)
