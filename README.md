@@ -46,9 +46,10 @@ def function_C():
         dataCleaning = Trim_Off
     elif response != PreviousResponse:
         dataCleaning = Send_to_file
+```
 
 ```Python
     item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
     # the function 'response_key' export 2 variables.
     # in this way, I can use a function to affect outside world(main program)
-
+```
