@@ -13,10 +13,10 @@ OSD-Study
 1. List-like
 2. Wheel-like 
 
-## Experiment Design
+### Experiment Design
 
-1. *RT* focused 
-2. *ACC* focused
+1. **RT** focused 
+2. **ACC** focused
 
 ## To-Do list
 
@@ -24,3 +24,11 @@ OSD-Study
 - [ ] Experiment Trials ----  
     - [ ] baseline
 - [ ] Save files & Thanks ----  
+
+### My memo
+
+```Python
+    item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
+    # the function 'response_key' export 2 variables.
+    # in this way, I can use a function to affect outside world(main program)
+

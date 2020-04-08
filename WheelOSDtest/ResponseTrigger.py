@@ -15,5 +15,5 @@ def response_key(userInput, inputTime, stimuli, nStimulus, expStatus):
         item = stimuli + 1
         if item > nStimulus - 1:
             item = nStimulus - 1
-    return item, expStatus
+    return item, expStatus # Export 2 variables
 # Def block END ====
