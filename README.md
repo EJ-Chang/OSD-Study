@@ -13,10 +13,10 @@ OSD-Study
 1. List-like
 2. Wheel-like 
 
-#### Experiment Design
+## Experiment Design
 
-1. RT focused
-2. ACC focused
+1. *RT* focused 
+2. *ACC* focused
 
 ## To-Do list
 
