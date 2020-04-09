@@ -30,9 +30,9 @@ my_win = visual.Window(size=(800, 600), pos=(0,0), monitor = mon, units = 'pix',
 # Preparing Joystick & Mouse
 # - Joysticks setting
 joystick.backend = 'pyglet'
-# nJoys = joystick.getNumJoysticks() # Check if I have any joysticks
-# id = 0 # I'll use the first one as input
-# joy = joystick.Joystick(id) # ID has to be nJoys - 1
+nJoys = joystick.getNumJoysticks() # Check if I have any joysticks
+id = 0 # I'll use the first one as input
+joy = joystick.Joystick(id) # ID has to be nJoys - 1
 # - Mouse setting
 mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
@@ -73,11 +73,13 @@ while expStatus == 1:
     # Get response
     buttons, times = mouse.getPressed(getTime = True)
     (x, y) = mouse.getWheelRel()
+    # I should put all triggers in one buket
 
-    if buttons != pre_Mouse:
+    if buttons != pre_Mouse and buttons != [0,0,0]:
         item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
         # response.append([stimulus_seq[item], buttons])
         # Determine response key & time
+        response.append([buttons, stimulus_seq[item]])
 
     pre_Mouse = buttons # Button status update
 
