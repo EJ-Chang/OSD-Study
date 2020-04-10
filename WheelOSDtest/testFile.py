@@ -1,33 +1,45 @@
 # -*- coding: utf-8 -*-
 
+from psychopy import visual, event, core, monitors
+from psychopy.hardware import joystick
 import os, random
-from testFunc import sum_UP
+from testFunc import getAnything
 
-# imageList = []
-# path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"
-# for file in os.listdir(path):
-#     if file.endswith(".png"):
-#         imageList.append(os.path.join(path, file))
+# Make screen profile ----
+widthPix = 2560 # screen width in px
+heightPix = 2440 # screen height in px
+monitorwidth = 60 # monitor width in cm
+viewdist = 60 # viewing distance in cm
+monitorname = 'ProArt27'
+scrn = 0 # 0 to use main screen, 1 to use external screen
+mon = monitors.Monitor(monitorname, width=monitorwidth, distance=viewdist)
+mon.setSizePix((widthPix, heightPix))
+mon.save()
 
-# imageList = sorted(imageList)
+# Make initials
+experiment_timer = core.Clock()
+experiment_timer.reset()
+MAX_DURATION = 7
+previous_resp = []
+# Open window (for joystick)
+my_win = visual.Window(size=(400, 400), pos=(0,0), monitor = mon, units = 'pix', 
+                       screen = 1)
 
-# # print(imageList[2])
-# seq = [1,2,3,4,5,6,7,8,9,10,11,12]
-# presentList = []
-# for n in range(3):
-#     random.shuffle(seq)
-#     n_seq = tuple(seq)
-#     presentList.append(n_seq)
-#     print(n_seq)
-#     # presentList = [presentList[index] for index in seq]
-#     print(presentList[n])  
+# Get mouse and joystick
+joystick.backend = 'pyglet'
+nJoys = joystick.getNumJoysticks() # Check if I have any joysticks
+id = 0 # I'll use the first one as input
+joy = joystick.Joystick(id) # ID has to be nJoys - 1
+# - Mouse setting
+mouse = event.Mouse(visible = True, win = my_win)
+mouse.clickReset() # Reset to its initials
 
+# start
+while experiment_timer.getTime() < MAX_DURATION:
+    my_win.flip()
+    a,b,c,d = getAnything(mouse, joy)
+    if previous_resp != [a,b,c,d]:
+        print(a,b,c,d)
+    previous_resp = [a,b,c,d]
 
-testVar = [(1,2,3)]
-testList = ([1,2,3])
-testd = (1,2,3)
-# random.shuffle(testList)
-print(testVar)
-print(type(testVar), len(testVar))
-print(type(testList), len(testList))
-print(type(testd), len(testd))
+my_win.close()
