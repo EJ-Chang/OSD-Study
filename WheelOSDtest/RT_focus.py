@@ -72,10 +72,14 @@ while expStatus == 1:
 
     # Get response
     buttons, times = mouse.getPressed(getTime = True)
-    (x, y) = mouse.getWheelRel()
+    (wheel_x, wheel_y) = mouse.getWheelRel()
+    dPad = joy.getAllHats()
+    botton_x = joy.getButton(0)
     # I should put all triggers in one buket
 
     if buttons != pre_Mouse and buttons != [0,0,0]:
+        print(core.getTime())
+        print(times)
         item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
         # response.append([stimulus_seq[item], buttons])
         # Determine response key & time

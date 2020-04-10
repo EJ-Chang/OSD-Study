@@ -20,7 +20,7 @@ def response_key(userInput, inputTime, stimuli, nStimulus, expStatus):
 # Building =================================
 # Function A: interpret ----
 def interpret_key():
-    if sum(userInput) == 1: # Check only one key was pressed
+    if sum(userInput) >= 1: # Check at least one key was pressed
         # Get Pressed
         if userInput[0] == 1:
             userResponse = 'next'

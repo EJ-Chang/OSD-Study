@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os, random
-from testFunc import sum_UP
+# from testFunc import sum_UP
 
 # imageList = []
 # path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"
@@ -22,17 +22,12 @@ from testFunc import sum_UP
 #     # presentList = [presentList[index] for index in seq]
 #     print(presentList[n])  
 
-# sum_UP(1,2)
 
-# aa, bb = sum_UP(2,4)
-# cc = sum_UP(2,4)
-
-# print(aa)
-# print(bb)
-# print(cc)
-
-testVar = range(3)
-testList = list(testVar)
-random.shuffle(testList)
+testVar = [(1,2,3)]
+testList = ([1,2,3])
+testd = (1,2,3)
+# random.shuffle(testList)
 print(testVar)
-print(testList)
+print(type(testVar), len(testVar))
+print(type(testList), len(testList))
+print(type(testd), len(testd))
