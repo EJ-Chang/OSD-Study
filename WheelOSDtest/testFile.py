@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os, random
-# from testFunc import sum_UP
+from testFunc import sum_UP
 
 # imageList = []
 # path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"

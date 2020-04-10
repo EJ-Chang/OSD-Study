@@ -57,3 +57,7 @@ def interpret_key():
 # Function C: trimmer ----
 
 # def trim_off():
+
+
+# Function 0: getAnything ----
+# def getAnything():
