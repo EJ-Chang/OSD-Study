@@ -8,7 +8,8 @@ Written by EJ_Chang on Jan 6 2020
 from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
 import os, random
-from ResponseTrigger import response_key
+from ResponseTrigger import response_key, getAnything
+
 
 # Make screen profile ----
 widthPix = 2560 # screen width in px
@@ -69,26 +70,24 @@ while expStatus == 1:
                            units = 'pix')
     img.draw()
     my_win.flip()
+    # stimuli_time = core.getTime()
 
     # Get response
-    buttons, times = mouse.getPressed(getTime = True)
-    (wheel_x, wheel_y) = mouse.getWheelRel()
-    dPad = joy.getAllHats()
-    botton_x = joy.getButton(0)
-    # I should put all triggers in one buket
+    buttons, (wheel_x, wheel_y), dPad, botton_x = getAnything(mouse, joy)
 
     if buttons != pre_Mouse and buttons != [0,0,0]:
-        print(core.getTime())
-        print(times)
-        item, expStatus = response_key(buttons, times, item, nStimulus, expStatus) 
+        current_time = core.getTime()
+        # response_time = current_time - stimuli_time
+        # print(response_time)
+        item, expStatus = response_key(buttons, item, nStimulus, expStatus) 
         # response.append([stimulus_seq[item], buttons])
         # Determine response key & time
         response.append([buttons, stimulus_seq[item]])
 
-    pre_Mouse = buttons # Button status update
+    pre_mouse = buttons # Button status update
 
 
 # Exp END ========
-print(response)
+print('Get your responses:', response)
 # Save & close
 my_win.close()
