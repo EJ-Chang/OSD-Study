@@ -28,7 +28,7 @@ my_win = visual.Window(size=(400, 400), pos=(0,0), monitor = mon, units = 'pix',
 # Get mouse and joystick
 joystick.backend = 'pyglet'
 nJoys = joystick.getNumJoysticks() # Check if I have any joysticks
-id = 0 # I'll use the first one as input
+id = 0 # Use the first one as input
 joy = joystick.Joystick(id) # ID has to be nJoys - 1
 # - Mouse setting
 mouse = event.Mouse(visible = True, win = my_win)
