@@ -5,10 +5,10 @@ Created on Wed Mar 25 2020
 Written by EJ_Chang on Jan 6 2020
 """
 
+import os, random
 from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
-import os, random
-from ResponseTrigger import response_key, getAnything
+from ResponseTrigger import response_key, getAnything, interpret_key
 
 
 # Make screen profile ----
@@ -53,14 +53,13 @@ random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable
 print(stimulus_seq)
 
-
 # Preparing experiment timer
 experiment_timer = core.Clock()
 experiment_timer.reset()
 
 # Setting initial numbers
 item = 0
-pre_Mouse = []
+pre_key = []
 expStatus = 1
 response = []
 
@@ -70,21 +69,27 @@ while expStatus == 1:
                            units = 'pix')
     img.draw()
     my_win.flip()
-    # stimuli_time = core.getTime()
 
     # Get response
-    buttons, (wheel_x, wheel_y), dPad, botton_x = getAnything(mouse, joy)
-
-    if buttons != pre_Mouse and buttons != [0,0,0]:
+    # clicks, wheel, dPad, button_x, resp_status, resp_hw = getAnything(mouse, joy)
+    response_hw, response_key, response_status = getAnything(mouse, joy)
+    
+    # if clicks != pre_mouse and response_status == 1:
+    if response_status == 1 and response_key != pre_key:
+        # Add interval picture here --------
         current_time = core.getTime()
-        # response_time = current_time - stimuli_time
-        # print(response_time)
-        item, expStatus = response_key(buttons, item, nStimulus, expStatus) 
-        # response.append([stimulus_seq[item], buttons])
-        # Determine response key & time
-        response.append([buttons, stimulus_seq[item]])
+        # item, expStatus = response_key(clicks, item, nStimulus, expStatus) 
+        item, expStatus = interpret_key(response_hw, response_key, 
+                                       item, nStimulus, expStatus) 
 
-    pre_mouse = buttons # Button status update
+        # Determine response key & time
+        response.append([response_key, stimulus_seq[item-1]])
+        # Stimulus interval
+        t = random.choice(range(3))
+        core.wait(t)
+        print(t)
+
+    pre_key = response_key # Button status update
 
 
 # Exp END ========

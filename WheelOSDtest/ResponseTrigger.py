@@ -7,12 +7,35 @@ Written by EJ_Chang
 
 # Function 0 ===== get inputs from all devices
 def getAnything(mouse, joy):
-    buttons = mouse.getPressed()
-    (wheel_x, wheel_y) = mouse.getWheelRel()
-    dPad = joy.getAllHats()
-    botton_x = int(joy.getButton(0))
-    return buttons, (wheel_x, wheel_y), dPad, botton_x
+    clicks = mouse.getPressed()
+    wheel = list(mouse.getWheelRel())
+    dPad = list(joy.getAllHats()[0])
+    but_x = int(joy.getButton(0))
+    buttons = [but_x] # Can be modified to collect more buttons
 
+    if clicks != [0, 0, 0]:
+        response_status = 1
+        response_hw = 'mouse'
+        response_key = clicks
+    elif wheel != [0, 0]:
+        response_status = 1
+        response_hw = 'wheel'
+        response_key = wheel
+    elif dPad != [0, 0]:
+        response_status = 1
+        response_hw = 'dpad'
+        response_key = dPad
+    elif buttons != [0]:
+        response_status = 1
+        response_hw = 'buttons'
+        response_key = buttons
+    else:
+        response_status = 0
+        response_hw = 'none'
+        response_key = []
+
+    # return clicks, wheel, dPad, buttons, response_status, response_hw
+    return response_hw, response_key, response_status
 
 # Function A+B ==== Current solution
 def response_key(userInput, stimuli, nStimulus, expStatus):
@@ -29,36 +52,31 @@ def response_key(userInput, stimuli, nStimulus, expStatus):
 
 # Building =================================
 # Function A: interpret ----
-def interpret_key():
-    if sum(userInput) >= 1: # Check at least one key was pressed
-        # Get Pressed
-        if userInput[0] == 1:
-            userResponse = 'next'
-        elif userInput[1] == 1:
-            userResponse = 'next'
-        elif userInput[2] == 1:
-            userResponse = 'Exit'
+def interpret_key(response_hw, response_key, stimuli, nStimulus, expStatus):
+    item = stimuli
+
+    if response_hw == 'mouse':
+        if response_key[0] == 1:
+            item = stimuli + 1 
+            if item > nStimulus - 1:
+                item = nStimulus - 1
+                expStatus = 0
+        elif response_key[2] == 1:
+            expStatus = 0
+    elif response_hw == 'dpad':
+        if response_key == [0, -1]:
+            item = stimuli + 1
+            if item > nStimulus - 1:
+                item = nStimulus - 1
+                expStatus = 0
+    elif response_hw == 'buttons':
+        if response_key[0] == 1:
             expStatus = 0
 
-        # Get Wheel
-        if (x,y) == (0,1):
-            userResponse = 'up'
-        elif (x,y) == (0, -1):
-            userResponse = 'down'
-        elif (x,y) == (1,0):
-            userResponse = 'left'
-        elif (x,y) ==(-1,0):
-            userResponse = 'right'
+    return item, expStatus
 
-        # Get Joystick Dpad
-        if dPad == [(0, 1)]:
-            userResponse = 'up'
-        elif dPad == [(0, -1)]:
-            userResponse = 'down'
-        elif dPad == [(1, 0)]:
-            userResponse = 'left'
-        elif dPad == [(-1, 0)] or dPad == [(1,1)]:
-            userResponse = 'right'
+
+
 
 # Function B: determinant ----
 
