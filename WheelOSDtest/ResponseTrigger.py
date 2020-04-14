@@ -102,15 +102,11 @@ def determine_behavior(key_meaning, item, nStimulus, expStatus):
         item -= 1
         if item < 0:
             item = 0
-            
+
     elif key_meaning == 'Abort':
         expStatus = 0
 
     return item, expStatus
-
-
-
-
 
 # def determinant_feedback():
 
