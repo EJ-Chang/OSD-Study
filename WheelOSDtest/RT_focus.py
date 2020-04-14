@@ -8,7 +8,7 @@ Written by EJ_Chang on Jan 6 2020
 import os, random
 from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
-from ResponseTrigger import response_key, getAnything, interpret_key
+from ResponseTrigger import response_key, getAnything, interpret_key, determine_behavior
 
 
 # Make screen profile ----
@@ -79,15 +79,19 @@ while expStatus == 1:
         # Add interval picture here --------
         current_time = core.getTime()
         # item, expStatus = response_key(clicks, item, nStimulus, expStatus) 
-        item, expStatus = interpret_key(response_hw, response_key, 
-                                       item, nStimulus, expStatus) 
+        key_meaning = interpret_key(response_hw, response_key) 
+
+        item, expStatus = determine_behavior(key_meaning, item,
+         nStimulus, expStatus)
 
         # Determine response key & time
         response.append([response_key, stimulus_seq[item-1]])
+
+
         # Stimulus interval
-        t = random.choice(range(3))
-        core.wait(t)
-        print(t)
+        # t = random.choice(range(3))
+        # core.wait(t)
+        # print(t)
 
     pre_key = response_key # Button status update
 

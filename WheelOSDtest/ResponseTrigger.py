@@ -15,70 +15,100 @@ def getAnything(mouse, joy):
 
     if clicks != [0, 0, 0]:
         response_status = 1
-        response_hw = 'mouse'
+        response_hw = 'Mouse'
         response_key = clicks
     elif wheel != [0, 0]:
         response_status = 1
-        response_hw = 'wheel'
+        response_hw = 'Wheel'
         response_key = wheel
     elif dPad != [0, 0]:
         response_status = 1
-        response_hw = 'dpad'
+        response_hw = 'dPad'
         response_key = dPad
     elif buttons != [0]:
         response_status = 1
-        response_hw = 'buttons'
+        response_hw = 'Buttons'
         response_key = buttons
     else:
         response_status = 0
-        response_hw = 'none'
+        response_hw = 'None'
         response_key = []
 
     # return clicks, wheel, dPad, buttons, response_status, response_hw
     return response_hw, response_key, response_status
 
 # Function A+B ==== Current solution
-def response_key(userInput, stimuli, nStimulus, expStatus):
-    # global expStatus, item
-    item = stimuli
+def response_key(userInput, item, nStimulus, expStatus):
+
     if userInput[2] == 1:
         expStatus = 0
     elif userInput[0] == 1:
-        item = stimuli + 1
+        item += 1
         if item > nStimulus - 1:
-            item = nStimulus - 1
+            item -= 1
             expStatus = 0
     return item, expStatus # Export 2 variables
 
 # Building =================================
 # Function A: interpret ----
-def interpret_key(response_hw, response_key, stimuli, nStimulus, expStatus):
-    item = stimuli
+def interpret_key(response_hw, response_key):
 
-    if response_hw == 'mouse':
+    if response_hw == 'Mouse':
         if response_key[0] == 1:
-            item = stimuli + 1 
-            if item > nStimulus - 1:
-                item = nStimulus - 1
-                expStatus = 0
+            key_meaning = 'Next'
         elif response_key[2] == 1:
-            expStatus = 0
-    elif response_hw == 'dpad':
+            key_meaning = 'Abort'
+        else:
+            key_meaning = 'None'
+
+    elif response_hw == 'Wheel':
+        if response_key[1] > 0:
+            key_meaning = 'Next'
+        elif response_key[1] < 0:
+            key_meaning = 'Previous'
+        else:
+            key_meaning = 'None'
+
+    elif response_hw == 'dPad':
         if response_key == [0, -1]:
-            item = stimuli + 1
-            if item > nStimulus - 1:
-                item = nStimulus - 1
-                expStatus = 0
-    elif response_hw == 'buttons':
+            key_meaning = 'Next'
+        elif response_key == [0, 1]:
+            key_meaning = 'Previous'
+        else:
+            key_meaning = 'None'
+
+    elif response_hw == 'Buttons':
         if response_key[0] == 1:
+            key_meaning = 'Abort'
+
+    elif response_hw == 'None':
+        key_meaning = 'None'
+
+    else:
+        key_meaning = 'None'
+
+    return key_meaning
+
+# Function B: determinant ----
+def determine_behavior(key_meaning, item, nStimulus, expStatus):
+
+    if key_meaning == 'Next':
+        item += 1
+        if item > nStimulus - 1:
+            item = nStimulus - 1
             expStatus = 0
+    elif key_meaning == 'Previous':
+        item -= 1
+        if item < 0:
+            item = 0
+    elif key_meaning == 'Abort':
+        expStatus = 0
 
     return item, expStatus
 
 
 
 
-# Function B: determinant ----
 
 # def determinant_feedback():
 
