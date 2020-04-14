@@ -97,10 +97,12 @@ def determine_behavior(key_meaning, item, nStimulus, expStatus):
         if item > nStimulus - 1:
             item = nStimulus - 1
             expStatus = 0
+
     elif key_meaning == 'Previous':
         item -= 1
         if item < 0:
             item = 0
+            
     elif key_meaning == 'Abort':
         expStatus = 0
 
