@@ -5,7 +5,7 @@ Created on Tue Apr 7 2020
 Written by EJ_Chang
 """
 
-# Function 0 ===== get inputs from all devices
+# Function A ===== get inputs from all devices
 def getAnything(mouse, joy):
     clicks = mouse.getPressed()
     wheel = list(mouse.getWheelRel())
@@ -49,8 +49,7 @@ def response_key(userInput, item, nStimulus, expStatus):
             expStatus = 0
     return item, expStatus # Export 2 variables
 
-# Building =================================
-# Function A: interpret ----
+# Function B: interpret ----
 def interpret_key(response_hw, response_key):
 
     if response_hw == 'Mouse':
@@ -89,7 +88,7 @@ def interpret_key(response_hw, response_key):
 
     return key_meaning
 
-# Function B: determinant ----
+# Function C: determinant ----
 def determine_behavior(key_meaning, item, nStimulus, expStatus):
 
     if key_meaning == 'Next':
@@ -108,12 +107,6 @@ def determine_behavior(key_meaning, item, nStimulus, expStatus):
 
     return item, expStatus
 
-# def determinant_feedback():
-
-# Function C: trimmer ----
+# Function D: trimmer ----
 
 # def trim_off():
-
-
-# Function 0: getAnything ----
-# def getAnything():
