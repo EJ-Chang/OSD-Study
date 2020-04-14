@@ -39,15 +39,18 @@ mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
 
 # Preparing experiment stimulus
+img_start = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/start.png'
+img_rest = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/rest.png'
+
 imageList = []
 path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"
 for file in os.listdir(path):
     if file.endswith(".png"):
         imageList.append(os.path.join(path, file))
+imageList.remove(img_start)
+imageList.remove(img_rest)
 imageList = sorted(imageList) # Make a list of stimulus pics
 
-img_start = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/start.png'
-img_rest = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/rest.png'
 
 # Randomizing the list
 nStimulus = len(imageList)  # nStimulus = 12
@@ -66,7 +69,17 @@ pre_key = []
 expStatus = 1
 response = []
 
+
 # Start experiment 
+# Greeting page
+
+img = visual.ImageStim(win = my_win, image = img_start, 
+                       units = 'pix')
+img.draw()
+my_win.flip()
+core.wait(2)
+
+# Trials
 while expStatus == 1:
     img = visual.ImageStim(win = my_win, image = imageList[stimulus_seq[item]], 
                            units = 'pix')
