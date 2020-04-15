@@ -42,18 +42,32 @@ mouse.clickReset() # Reset to its initials
 img_start = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/start.png'
 img_rest = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/rest.png'
 
-imageList = []
-path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"
-for file in os.listdir(path):
-    if file.endswith(".png"):
-        imageList.append(os.path.join(path, file))
-imageList.remove(img_start)
-imageList.remove(img_rest)
-imageList = sorted(imageList) # Make a list of stimulus pics
+lineNumber = 1
+imageLUT = [] # list of image dictionary
+with open("sti_files.txt") as f:
+    for line in f:
+        (number, hw, mean, filepath) = line.split()
+        sti_Dict = {
+        'number': lineNumber,
+        'hardware': hw,
+        'meaning': mean,
+        'path': filepath
+        }
+        lineNumber += 1
+        imageLUT.append(sti_Dict)
+
+# imageList = []
+# path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"
+# for file in os.listdir(path):
+#     if file.endswith(".png"):
+#         imageList.append(os.path.join(path, file))
+# imageList.remove(img_start)
+# imageList.remove(img_rest)
+# imageList = sorted(imageList) # Make a list of stimulus pics
 
 
 # Randomizing the list
-nStimulus = len(imageList)  # nStimulus = 12
+nStimulus = 12  # nStimulus = 12
 playList = list(range(nStimulus)) # playList = [0,1,2,...11]
 random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable
@@ -81,7 +95,10 @@ core.wait(2)
 
 # Trials
 while expStatus == 1:
-    img = visual.ImageStim(win = my_win, image = imageList[stimulus_seq[item]], 
+    # img = visual.ImageStim(win = my_win, image = imageList[stimulus_seq[item]], 
+    #                        units = 'pix')
+    img = visual.ImageStim(win = my_win, 
+                           image = imageLUT[stimulus_seq[item]]['path'],
                            units = 'pix')
     img.draw()
     my_win.flip()
