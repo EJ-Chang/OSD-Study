@@ -6,22 +6,14 @@ import os, random
 import numpy as np
 from testFunc import getAnything
 
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+print(thisdict)
 
-# Preparing experiment stimulus
-imageList = []
-path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"
-for file in os.listdir(path):
-    if file.endswith(".png"):
-        imageList.append(os.path.join(path, file))
-imageList = sorted(imageList) # Make a list of stimulus pics
 
-img_start = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/start.png'
-img_rest = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/rest.png'
-
-imageList.remove(img_start)
-imageList.remove(img_rest)
-
-print(imageList)
 # # Make screen profile ----
 # widthPix = 2560 # screen width in px
 # heightPix = 2440 # screen height in px
