@@ -1,9 +1,9 @@
- 1 wheel Up w_U.png
- 2 wheel Down w_D.png
- 3 wheel Left w_L.png
- 4 wheel Right w_R.png
- 5 wheel OK w_OK.png
- 6 wheel NO w_NO.png
+ 1 Wheel Up w_U.png
+ 2 Wheel Down w_D.png
+ 3 Wheel Left w_L.png
+ 4 Wheel Right w_R.png
+ 5 Wheel OK w_OK.png
+ 6 Wheel NO w_NO.png
  7 dPad Up p_U.png
  8 dPad Down p_D.png
  9 dPad Left p_L.png

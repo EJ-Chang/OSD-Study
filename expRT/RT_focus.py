@@ -116,6 +116,12 @@ while expStatus == 1:
         item, expStatus = determine_behavior(key_meaning, item,
          nStimulus, expStatus)
 
+        determinant_var = reponse_checker(response_hw, 
+                                          key_meaning, 
+                                          imageLUT[stimulus_seq[item]])
+
+        print(determinant_var)
+
         # Determine response key & time
         response.append([stimulus_seq[item-1], 
                         response_hw, 

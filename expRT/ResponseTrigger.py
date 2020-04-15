@@ -100,7 +100,20 @@ def determine_behavior(key_meaning, item, nStimulus, expStatus):
     return item, expStatus
 
 # Function Zeta match or not ----
-def reponse_checker(response_hw, key_meaning, stimlus_description):
+def reponse_checker(response_hw, key_meaning, stimlus_dictionary):
+
+    determinant_var = [0, 0]
+    if response_hw == stimlus_dictionary['hardware']:
+        determinant_var[0] = 1
+    else:
+        determinant_var[0] = 0
+
+    if key_meaning == stimlus_dictionary['meaning']:
+        determinant_var[1] = 1
+    else:
+        determinant_var[1] = 0
+
+    return determinant_var
 
     # Read dictionary of sti into here. Determine if it is correct or not
 
