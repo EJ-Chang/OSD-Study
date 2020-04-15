@@ -37,18 +37,6 @@ def getAnything(mouse, joy):
     # return clicks, wheel, dPad, buttons, response_status, response_hw
     return response_hw, response_key, response_status
 
-# Function A+B ==== Current solution
-def response_key(userInput, item, nStimulus, expStatus):
-
-    if userInput[2] == 1:
-        expStatus = 0
-    elif userInput[0] == 1:
-        item += 1
-        if item > nStimulus - 1:
-            item -= 1
-            expStatus = 0
-    return item, expStatus # Export 2 variables
-
 # Function B: interpret ----
 def interpret_key(response_hw, response_key):
 
@@ -62,9 +50,13 @@ def interpret_key(response_hw, response_key):
 
     elif response_hw == 'Wheel':
         if response_key[1] > 0:
-            key_meaning = 'Next'
+            key_meaning = 'Up'
         elif response_key[1] < 0:
-            key_meaning = 'Previous'
+            key_meaning = 'Down'
+        elif response_key[0] > 0:
+            key_meaning = 'Left'
+        elif response_key[0] < 0:
+            key_meaning = 'Right'
         else:
             key_meaning = 'None'
 
@@ -106,6 +98,11 @@ def determine_behavior(key_meaning, item, nStimulus, expStatus):
         expStatus = 0
 
     return item, expStatus
+
+# Function Zeta match or not ----
+def reponse_checker(response_hw, key_meaning, stimlus_description):
+
+    # Read dictionary of sti into here. Determine if it is correct or not
 
 # Function D: trimmer ----
 
