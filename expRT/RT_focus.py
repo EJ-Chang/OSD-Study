@@ -38,6 +38,7 @@ joy = joystick.Joystick(id) # ID has to be nJoys - 1
 mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
 
+
 # Preparing experiment stimulus
 img_start = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/start.png'
 img_rest = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/rest.png'
@@ -56,18 +57,9 @@ with open("sti_files.txt") as f:
         lineNumber += 1
         imageLUT.append(sti_Dict)
 
-# imageList = []
-# path = "/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG"
-# for file in os.listdir(path):
-#     if file.endswith(".png"):
-#         imageList.append(os.path.join(path, file))
-# imageList.remove(img_start)
-# imageList.remove(img_rest)
-# imageList = sorted(imageList) # Make a list of stimulus pics
-
 
 # Randomizing the list
-nStimulus = 12  # nStimulus = 12
+nStimulus = len(imageLUT)  # nStimulus = 10
 playList = list(range(nStimulus)) # playList = [0,1,2,...11]
 random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable
@@ -116,17 +108,22 @@ while expStatus == 1:
         item, expStatus = determine_behavior(key_meaning, item,
          nStimulus, expStatus)
 
-        determinant_var = reponse_checker(response_hw, 
-                                          key_meaning, 
-                                          imageLUT[stimulus_seq[item]])
+        key_judgement, final_answer = reponse_checker(response_hw, 
+                                                      key_meaning, 
+                                                      imageLUT[stimulus_seq[item]])
 
-        print(determinant_var)
+        print(key_judgement, final_answer)
 
         # Determine response key & time
         response.append([stimulus_seq[item-1], 
                         response_hw, 
-                        key_meaning]) # correct/not, RT, real time
+                        key_meaning,
+                        imageLUT[stimulus_seq[item]]['hardware'],
+                        imageLUT[stimulus_seq[item]]['meaning'],
+                        final_answer
+                        ]) # correct/not, RT, real time
 
+        # Instruction between stimulus
         img = visual.ImageStim(win = my_win, image = img_rest, 
                            units = 'pix')
         img.draw()

@@ -5,7 +5,7 @@ Created on Tue Apr 7 2020
 Written by EJ_Chang
 """
 
-# Function A ===== get inputs from all devices
+# Function : get inputs from all devices
 def getAnything(mouse, joy):
     clicks = mouse.getPressed()
     wheel = list(mouse.getWheelRel())
@@ -37,85 +37,92 @@ def getAnything(mouse, joy):
     # return clicks, wheel, dPad, buttons, response_status, response_hw
     return response_hw, response_key, response_status
 
-# Function B: interpret ----
+# Function : interpret ----
 def interpret_key(response_hw, response_key):
 
+    # Setting key map
     if response_hw == 'Mouse':
         if response_key[0] == 1:
             key_meaning = 'Next'
+        elif response_key[1] == 1:
+            key_meaning = 'OK'
         elif response_key[2] == 1:
             key_meaning = 'Abort'
-        else:
-            key_meaning = 'None'
+
 
     elif response_hw == 'Wheel':
-        if response_key[1] > 0:
+        if response_key[1] < 0:
             key_meaning = 'Up'
-        elif response_key[1] < 0:
+        elif response_key[1] > 0:
             key_meaning = 'Down'
-        elif response_key[0] > 0:
-            key_meaning = 'Left'
         elif response_key[0] < 0:
+            key_meaning = 'Left'
+        elif response_key[0] > 0:
             key_meaning = 'Right'
-        else:
-            key_meaning = 'None'
+
 
     elif response_hw == 'dPad':
-        if response_key == [0, -1]:
-            key_meaning = 'Next'
-        elif response_key == [0, 1]:
-            key_meaning = 'Previous'
-        else:
-            key_meaning = 'None'
+        if response_key == [0, 1]:
+            key_meaning = 'Up'
+        elif response_key == [0, -1]:
+            key_meaning = 'Down'
+        elif response_key == [1, 0]:
+            key_meaning = 'Left'
+        elif response_key == [-1, 0]:
+            key_meaning = 'Right'
+        elif response_key == [1, 1]:
+            key_meaning = 'OK'
+
 
     elif response_hw == 'Buttons':
         if response_key[0] == 1:
             key_meaning = 'Abort'
 
-    elif response_hw == 'None':
-        key_meaning = 'None'
+    # elif response_hw == 'None':
+    #     key_meaning = 'None'
 
     else:
         key_meaning = 'None'
 
     return key_meaning
 
-# Function C: determinant ----
+# Function : determinant ----
 def determine_behavior(key_meaning, item, nStimulus, expStatus):
-
-    if key_meaning == 'Next':
+    # if key is in ?
+    if key_meaning != 'None':
         item += 1
         if item > nStimulus - 1:
             item = nStimulus - 1
             expStatus = 0
 
-    elif key_meaning == 'Previous':
-        item -= 1
-        if item < 0:
-            item = 0
+    # elif key_meaning == 'Previous':
+    #     item -= 1
+    #     if item < 0:
+    #         item = 0
 
     elif key_meaning == 'Abort':
         expStatus = 0
 
     return item, expStatus
 
-# Function Zeta match or not ----
+# Function : match or not ----
 def reponse_checker(response_hw, key_meaning, stimlus_dictionary):
 
-    determinant_var = [0, 0]
+    key_judgement = [0, 0]
     if response_hw == stimlus_dictionary['hardware']:
-        determinant_var[0] = 1
+        key_judgement[0] = 1
     else:
-        determinant_var[0] = 0
+        key_judgement[0] = 0
 
     if key_meaning == stimlus_dictionary['meaning']:
-        determinant_var[1] = 1
+        key_judgement[1] = 1
     else:
-        determinant_var[1] = 0
+        key_judgement[1] = 0
 
-    return determinant_var
+    final_answer = key_judgement[0] * key_judgement[1]
 
-    # Read dictionary of sti into here. Determine if it is correct or not
+    return key_judgement, final_answer
+
 
 # Function D: trimmer ----
 

@@ -3,10 +3,8 @@
  3 Wheel Left w_L.png
  4 Wheel Right w_R.png
  5 Wheel OK w_OK.png
- 6 Wheel NO w_NO.png
- 7 dPad Up p_U.png
- 8 dPad Down p_D.png
- 9 dPad Left p_L.png
-10 dPad Right p_R.png
-11 dPad OK p_OK.png
-12 dPad NO p_NO.png
+ 6 dPad Up p_U.png
+ 7 dPad Down p_D.png
+ 8 dPad Left p_L.png
+ 9 dPad Right p_R.png
+10 dPad OK p_OK.png
