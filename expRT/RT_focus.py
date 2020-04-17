@@ -77,18 +77,19 @@ response = []
 
 
 # Start experiment 
-# Greeting page
 
+# Greeting page
 img = visual.ImageStim(win = my_win, image = img_start, 
                        units = 'pix')
 img.draw()
 my_win.flip()
 core.wait(2)
 
+
+stimuli_time =core.getTime()
 # Trials
 while expStatus == 1:
-    # img = visual.ImageStim(win = my_win, image = imageList[stimulus_seq[item]], 
-    #                        units = 'pix')
+
     img = visual.ImageStim(win = my_win, 
                            image = imageLUT[stimulus_seq[item]]['path'],
                            units = 'pix')
@@ -102,17 +103,17 @@ while expStatus == 1:
     if response_status == 1 and response_key != pre_key:
         # Add interval picture here --------
         current_time = core.getTime()
-        # item, expStatus = response_key(clicks, item, nStimulus, expStatus) 
+
         key_meaning = interpret_key(response_hw, response_key) 
 
         key_judgement, final_answer = reponse_checker(response_hw, 
                                                       key_meaning, 
                                                       imageLUT[stimulus_seq[item]])
-        
+
         item, expStatus = determine_behavior(key_meaning, item,
          nStimulus, expStatus)
 
-        print(key_judgement, final_answer)
+        print(key_judgement, final_answer, current_time, stimuli_time)
 
         # Determine response key & time
         response.append([stimulus_seq[item-1], 
@@ -130,11 +131,14 @@ while expStatus == 1:
         my_win.flip()
 
         # Stimulus interval
-        t = 1 + random.randrange(1)
+        t = 2 + random.randrange(4)
         core.wait(t)
-        print(t)
+        # print(t)
+        stimuli_time = core.getTime()
+        print(stimuli_time)
 
     pre_key = response_key # Button status update
+
 
 
 # Exp END ========
