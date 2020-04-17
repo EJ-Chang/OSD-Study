@@ -70,7 +70,8 @@ def interpret_key(response_hw, response_key):
             key_meaning = 'Left'
         elif response_key == [-1, 0]:
             key_meaning = 'Right'
-        elif response_key == [1, 1]:
+        # elif response_key == [1, 1]:
+        elif response_key[0] != 0 and response_key[1] != 0:
             key_meaning = 'OK'
 
 

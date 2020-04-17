@@ -85,7 +85,6 @@ img.draw()
 my_win.flip()
 core.wait(2)
 
-
 stimuli_time =core.getTime()
 # Trials
 while expStatus == 1:
@@ -101,41 +100,43 @@ while expStatus == 1:
     
     # if clicks != pre_mouse and response_status == 1:
     if response_status == 1 and response_key != pre_key:
-        # Add interval picture here --------
+
         current_time = core.getTime()
 
-        key_meaning = interpret_key(response_hw, response_key) 
+        if current_time - stimuli_time > 0.3:
 
-        key_judgement, final_answer = reponse_checker(response_hw, 
-                                                      key_meaning, 
-                                                      imageLUT[stimulus_seq[item]])
+            key_meaning = interpret_key(response_hw, response_key) 
 
-        item, expStatus = determine_behavior(key_meaning, item,
-         nStimulus, expStatus)
+            key_judgement, final_answer = reponse_checker(response_hw, 
+                                                          key_meaning, 
+                                                          imageLUT[stimulus_seq[item]])
 
-        print(key_judgement, final_answer, current_time, stimuli_time)
+            item, expStatus = determine_behavior(key_meaning, item,
+             nStimulus, expStatus)
 
-        # Determine response key & time
-        response.append([stimulus_seq[item-1], 
-                        response_hw, 
-                        key_meaning,
-                        imageLUT[stimulus_seq[item]]['hardware'],
-                        imageLUT[stimulus_seq[item]]['meaning'],
-                        final_answer
-                        ]) # correct/not, RT, real time
+            print(key_judgement, final_answer, current_time -  stimuli_time)
 
-        # Instruction between stimulus
-        img = visual.ImageStim(win = my_win, image = img_rest, 
-                           units = 'pix')
-        img.draw()
-        my_win.flip()
+            # Determine response key & time
+            response.append([stimulus_seq[item-1], 
+                            response_hw, 
+                            key_meaning,
+                            imageLUT[stimulus_seq[item]]['hardware'],
+                            imageLUT[stimulus_seq[item]]['meaning'],
+                            final_answer
+                            ]) # correct/not, RT, real time
 
-        # Stimulus interval
-        t = 2 + random.randrange(4)
-        core.wait(t)
-        # print(t)
-        stimuli_time = core.getTime()
-        print(stimuli_time)
+            # Resting time between stimulus
+            img = visual.ImageStim(win = my_win, image = img_rest, 
+                               units = 'pix')
+            img.draw()
+            my_win.flip()
+
+            # Stimulus interval
+            t = 2 + random.randrange(4)
+            core.wait(t)
+            # print(t)
+            stimuli_time = core.getTime()
+            print(stimuli_time)
 
     pre_key = response_key # Button status update
 
