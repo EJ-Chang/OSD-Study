@@ -105,12 +105,12 @@ while expStatus == 1:
         # item, expStatus = response_key(clicks, item, nStimulus, expStatus) 
         key_meaning = interpret_key(response_hw, response_key) 
 
-        item, expStatus = determine_behavior(key_meaning, item,
-         nStimulus, expStatus)
-
         key_judgement, final_answer = reponse_checker(response_hw, 
                                                       key_meaning, 
                                                       imageLUT[stimulus_seq[item]])
+        
+        item, expStatus = determine_behavior(key_meaning, item,
+         nStimulus, expStatus)
 
         print(key_judgement, final_answer)
 
@@ -130,7 +130,7 @@ while expStatus == 1:
         my_win.flip()
 
         # Stimulus interval
-        t = 1 + random.randrange(4)
+        t = 1 + random.randrange(1)
         core.wait(t)
         print(t)
 

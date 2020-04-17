@@ -20,8 +20,10 @@ with open("sti_files.txt") as f:
         lineNumber += 1
         imageList.append(sti_Dict)
 
+
+
 # print (sti_Dict)
 # print(imageList)
-# print(imageList[0])
-# print(imageList[0]['path'])
-# print(imageList[0]['meaning'])
+print(imageList)
+# print(imageList['path'])
+# print(imageList['meaning'])

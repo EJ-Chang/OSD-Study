@@ -81,29 +81,11 @@ def interpret_key(response_hw, response_key):
     # elif response_hw == 'None':
     #     key_meaning = 'None'
 
-    else:
-        key_meaning = 'None'
+    # else:
+    #     key_meaning = 'None'
 
     return key_meaning
 
-# Function : determinant ----
-def determine_behavior(key_meaning, item, nStimulus, expStatus):
-    # if key is in ?
-    if key_meaning != 'None':
-        item += 1
-        if item > nStimulus - 1:
-            item = nStimulus - 1
-            expStatus = 0
-
-    # elif key_meaning == 'Previous':
-    #     item -= 1
-    #     if item < 0:
-    #         item = 0
-
-    elif key_meaning == 'Abort':
-        expStatus = 0
-
-    return item, expStatus
 
 # Function : match or not ----
 def reponse_checker(response_hw, key_meaning, stimlus_dictionary):
@@ -123,6 +105,25 @@ def reponse_checker(response_hw, key_meaning, stimlus_dictionary):
 
     return key_judgement, final_answer
 
+
+# Function : determinant ----
+def determine_behavior(key_meaning, item, nStimulus, expStatus):
+    # if key is in ?
+    if key_meaning == 'Abort':
+        expStatus = 0
+
+    elif key_meaning == 'Up' or 'Down' or 'Left' or 'Right':
+        item += 1
+        if item > nStimulus - 1:
+            item = nStimulus - 1
+            expStatus = 0
+
+    # elif key_meaning == 'Previous':
+    #     item -= 1
+    #     if item < 0:
+    #         item = 0
+
+    return item, expStatus
 
 # Function D: trimmer ----
 
