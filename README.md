@@ -19,7 +19,7 @@ OSD-Study
 2. **ACC** focused
 
 ## To-Do list
-------
+
 
 ### ACC focused
 - [ ] Practice Trials ----  
