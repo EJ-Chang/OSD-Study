@@ -23,7 +23,7 @@ OSD-Study
 - [ ] Practice Trials ----  
 - [x] Experiment Trials ----  
     - [ ] baseline
-- [ ] Save files & Thanks ----  
+- [x] Save files & Thanks ----  
 
 
 
