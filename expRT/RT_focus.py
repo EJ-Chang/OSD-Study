@@ -169,4 +169,3 @@ while os.path.isfile(filename):
 
 with open(filename, 'w') as filehandle: # File auto closed
     filehandle.writelines("%s\n" % key for key in response)
-    filehandle.writelines('%s\n' % today) 
