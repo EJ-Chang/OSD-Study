@@ -108,15 +108,15 @@ def reponse_checker(response_hw, key_meaning, stimlus_dictionary):
 
 
 # Function : determinant ----
-def determine_behavior(key_meaning, item, nStimulus, expStatus):
+def determine_behavior(key_meaning, item, nTrials, expStatus):
     # if key is in ?
     if key_meaning == 'Abort':
         expStatus = 0
 
     elif key_meaning == 'Up' or 'Down' or 'Left' or 'Right':
         item += 1
-        if item > nStimulus - 1:
-            item = nStimulus - 1
+        if item > nTrials - 1:
+            item = nTrials - 1
             expStatus = 0
 
     # elif key_meaning == 'Previous':

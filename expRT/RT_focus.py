@@ -40,9 +40,9 @@ mouse.clickReset() # Reset to its initials
 
 
 # Preparing experiment stimulus
-img_start = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/start.png'
-img_rest = '/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusPNG/rest.png'
-
+img_start = 'start.png'
+img_rest = 'rest.png'
+img_ty = 'thanks.png'
 lineNumber = 1
 imageLUT = [] # list of image dictionary
 with open("sti_files.txt") as f:
@@ -60,7 +60,8 @@ with open("sti_files.txt") as f:
 
 # Randomizing the list
 nStimulus = len(imageLUT)  # nStimulus = 10
-playList = list(range(nStimulus)) # playList = [0,1,2,...11]
+playList = list(range(nStimulus))*1 # playList = [0,1,2,...nStimulus] repeats twice
+nTrials = len(playList)
 random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable
 print(stimulus_seq)
@@ -112,7 +113,7 @@ while expStatus == 1:
                                                           imageLUT[stimulus_seq[item]])
 
             item, expStatus = determine_behavior(key_meaning, item,
-             nStimulus, expStatus)
+             nTrials, expStatus)
 
             print(key_judgement, final_answer, current_time -  stimuli_time)
 
@@ -140,9 +141,14 @@ while expStatus == 1:
 
     pre_key = response_key # Button status update
 
-
+# Thank u page
+img = visual.ImageStim(win = my_win, image = img_ty, units = 'pix')
+img.draw()
+my_win.flip()
+core.wait(5)
 
 # Exp END ========
 print('Get your responses:', response)
+
 # Save & close
 my_win.close()
