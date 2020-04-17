@@ -8,8 +8,14 @@ Written by EJ_Chang on Jan 6 2020
 import os, random
 from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
+from datetime import date
 from ResponseTrigger import *
 
+# Subject profile
+today = date.today()
+print('Today is %s:' % today)
+username = input("Please enter your name:").upper()
+print('Hi %s, welcome to our experiment!' % username)
 
 # Make screen profile ----
 widthPix = 2560 # screen width in px
@@ -38,7 +44,6 @@ joy = joystick.Joystick(id) # ID has to be nJoys - 1
 mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
 
-
 # Preparing experiment stimulus
 img_start = 'start.png'
 img_rest = 'rest.png'
@@ -57,10 +62,9 @@ with open("sti_files.txt") as f:
         lineNumber += 1
         imageLUT.append(sti_Dict)
 
-
 # Randomizing the list
 nStimulus = len(imageLUT)  # nStimulus = 10
-playList = list(range(nStimulus))*1 # playList = [0,1,2,...nStimulus] repeats twice
+playList = list(range(nStimulus))*2 # playList = [0,1,2,...nStimulus] repeats twice
 nTrials = len(playList)
 random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable
@@ -77,8 +81,7 @@ expStatus = 1
 response = []
 
 
-# Start experiment 
-
+# Start experiment ----
 # Greeting page
 img = visual.ImageStim(win = my_win, image = img_start, 
                        units = 'pix')
@@ -87,6 +90,7 @@ my_win.flip()
 core.wait(2)
 
 stimuli_time =core.getTime()
+
 # Trials
 while expStatus == 1:
 
@@ -104,7 +108,7 @@ while expStatus == 1:
 
         current_time = core.getTime()
 
-        if current_time - stimuli_time > 0.3:
+        if current_time - stimuli_time > 0.3: # RT minimum
 
             key_meaning = interpret_key(response_hw, response_key) 
 
@@ -145,10 +149,24 @@ while expStatus == 1:
 img = visual.ImageStim(win = my_win, image = img_ty, units = 'pix')
 img.draw()
 my_win.flip()
-core.wait(5)
+core.wait(3)
 
-# Exp END ========
+# Close window
+my_win.close()
+
+
+# Exp END ----
 print('Get your responses:', response)
 
-# Save & close
-my_win.close()
+# Experiment record file
+os.chdir('/Users/YJC/Dropbox/UsabilityTesting/expRT/Record')
+filename = ('%s_%s.txt' % (today, username))
+filecount = 0
+
+while os.path.isfile(filename):
+    filecount += 1
+    filename = ('%s_%s_%d.txt' % (today, username, filecount))
+
+with open(filename, 'w') as filehandle: # File auto closed
+    filehandle.writelines("%s\n" % key for key in response)
+    filehandle.writelines('%s\n' % today) 

@@ -4,11 +4,24 @@ from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
 import os, random
 import numpy as np
+from datetime import date
 
+# Subject profile
+username = input("Please enter your name:").upper()
+print('Hi %s, welcome to our experiment!' % username)
+today = date.today()
+filename = ('%s_%s.txt' % (today, username))
 
-x = list(range(12))
-x = x*2
-print(x, len(x))
+count = 0
+while os.path.isfile(filename):
+    count += 1
+    filename = ('%s_%s_%d.txt' % (today, username, count))
+
+f = open(filename, 'w')
+f.write('ohhhh heyyyy')
+f.close()
+
+print(filename)
 # # Make screen profile ----
 # widthPix = 2560 # screen width in px
 # heightPix = 2440 # screen height in px

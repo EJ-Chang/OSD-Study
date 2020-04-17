@@ -1,0 +1,6 @@
+[3, 'Wheel', 'Right', 'Wheel', 'Up', 1]
+[0, 'Wheel', 'Up', 'dPad', 'OK', 1]
+[9, 'dPad', 'OK', 'dPad', 'Left', 1]
+[7, 'dPad', 'Left', 'Wheel', 'Up', 1]
+[7, 'Mouse', 'Abort', 'Wheel', 'Up', 0]
+2020-04-17
