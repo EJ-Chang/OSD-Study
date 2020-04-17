@@ -19,7 +19,14 @@ OSD-Study
 2. **ACC** focused
 
 ## To-Do list
+------
 
+### ACC focused
+- [ ] Practice Trials ----  
+- [ ] Experiment Trials ----  
+- [ ] Save files & Thanks ----  
+
+### RT focused
 - [x] Practice Trials ----  
 - [x] Experiment Trials ----  
     - [ ] baseline
