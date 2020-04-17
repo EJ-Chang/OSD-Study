@@ -4,34 +4,11 @@ from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
 import os, random
 import numpy as np
-from testFunc import getAnything
 
 
-sti_1 = {
-    'number': 1,
-    'hardware': 'wheel',
-    'meaning': 'Up',
-    'path': 'w_U.png'
-}
-
-sti_2 = {
-    'number': 2,
-    'hardware': 'dPad',
-    'meaning': 'Down',
-    'path': 'p_D.png'
-}
-
-thisdict = {
-    'stimulis_1': sti_1,
-    'stimulis_2': sti_2
-}
-
-thisList = [sti_1, sti_2]
-print(thisdict)
-print(thisList[1])
-print(thisList[1]['path'])
-
-
+x = list(range(12))
+x = x*2
+print(x, len(x))
 # # Make screen profile ----
 # widthPix = 2560 # screen width in px
 # heightPix = 2440 # screen height in px
