@@ -55,8 +55,8 @@ while experiment_timer.getTime() < MAX_DURATION:
     sscale.draw()
 
     # (x,y) = mouse.getWheelRel()   
-    # j =joy.getAllHats()
-    j = joy.getButton(0) # 0= x 1 = A 2 =b 3=y
+    j =joy.getAllHats()
+    # j = joy.getButton(0) # 0= x 1 = A 2 =b 3=y
     # j = joy.getAxis(0) # 0= left
 
     print(j)
