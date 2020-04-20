@@ -64,7 +64,7 @@ with open("sti_files.txt") as f:
 
 # Randomizing the list
 nStimulus = len(imageLUT)  # nStimulus = 10
-playList = list(range(nStimulus))*2 # playList = [0,1,2,...nStimulus] repeats twice
+playList = list(range(nStimulus)) * 2 # playList = [0,1,2,...nStimulus] repeats twice
 nTrials = len(playList)
 random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable
@@ -127,7 +127,9 @@ while expStatus == 1:
                             key_meaning,
                             imageLUT[stimulus_seq[item]]['hardware'],
                             imageLUT[stimulus_seq[item]]['meaning'],
-                            final_answer
+                            final_answer,
+                            current_time -  stimuli_time,
+                            current_time
                             ]) # correct/not, RT, real time
 
             # Resting time between stimulus

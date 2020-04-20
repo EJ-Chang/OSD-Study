@@ -35,10 +35,31 @@ id = 0 # I'll use the first one as input
 joy = joystick.Joystick(id) # ID has to be nJoys - 1
 # - Mouse setting
 mouse = event.Mouse(visible = True, win = my_win)
-mouse.clickReset() # Reset to its initials
-
 
 # Draw random lines
 
+line_up = visual.ShapeStim(my_win, units = 'pix', lineWidth = 1.5, 
+                          lineColor = (88,110,117), lineColorSpace = 'rgb255', 
+                          vertices = ((-50, 0), (-50, 50)),
+                          closeShape = False, pos = (0, 0))
+
+
+# core.wait(2)
+line_up.draw()
+my_win.flip()
+core.wait(2)
+
+
+line_left = visual.ShapeStim(my_win, units = 'pix', lineWidth = 1.5, 
+                          lineColor = (88,110,117), lineColorSpace = 'rgb255', 
+                          vertices = ((-50, 0), (0, 0)),
+                          closeShape = False, pos = (0, 0))
+
+line_left.draw()
+my_win.flip()
+core.wait(2)
+
+# Close window
+my_win.close()
 
 
