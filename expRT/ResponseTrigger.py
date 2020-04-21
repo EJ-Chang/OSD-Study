@@ -34,7 +34,6 @@ def getAnything(mouse, joy):
         response_hw = 'None'
         response_key = []
 
-    # return clicks, wheel, dPad, buttons, response_status, response_hw
     return response_hw, response_key, response_status
 
 # Function : interpret ----
@@ -49,41 +48,32 @@ def interpret_key(response_hw, response_key):
         elif response_key[2] == 1:
             key_meaning = 'Abort'
 
-
     elif response_hw == 'Wheel':
         if response_key[1] < 0:
             key_meaning = 'Up'
         elif response_key[1] > 0:
             key_meaning = 'Down'
-        elif response_key[0] < 0:
-            key_meaning = 'Left'
         elif response_key[0] > 0:
+            key_meaning = 'Left'
+        elif response_key[0] < 0:
             key_meaning = 'Right'
-
 
     elif response_hw == 'dPad':
         if response_key == [0, 1]:
             key_meaning = 'Up'
         elif response_key == [0, -1]:
             key_meaning = 'Down'
-        elif response_key == [1, 0]:
-            key_meaning = 'Left'
         elif response_key == [-1, 0]:
+            key_meaning = 'Left'
+        elif response_key == [1, 0]:
             key_meaning = 'Right'
         # elif response_key == [1, 1]:
         elif response_key[0] != 0 and response_key[1] != 0:
             key_meaning = 'OK'
 
-
     elif response_hw == 'Buttons':
         if response_key[0] == 1:
             key_meaning = 'Abort'
-
-    # elif response_hw == 'None':
-    #     key_meaning = 'None'
-
-    # else:
-    #     key_meaning = 'None'
 
     return key_meaning
 
@@ -118,11 +108,6 @@ def determine_behavior(key_meaning, item, nTrials, expStatus):
         if item > nTrials - 1:
             item = nTrials - 1
             expStatus = 0
-
-    # elif key_meaning == 'Previous':
-    #     item -= 1
-    #     if item < 0:
-    #         item = 0
 
     return item, expStatus
 

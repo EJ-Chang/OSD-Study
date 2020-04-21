@@ -2,7 +2,7 @@
 """
 Created on Wed Mar 25 2020
 
-Written by EJ_Chang on Jan 6 2020
+Written by EJ_Chang
 """
 
 import os, random
@@ -19,7 +19,7 @@ print('Hi %s, welcome to our experiment!' % username)
 
 # Make screen profile ----
 widthPix = 2560 # screen width in px
-heightPix = 2440 # screen height in px
+heightPix = 1440 # screen height in px
 monitorwidth = 60 # monitor width in cm
 viewdist = 60 # viewing distance in cm
 monitorname = 'ProArt27'
@@ -31,7 +31,7 @@ mon.save()
 
 # Load initial setting ----
 # Preparing Window
-my_win = visual.Window(size=(800, 600), pos=(0,0), monitor = mon, units = 'pix', 
+my_win = visual.Window(size=(800, 600), pos=(880,1040), monitor = mon, units = 'pix', 
                        screen = 1)
 
 # Preparing Joystick & Mouse
@@ -64,7 +64,7 @@ with open("sti_files.txt") as f:
 
 # Randomizing the list
 nStimulus = len(imageLUT)  # nStimulus = 10
-playList = list(range(nStimulus)) * 2 # playList = [0,1,2,...nStimulus] repeats twice
+playList = list(range(nStimulus)) * 10 # playList = [0,1,2,...nStimulus] repeats twice
 nTrials = len(playList)
 random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable

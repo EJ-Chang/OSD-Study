@@ -145,4 +145,4 @@ my_win.close()
 
 
 # Exp END ----
-print('Get your responses:', response)
+print('You may start the experiment now.')
