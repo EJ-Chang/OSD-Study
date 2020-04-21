@@ -5,11 +5,11 @@ Created on Fri Apr 17 2020
 Written by EJ_Chang
 """
 
-import os, random, numpy
+import os, random
 from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
 from datetime import date
-
+import numpy as np
 # Make screen profile ----
 widthPix = 2560 # screen width in px
 heightPix = 1440 # screen height in px
@@ -88,17 +88,23 @@ core.wait(2)
 ORIGIN_POINT = (-350, 0) # Y axis = 0
 END_POINT = (-250, 50) # Y axis = 0
 
-arrow_up = numpy.array([-10,10])
-arrow_down = numpy.array([-10,-10])
+arrow_up = np.array([-10,10])
+arrow_down = np.array([-10,-10])
 
-line_up = numpy.array([0,50])
-line_down = numpy.array([0,-50])
-line_right = numpy.array([50,0])
-line_left = numpy.array([-50,0])
+rotate_270 = np.array([[0,1], [-1,0]])
+
+rotate_90 = np.array([[0,-1], [1,0]])
+
+
+line_up = np.array([0,50])
+line_down = np.array([0,-50])
+line_right = np.array([50,0])
+line_left = np.array([-50,0])
 
 posList = [(-350,0), (-300,0), (-300,50)]
 pos2List = [(-300,0), (-300,50), (-250, 50)]
 
+sti_path = [line_right, line_up, line_right, line_down]
 
 origin = visual.DotStim(my_win, units = 'pix',
                         fieldPos = ORIGIN_POINT, fieldSize = (3,3),
@@ -107,23 +113,32 @@ origin = visual.DotStim(my_win, units = 'pix',
                         )
 origin.draw()
 
-end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                          lineColor = green, lineColorSpace = 'rgb255', 
-                          vertices = (END_POINT+arrow_down, 
-                                      END_POINT, 
-                                      END_POINT+arrow_up),
-                          closeShape = False, pos = (0, 0))
-end.draw()
 
-current_point = ORIGIN_POINT + line_left
 
-for item in range(3):
+current_point = ORIGIN_POINT
+print(current_point)
+for item in range(4):
+    pre_point = current_point
+    current_point = current_point + sti_path[item]
+
     line_next = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
                           lineColor = green, lineColorSpace = 'rgb255', 
-                          vertices = (posList[item], pos2List[item]),
+                          vertices = (pre_point, current_point),
                           closeShape = False, pos = (0, 0))
     line_next.draw()
     print(item)
+
+
+
+
+end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
+                          lineColor = green, lineColorSpace = 'rgb255', 
+                          vertices = (current_point+np.dot(arrow_down, rotate_90), 
+                                      current_point, 
+                                      current_point+np.dot(arrow_up, rotate_90)),
+                          closeShape = False, pos = (0, 0))
+end.draw()
+
 
 # disk = visual.Circle(my_win, radius = 30, fillColor = 'black', lineColor = None)
 # disk.draw()
