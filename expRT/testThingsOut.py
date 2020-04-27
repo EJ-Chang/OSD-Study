@@ -2,9 +2,10 @@
 
 import os, random
 import numpy as np
+from DirGenerator import *
 
 dir_DictList= []
-with open("dir_limit.txt") as f:
+with open("dir_lim_num.txt") as f:
     for line in f:
         (number, main_dir, ortho_dir_1, ortho_dir_2) = line.split()
         sti_Dict = {
@@ -13,41 +14,24 @@ with open("dir_limit.txt") as f:
         'ortho_dir': [ortho_dir_1,ortho_dir_2]
         }
         dir_DictList.append(sti_Dict)
-        print(sti_Dict)
 
-print(type(dir_DictList))
+# print(type(dir_DictList))
+theList = dirGenerate(dir_DictList)
 
-# # Draw crosshair with a center dot
-# line_up = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-#                           lineColor = yellow, lineColorSpace = 'rgb255', 
-#                           vertices = ((0, 0), (0, 50)),
-#                           closeShape = False, pos = (0, 0))
-# line_up.draw()
+print(theList)
 
-# line_left = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-#                           lineColor = magenta, lineColorSpace = 'rgb255', 
-#                           vertices = ((-50, 0), (0, 0)),
-#                           closeShape = False, pos = (0, 0))
-# line_left.draw()
+line_up = np.array([0,50])
+line_down = np.array([0,-50])
+line_right = np.array([50,0])
+line_left = np.array([-50,0])
+four_dir = [line_up, line_down, line_left, line_right]
+stimulusList = []
 
-# line_right = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-#                           lineColor = cyan, lineColorSpace = 'rgb255', 
-#                           vertices = ((0, 0), (50, 0)),
-#                           closeShape = False, pos = (0, 0))
-# line_right.draw()
+for ques in theList:
+    ques = int(ques)
+    stimulusList.append(four_dir[ques])
+    print(ques, type(ques))
+
+print(stimulusList)
 
 
-# line_down = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-#                           lineColor = green, lineColorSpace = 'rgb255', 
-#                           vertices = ((0, 0), (0, -50)),
-#                           closeShape = False, pos = (0, 0))
-# line_down.draw()
-
-# origin = visual.DotStim(my_win, units = 'pix',
-#                         # fieldPos = (0,0), fieldSize = (3,3),
-#                         dotSize=10,
-#                         color = base0, colorSpace = 'rgb255'
-#                         )
-# origin.draw()
-# my_win.flip()
-# core.wait(2)
