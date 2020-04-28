@@ -1,8 +1,6 @@
 OSD-Study
 ===========
 
-[TOC]
-
 
 ### Hardware: button types
 

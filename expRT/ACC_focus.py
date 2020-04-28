@@ -11,6 +11,7 @@ from psychopy.hardware import joystick
 from datetime import date
 import numpy as np
 from DirGenerator import *
+from ResponseTrigger import *
 
 # Make screen profile ----
 widthPix = 2560 # screen width in px
@@ -133,17 +134,23 @@ for nTrial in range(10):
 
   end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
                             lineColor = green, lineColorSpace = 'rgb255', 
-                            vertices = (current_point + np.dot(ARROW_WING1, rotate), 
+                            vertices = (current_point + np.dot(ARROW_WING1, 
+                                                               rotate), 
                                         current_point, 
-                                        current_point + np.dot(ARROW_WING2, rotate)),
+                                        current_point + np.dot(ARROW_WING2, 
+                                                               rotate)),
                             closeShape = False, pos = (0, 0)
                             )
   end.draw()
 
 
   my_win.flip()
-  core.wait(2)
-
+  # core.wait(2)
+  response_status = 0
+  # Get response
+  while response_status == 0: 
+    response_hw, response_key, response_status = getAnything(mouse, joy)
+    print(response_hw)
 
 
 # Close the window
