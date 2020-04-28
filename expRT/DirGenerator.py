@@ -11,16 +11,15 @@ def dirGenerate(dir_DictList):
 
     # Main directions
     main_que = []
-    main_que_num = []
     ortho_que = []
     sub_que = []
-    for i in range(1):
-        seed = random.randrange(4)
-        main = dir_DictList[seed]['main_dir']
-        orthogonal = dir_DictList[seed]['ortho_dir']
+    for i in range(1): # Determine how many paths(nTrials) shall be generated.
+        seed = random.randrange(4) # Random 0~3
+        main = dir_DictList[seed]['main_dir'] # Random selected direction
+        orthogonal = dir_DictList[seed]['ortho_dir'] # Orthogonal directions
 
         # Derivation directions (up to 3 choices)
-        pre_que = main[:]
+        pre_que = main[:] # Copy main.
         sub_que.append(pre_que)
         que_pool = orthogonal[:] # Copy orthogonal. Avoid changning orthogonal
         que_pool += [main]

@@ -44,7 +44,7 @@ with open("dir_lim_num.txt") as f:
         dir_DictList.append(sti_Dict)
 
 # Preparing Window ----
-my_win = visual.Window(size=(800, 600), pos=(880,1040), 
+my_win = visual.Window(size=(800, 800), pos=(880,1040), 
                        color=base03, colorSpace='rgb255', 
                        monitor = mon, units = 'pix', 
                        screen = 1)
@@ -60,90 +60,89 @@ joy = joystick.Joystick(id) # ID has to be nJoys - 1
 mouse = event.Mouse(visible = True, win = my_win)
 
 
-# Setting initials
-# ORIGIN_POINT = (-350, 0) # Y axis = 0
+# Setting Constants
 ORIGIN_POINT = (0,0)
 
-arrow_wing1 = np.array([-10,10])
-arrow_wing2 = np.array([-10,-10])
+ARROW_WING1 = np.array([-10,10])
+ARROW_WING2 = np.array([-10,-10])
 
-rotate_270 = np.array([[0,1], [-1,0]])
-rotate_180 = np.array([[-1,0], [0,-1]])
-rotate_90 = np.array([[0,-1], [1,0]])
-rotate_0 = np.array([[1,0], [0,1]])
+ROTATE_0 = np.array([[1,0], [0,1]])
+ROTATE_90 = np.array([[0,-1], [1,0]])
+ROTATE_180 = np.array([[-1,0], [0,-1]])
+ROTATE_270 = np.array([[0,1], [-1,0]])
 
-line_up = np.array([0,50])
-line_down = np.array([0,-50])
-line_right = np.array([50,0])
-line_left = np.array([-50,0])
+LINE_UP = np.array([0,40])
+LINE_DOWN = np.array([0,-40])
+LINE_LEFT = np.array([-40,0])
+LINE_RIGHT = np.array([40,0])
 
-four_dir = [line_up, line_down, line_left, line_right]
-# Random ques
+four_dir = [LINE_UP, LINE_DOWN, LINE_LEFT, LINE_RIGHT]
 
+for nTrial in range(10):
 
-# Translate the ques to coordinates
+  # Get the ques
+  theList = dirGenerate(dir_DictList)
+  print(theList[-1], 'length = ', len(theList))
 
-# print(type(dir_DictList))
-theList = dirGenerate(dir_DictList)
-
-print(theList[-1], len(theList))
-
-
-sti_path = []
-
-for ques in theList:
-    ques = int(ques)
-    sti_path.append(four_dir[ques])
-    # print(ques, type(ques))
+  sti_path = []
+  for ques in theList:
+      ques = int(ques)
+      sti_path.append(four_dir[ques])
 
 
-# Start drawing ---- 
-current_point = ORIGIN_POINT
 
-# Draw continuous lines
-origin = visual.DotStim(my_win, units = 'pix',
-                        fieldPos = ORIGIN_POINT, fieldSize = (3,3),
-                        dotSize=10,
-                        color = base0, colorSpace = 'rgb255'
-                        )
-origin.draw()
+  # Start drawing ---- 
+  current_point = ORIGIN_POINT
 
-
-for direction in range(10):
-    pre_point = current_point
-    current_point = current_point + sti_path[direction]
-
-    line_next = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                          lineColor = green, lineColorSpace = 'rgb255', 
-                          vertices = (pre_point, current_point),
-                          closeShape = False, pos = (0, 0)
+  # Draw origin point (larger dot)
+  origin = visual.DotStim(my_win, units = 'pix',
+                          fieldPos = ORIGIN_POINT, fieldSize = (5,5),
+                          dotSize=8,
+                          color = base0, colorSpace = 'rgb255'
                           )
-    line_next.draw()
-    # print(direction)
+  origin.draw()
 
 
-if theList[-1] == '0': 
-    rotate = rotate_270
-elif theList[-1] == '1':
-    rotate = rotate_90
-elif theList[-1] == '2':
-    rotate = rotate_180
-elif theList[-1] == '3':
-    rotate = rotate_0 
+  # Draw continuous lines
+
+  for direction in range(len(theList)):
+      pre_point = current_point
+      current_point = current_point + sti_path[direction]
+
+      line_next = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
+                            lineColor = green, lineColorSpace = 'rgb255', 
+                            vertices = (pre_point, current_point),
+                            closeShape = False, pos = (0, 0)
+                            )
+      line_next.draw()
+      # print(direction)
 
 
-end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                          lineColor = green, lineColorSpace = 'rgb255', 
-                          vertices = (current_point + np.dot(arrow_wing1, rotate), 
-                                      current_point, 
-                                      current_point + np.dot(arrow_wing2, rotate)),
-                          closeShape = False, pos = (0, 0)
-                          )
-end.draw()
+
+  # Draw ending point(with an arrow)
+
+  if theList[-1] == '0': 
+      rotate = ROTATE_270
+  elif theList[-1] == '1':
+      rotate = ROTATE_90
+  elif theList[-1] == '2':
+      rotate = ROTATE_180
+  elif theList[-1] == '3':
+      rotate = ROTATE_0 
 
 
-my_win.flip()
-core.wait(2)
+  end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
+                            lineColor = green, lineColorSpace = 'rgb255', 
+                            vertices = (current_point + np.dot(ARROW_WING1, rotate), 
+                                        current_point, 
+                                        current_point + np.dot(ARROW_WING2, rotate)),
+                            closeShape = False, pos = (0, 0)
+                            )
+  end.draw()
+
+
+  my_win.flip()
+  core.wait(2)
 
 
 

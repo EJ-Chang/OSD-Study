@@ -1,4 +1,0 @@
-1 Up Left Right
-2 Down Left Right
-3 Left Up Down
-4 Right Up Down
