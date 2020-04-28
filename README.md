@@ -1,6 +1,9 @@
 OSD-Study
 ===========
 
+[TOC]
+
+
 ### Hardware: button types
 
 1. Mouse wheel
@@ -29,8 +32,10 @@ OSD-Study
 ### RT focused
 - [x] Practice Trials ----  
 - [x] Experiment Trials ----  
-    - [ ] baseline
 - [x] Save files & Thanks ----  
 
 
+### Data Analysis
+- [ ] Baseline of RT
+- [ ] Baseline of ACC
 
