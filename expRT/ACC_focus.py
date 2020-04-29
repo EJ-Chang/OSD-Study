@@ -59,6 +59,7 @@ id = 0 # I'll use the first one as input
 joy = joystick.Joystick(id) # ID has to be nJoys - 1
 # - Mouse setting
 mouse = event.Mouse(visible = True, win = my_win)
+mouse.clickReset() # Reset to its initials
 
 
 # Setting Constants
@@ -78,79 +79,125 @@ LINE_LEFT = np.array([-40,0])
 LINE_RIGHT = np.array([40,0])
 
 four_dir = [LINE_UP, LINE_DOWN, LINE_LEFT, LINE_RIGHT]
+# Timer
+MAX_DURATION = 3
+experiment_timer = core.Clock()    
+experiment_timer.reset()
 
+core.wait(1)
+current_point = ORIGIN_POINT
+origin = visual.Circle(my_win, units =  'pix',
+                           radius = 5, pos = (0,0),
+                           fillColor = base0, fillColorSpace = 'rgb255',
+                           lineColor = base0, lineColorSpace = 'rgb255', 
+                           interpolate = True)
+
+
+wheel = list(mouse.getWheelRel())
+dPad = list(joy.getAllHats()[0])
+# dPad = list(joy.getAllHats())
+but_x = int(joy.getButton(0))
+
+
+
+# ===========================
 for nTrial in range(10):
-
-  # Get the ques
-  theList = dirGenerate(dir_DictList)
-  print(theList[-1], 'length = ', len(theList))
-
-  sti_path = []
-  for ques in theList:
-      ques = int(ques)
-      sti_path.append(four_dir[ques])
+    # Timer
+    MAX_DURATION = 3
+    experiment_timer = core.Clock()    
+    experiment_timer.reset()
 
 
+    # Get the ques
+    theList = dirGenerate(dir_DictList)
+    print(theList[-1], 'length = ', len(theList))
 
-  # Start drawing ---- 
-  current_point = ORIGIN_POINT
+    sti_path = []
+    for ques in theList:
+        ques = int(ques)
+        sti_path.append(four_dir[ques])
 
-  # Draw origin point (larger dot)
-  origin = visual.DotStim(my_win, units = 'pix',
-                          fieldPos = ORIGIN_POINT, fieldSize = (5,5),
-                          dotSize=8,
-                          color = base0, colorSpace = 'rgb255'
-                          )
-  origin.draw()
-
-
-  # Draw continuous lines
-
-  for direction in range(len(theList)):
-      pre_point = current_point
-      current_point = current_point + sti_path[direction]
-
-      line_next = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                            lineColor = green, lineColorSpace = 'rgb255', 
-                            vertices = (pre_point, current_point),
-                            closeShape = False, pos = (0, 0)
-                            )
-      line_next.draw()
-      # print(direction)
+    if theList[-1] == '0': 
+        rotate = ROTATE_270
+    elif theList[-1] == '1':
+        rotate = ROTATE_90
+    elif theList[-1] == '2':
+        rotate = ROTATE_180
+    elif theList[-1] == '3':
+        rotate = ROTATE_0 
 
 
-
-  # Draw ending point(with an arrow)
-
-  if theList[-1] == '0': 
-      rotate = ROTATE_270
-  elif theList[-1] == '1':
-      rotate = ROTATE_90
-  elif theList[-1] == '2':
-      rotate = ROTATE_180
-  elif theList[-1] == '3':
-      rotate = ROTATE_0 
+    # Start drawing ---- 
+    # current_point = ORIGIN_POINT
 
 
-  end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                            lineColor = green, lineColorSpace = 'rgb255', 
-                            vertices = (current_point + np.dot(ARROW_WING1, 
-                                                               rotate), 
-                                        current_point, 
-                                        current_point + np.dot(ARROW_WING2, 
-                                                               rotate)),
-                            closeShape = False, pos = (0, 0)
-                            )
-  end.draw()
+    # While loop here ---------------
+    while experiment_timer.getTime() < MAX_DURATION:
+        current_point = ORIGIN_POINT
 
 
-  my_win.flip()
-  # core.wait(2)
-  response_status = 0
-  # Get response
-  while response_status == 0: 
-    response_hw, response_key, response_status = getAnything(mouse, joy)
-    print(response_hw)
+        # # Draw origin point (larger dot)
+        # origin = visual.DotStim(my_win, units = 'pix',
+        #                         fieldPos = current_point, 
+        #                         fieldShape = 'circle',
+        #                         # fieldSize = (5,5),
+        #                         dotSize=8,
+        #                         color = base0, colorSpace = 'rgb255'
+        #                         )
+        origin.draw()
+
+
+        # Draw continuous lines
+
+        for direction in range(len(theList)):
+            pre_point = current_point
+            current_point = current_point + sti_path[direction]
+
+            line_next = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
+                                         lineColor = green, lineColorSpace = 'rgb255', 
+                                         vertices = (pre_point, current_point),
+                                         closeShape = False, pos = (0, 0)
+                                         )
+            line_next.draw()
+            # print(direction)
+
+
+
+        # Draw ending point(with an arrow)
+
+        
+
+
+        end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
+                               lineColor = green, lineColorSpace = 'rgb255', 
+                               vertices = (
+                                           current_point + np.dot(ARROW_WING1, 
+                                                                  rotate), 
+                                           current_point, 
+                                           current_point + np.dot(ARROW_WING2, 
+                                                                  rotate)),
+                               closeShape = False, pos = (0, 0)
+                               )
+        end.draw()
+
+
+        my_win.flip()
+        # core.wait(2)
+
+        # Get response
+        response_hw, response_key, response_status = getAnything(mouse, joy)
+        if response_status == 1:
+            print(response_hw)
+
+
+
+
+      # Get response
+      # while experiment_timer.getTime() < MAX_DURATION:
+      #   response_hw, response_key, response_status = getAnything(mouse, joy)
+      #   if response_status == 1:
+      #     print(response_hw)
+
 
 
 # Close the window

@@ -7,58 +7,58 @@ import numpy as np
 from datetime import date
 
 # Subject profile
-username = input("Please enter your name:").upper()
-print('Hi %s, welcome to our experiment!' % username)
-today = date.today()
-filename = ('%s_%s.txt' % (today, username))
+# username = input("Please enter your name:").upper()
+# print('Hi %s, welcome to our experiment!' % username)
+# today = date.today()
+# filename = ('%s_%s.txt' % (today, username))
 
-count = 0
-while os.path.isfile(filename):
-    count += 1
-    filename = ('%s_%s_%d.txt' % (today, username, count))
+# count = 0
+# while os.path.isfile(filename):
+#     count += 1
+#     filename = ('%s_%s_%d.txt' % (today, username, count))
 
-f = open(filename, 'w')
-f.write('ohhhh heyyyy')
-f.close()
+# f = open(filename, 'w')
+# f.write('ohhhh heyyyy')
+# f.close()
 
-print(filename)
-# # Make screen profile ----
-# widthPix = 2560 # screen width in px
-# heightPix = 2440 # screen height in px
-# monitorwidth = 60 # monitor width in cm
-# viewdist = 60 # viewing distance in cm
-# monitorname = 'ProArt27'
-# scrn = 0 # 0 to use main screen, 1 to use external screen
-# mon = monitors.Monitor(monitorname, width=monitorwidth, distance=viewdist)
-# mon.setSizePix((widthPix, heightPix))
-# mon.save()
+# print(filename)
+# Make screen profile ----
+widthPix = 2560 # screen width in px
+heightPix = 2440 # screen height in px
+monitorwidth = 60 # monitor width in cm
+viewdist = 60 # viewing distance in cm
+monitorname = 'ProArt27'
+scrn = 0 # 0 to use main screen, 1 to use external screen
+mon = monitors.Monitor(monitorname, width=monitorwidth, distance=viewdist)
+mon.setSizePix((widthPix, heightPix))
+mon.save()
 
-# # Make initials
-# experiment_timer = core.Clock()
-# experiment_timer.reset()
-# MAX_DURATION = 7
-# previous_resp = []
-# # Open window (for joystick)
-# my_win = visual.Window(size=(400, 400), pos=(0,0), monitor = mon, units = 'pix', 
-#                        screen = 1)
+# Make initials
+experiment_timer = core.Clock()
+experiment_timer.reset()
+MAX_DURATION = 7
+previous_resp = []
+# Open window (for joystick)
+my_win = visual.Window(size=(400, 400), pos=(0,0), monitor = mon, units = 'pix', 
+                       screen = 1)
 
-# # Get mouse and joystick
-# joystick.backend = 'pyglet'
-# nJoys = joystick.getNumJoysticks() # Check if I have any joysticks
-# id = 0 # Use the first one as input
-# joy = joystick.Joystick(id) # ID has to be nJoys - 1
-# # - Mouse setting
-# mouse = event.Mouse(visible = True, win = my_win)
-# mouse.clickReset() # Reset to its initials
+# Get mouse and joystick
+joystick.backend = 'pyglet'
+nJoys = joystick.getNumJoysticks() # Check if I have any joysticks
+id = 0 # Use the first one as input
+joy = joystick.Joystick(id) # ID has to be nJoys - 1
+# - Mouse setting
+mouse = event.Mouse(visible = True, win = my_win)
+mouse.clickReset() # Reset to its initials
 
-# # start
-# while experiment_timer.getTime() < MAX_DURATION:
-#     my_win.flip()
-#     a,b,c,d = getAnything(mouse, joy)
+# start
+while experiment_timer.getTime() < MAX_DURATION:
+    my_win.flip()
+    a,b,c,d = getAnything(mouse, joy)
 
-#     if previous_resp != [a,b,c,d]:
-#         print(a,b,c,d)
-#         print(type(a), type(b), type(c), type(d))
-#     previous_resp = [a,b,c,d]
+    if previous_resp != [a,b,c,d]:
+        print(a,b,c,d)
+        print(type(a), type(b), type(c), type(d))
+    previous_resp = [a,b,c,d]
 
-# my_win.close()
+my_win.close()

@@ -10,6 +10,7 @@ def getAnything(mouse, joy):
     clicks = mouse.getPressed()
     wheel = list(mouse.getWheelRel())
     dPad = list(joy.getAllHats()[0])
+    # dPad = list(joy.getAllHats())
     but_x = int(joy.getButton(0))
     buttons = [but_x] # Can be modified to collect more buttons
 
