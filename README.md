@@ -37,3 +37,5 @@ OSD-Study
 - [ ] Baseline of RT
 - [ ] Baseline of ACC
 
+### Special thanks to:
+> *4/30 Borrowed an Arduino set from Clair_Lin.*
