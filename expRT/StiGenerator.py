@@ -5,9 +5,10 @@ Created on Mon Apr 27 2020
 Written by EJ_Chang
 """
 import os, random
+
 # Function A: Generate line directions
 
-def dirGenerate(dir_DictList):
+def pathGenerate(dir_DictList):
 
     # Main directions
     main_que = []

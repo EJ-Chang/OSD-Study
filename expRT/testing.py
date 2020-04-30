@@ -33,17 +33,10 @@ fixation = visual.GratingStim(win=mywin, size=0.2,
 # Preparing Joystick & Mouse ----
 # - Joysticks setting
 joystick.backend = 'pyglet'
-joyChecking = 1
-# while joyChecking == 1:
 nJoys = joystick.getNumJoysticks() # Check if I have any joysticks
 id = nJoys-1 # I'll use the first one as input
 joy = joystick.Joystick(id) # ID has to be nJoys - 1
-testkey = joy.getAllHats()
-# fixation.draw()
-# mywin.flip()
-  # print(testkey)
-  # if len(testkey) > 0:
-  #   break
+
 
 # - Mouse setting
 mouse = event.Mouse(visible = True, win = mywin)
@@ -89,11 +82,6 @@ while True: #this creates a never-ending loop
 
     if button > 0:
         break
-
-
-    # if len(event.getKeys())>0:
-    #     break
-    # event.clearEvents()
 
 #cleanup
 mywin.close()
