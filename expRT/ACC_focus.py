@@ -87,14 +87,16 @@ four_dir = [LINE_UP, LINE_DOWN, LINE_LEFT, LINE_RIGHT]
 MAX_DURATION = 30
 experiment_timer = core.Clock()    
 experiment_timer.reset()
-
+# Prepare for response
+pre_key = []
+stimuli_time = core.getTime()
 
 # ===========================
 for nTrial in range(10):
 
     # Get the ques
     theList = pathGenerate(dir_DictList)
-    print(theList[-1], 'length = ', len(theList))
+    # print(theList[-1], 'length = ', len(theList))
 
     sti_path = []
     for ques in theList:
@@ -121,8 +123,11 @@ for nTrial in range(10):
                            interpolate = True)
 
 
+
+    loop_Status = 1
     # While loop here ---------------
-    while experiment_timer.getTime() < MAX_DURATION:
+    # while experiment_timer.getTime() < MAX_DURATION:
+    while loop_Status == 1:
 
         # Get back to origin point
         current_point = ORIGIN_POINT
@@ -148,8 +153,7 @@ for nTrial in range(10):
 
         end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
                                lineColor = green, lineColorSpace = 'rgb255', 
-                               vertices = (
-                                           current_point + np.dot(ARROW_WING1, 
+                               vertices = (current_point + np.dot(ARROW_WING1, 
                                                                   rotate), 
                                            current_point, 
                                            current_point + np.dot(ARROW_WING2, 
@@ -166,13 +170,18 @@ for nTrial in range(10):
         '''
         # Get response 
         response_hw, response_key, response_status = getAnything(mouse, joy)
-        
-        if response_status == 1:
-            key_meaning = interpret_key(response_hw, response_key) 
-            print(response_hw, key_meaning)
-            if key_meaning == 'Abort':
-                break
 
+        
+        # if response_status == 1 and response_key != pre_key:
+        if response_status == 1 and pre_status == 0:
+            # Get current time
+            current_time = core.getTime()
+            key_meaning = interpret_key(response_hw, response_key) 
+            print(key_meaning)
+            pre_key = response_key # Button status update
+            loop_Status = 0
+
+        pre_status = response_status    
 
 
 

@@ -98,7 +98,7 @@ def reponse_checker(response_hw, key_meaning, stimlus_dictionary):
 
 # Function : determinant ----
 def determine_behavior(key_meaning, item, nTrials, expStatus):
-    # if key is in ?
+
     if key_meaning == 'Abort':
         expStatus = 0
 
