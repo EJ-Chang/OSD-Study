@@ -34,15 +34,18 @@ green = (133,153,0)
 
 # Directions ----
 dir_DictList= []
-with open("dir_lim_num.txt") as f:
+with open("dir_limit.txt") as f:
     for line in f:
-        (number, main_dir, ortho_dir_1, ortho_dir_2) = line.split()
+        (number, main_dir, ortho_dir_1, ortho_dir_2,
+         main_meaning, ortho_meaning_1, ortho_meaning_2) = line.split()
 
         # Write a dictionary
         sti_Dict = {
         'number': number,
         'main_dir': main_dir,
         'ortho_dir': [ortho_dir_1,ortho_dir_2]
+        'main_meaning': main_meaning,
+        'ortho_meaning': [ortho_meaning_1, ortho_meaning_2]
         }
 
         dir_DictList.append(sti_Dict)
