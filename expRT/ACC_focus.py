@@ -93,11 +93,6 @@ origin = visual.Circle(my_win, units =  'pix',
                            interpolate = True)
 
 
-wheel = list(mouse.getWheelRel())
-dPad = list(joy.getAllHats()[0])
-# dPad = list(joy.getAllHats())
-but_x = int(joy.getButton(0))
-
 
 
 # ===========================
