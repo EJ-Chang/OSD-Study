@@ -66,8 +66,7 @@ joy = joystick.Joystick(id) # ID has to be nJoys - 1
 # - Mouse setting
 mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
-kb = keyboard.Keyboard()
-kb.clock.reset()  
+
 
 # Setting Constants ----
 ORIGIN_POINT = (0,0)
