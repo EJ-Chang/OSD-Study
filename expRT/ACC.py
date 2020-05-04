@@ -129,7 +129,7 @@ elif thePath[-1] == '3':
 loopStatus = 1
 iResp = 0
 resp_path = [ORIGIN_POINT, ORIGIN_POINT]
-
+key_meaning = 'Up'
 while loopStatus == 1 :
     '''
     Stimuli routine
@@ -157,11 +157,18 @@ while loopStatus == 1 :
         response_path.draw()
 
     # Indicator
-    indicator = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2,
+    indicator_point = visual.Circle(my_win, units =  'pix',
+                       radius = 2, pos = (resp_path[iResp+1]),
+                       fillColor = yellow, fillColorSpace = 'rgb255',
+                       lineColor = yellow, lineColorSpace = 'rgb255', 
+                       interpolate = True)
+    indicator_line = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2,
                                  lineColor = yellow, lineColorSpace = 'rgb255',
-                                 vertices = (resp_path[iResp], resp_path[iResp+1]),
+                                 vertices = (resp_path[iResp], 
+                                             resp_path[iResp] + four_dict[key_meaning]),
                                  closeShape = False, pos = (0,0))
-    indicator.draw()
+    indicator_point.draw()
+    indicator_line.draw()
 
     # End point
     end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
@@ -192,6 +199,7 @@ while loopStatus == 1 :
         print(iResp, N_LINE)
         current_time = core.getTime()
         key_meaning = interpret_key(response_hw, response_key) 
+
         # response determine the magenta line
         if key_meaning == tag_que[iResp]:
             resp_path.append(sti_path[iResp+2])
@@ -201,16 +209,10 @@ while loopStatus == 1 :
                 loopStatus = 0
         elif key_meaning == 'Abort':
             loopStatus = 0
-        # iResp, loopStatus = determine_nextline(key_meaning, iResp, N_LINE, loopStatus)
-
 
         print(key_meaning)
 
-
         pre_key = response_key # Button status update
-        # loopStatus = 0
-
-
 
     pre_status = response_status   
 
