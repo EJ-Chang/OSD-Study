@@ -9,7 +9,8 @@ Written by EJ_Chang
 def getAnything(mouse, joy):
     clicks = mouse.getPressed()
     wheel = list(mouse.getWheelRel())
-    dPad = joy.getAllHats()
+    # dPad = joy.getAllHats()
+    dPad = list(joy.getAllHats()[0])
     but_x = int(joy.getButton(0))
     buttons = [but_x] # Can be modified to collect more buttons
 
@@ -21,7 +22,8 @@ def getAnything(mouse, joy):
         response_status = 1
         response_hw = 'Wheel'
         response_key = wheel
-    elif dPad != [(0, 0)] and len(dPad) > 0:
+    # elif dPad != [(0, 0)] and len(dPad) > 0:
+    elif dPad != [0, 0] and len(dPad) > 0:
         response_status = 1
         response_hw = 'dPad'
         response_key = dPad
@@ -58,14 +60,26 @@ def interpret_key(response_hw, response_key):
         elif response_key[0] < 0:
             key_meaning = 'Right'
 
+    # elif response_hw == 'dPad':
+    #     if response_key == [(0, 1)]:
+    #         key_meaning = 'Up'
+    #     elif response_key == [(0, -1)]:
+    #         key_meaning = 'Down'
+    #     elif response_key == [(-1, 0)]:
+    #         key_meaning = 'Left'
+    #     elif response_key == [(1, 0)]:
+    #         key_meaning = 'Right'
+    #     elif response_key[0] != 0 and response_key[1] != 0:
+    #         key_meaning = 'OK'
+
     elif response_hw == 'dPad':
-        if response_key == [(0, 1)]:
+        if response_key == [0, 1]:
             key_meaning = 'Up'
-        elif response_key == [(0, -1)]:
+        elif response_key == [0, -1]:
             key_meaning = 'Down'
-        elif response_key == [(-1, 0)]:
+        elif response_key == [-1, 0]:
             key_meaning = 'Left'
-        elif response_key == [(1, 0)]:
+        elif response_key == [1, 0]:
             key_meaning = 'Right'
         elif response_key[0] != 0 and response_key[1] != 0:
             key_meaning = 'OK'
@@ -110,4 +124,41 @@ def determine_behavior(key_meaning, item, nTrials, expStatus):
 
     return item, expStatus
 
-# def trim_off():
+
+# Function : interpret ----
+def interpret_key_ACC(response_hw, response_key):
+
+    # Setting key map
+    if response_hw == 'Mouse':
+        if response_key[0] == 1:
+            key_meaning = 'Next'
+        elif response_key[1] == 1:
+            key_meaning = 'OK'
+        elif response_key[2] == 1:
+            key_meaning = 'Abort'
+
+    elif response_hw == 'Wheel':
+        if response_key[1] < 0:
+            key_meaning = 'Up'
+        elif response_key[1] > 0:
+            key_meaning = 'Down'
+        elif response_key[0] > 0:
+            key_meaning = 'Left'
+        elif response_key[0] < 0:
+            key_meaning = 'Right'
+
+    elif response_hw == 'dPad':
+        if response_key == [0, 1]:
+            key_meaning = 'Up'
+        elif response_key == [0, -1]:
+            key_meaning = 'Down'
+        elif response_key == [-1, 0]:
+            key_meaning = 'Left'
+        elif response_key == [1, 0]:
+            key_meaning = 'Right'
+
+    elif response_hw == 'Buttons':
+        if response_key[0] == 1:
+            key_meaning = 'Abort'
+
+    return key_meaning
