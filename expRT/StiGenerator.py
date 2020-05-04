@@ -11,8 +11,8 @@ import os, random
 def pathGenerate(dir_DictList):
 
     # Main directions
-    main_que = []
-    ortho_que = []
+    # main_que = []
+    # ortho_que = []
     sub_que = []
     for i in range(1): # Determine how many paths(nTrials) shall be generated.
         seed = random.randrange(4) # Random 0~3
@@ -37,4 +37,5 @@ def pathGenerate(dir_DictList):
                 que_pool += [main]
 
             pre_que = sequal[:]
+
     return sub_que

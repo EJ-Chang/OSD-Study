@@ -110,6 +110,18 @@ def determine_behavior(key_meaning, item, nTrials, expStatus):
 
     return item, expStatus
 
-# Function D: trimmer ----
+# Function : determinant ----
+def determine_nextline(key_meaning, item, nTrials, expStatus):
+
+    if key_meaning == 'Abort':
+        expStatus = 0
+
+    elif key_meaning == 'Up' or 'Down' or 'Left' or 'Right':
+        item += 1
+        if item > nTrials - 1:
+            item = nTrials - 1
+            expStatus = 0
+
+    return item, expStatus
 
 # def trim_off():

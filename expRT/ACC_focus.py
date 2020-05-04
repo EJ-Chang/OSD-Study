@@ -36,14 +36,14 @@ green = (133,153,0)
 dir_DictList= []
 with open("dir_limit.txt") as f:
     for line in f:
-        (number, main_dir, ortho_dir_1, ortho_dir_2,
+        (number, main_dir, ortho_dir_1, ortho_dir_2, \
          main_meaning, ortho_meaning_1, ortho_meaning_2) = line.split()
 
         # Write a dictionary
         sti_Dict = {
         'number': number,
         'main_dir': main_dir,
-        'ortho_dir': [ortho_dir_1,ortho_dir_2]
+        'ortho_dir': [ortho_dir_1,ortho_dir_2],
         'main_meaning': main_meaning,
         'ortho_meaning': [ortho_meaning_1, ortho_meaning_2]
         }
@@ -84,7 +84,11 @@ LINE_DOWN = np.array([0,-40])
 LINE_LEFT = np.array([-40,0])
 LINE_RIGHT = np.array([40,0])
 
-four_dir = [LINE_UP, LINE_DOWN, LINE_LEFT, LINE_RIGHT]
+four_vector = [LINE_UP, LINE_DOWN, LINE_LEFT, LINE_RIGHT]
+four_dict = {'Up': LINE_UP, 
+             'Down': LINE_DOWN,
+             'Left': LINE_LEFT,
+             'Right': LINE_RIGHT}
 
 # Timer
 MAX_DURATION = 30
@@ -92,28 +96,37 @@ experiment_timer = core.Clock()
 experiment_timer.reset()
 # Prepare for response
 pre_key = []
+key_meaning = 'Up'
 stimuli_time = core.getTime()
 
 # ===========================
 for nTrial in range(10):
 
     # Get the ques
-    theList = pathGenerate(dir_DictList)
-    # print(theList[-1], 'length = ', len(theList))
+    thePath = pathGenerate(dir_DictList)
+    # print(thePath[-1], 'length = ', len(thePath))
 
-    sti_path = []
-    for ques in theList:
+    resp_path = []
+    sti_path = [] # Array of ques
+    tag_que = [] # Word tag of ques
+    line_pos = ORIGIN_POINT
+    for ques in thePath:
         ques = int(ques)
-        sti_path.append(four_dir[ques])
+        line_pos = line_pos + four_vector[ques]
+        sti_path.append(four_vector[ques])
+        tag_que.append(dir_DictList[ques]['main_meaning'])
+
+    print(tag_que) # Direction by name(up, down left, right. in string)
+    print(line_pos)
 
     # Rotate along with the last line in this path
-    if theList[-1] == '0': 
+    if thePath[-1] == '0': 
         rotate = ROTATE_270
-    elif theList[-1] == '1':
+    elif thePath[-1] == '1':
         rotate = ROTATE_90
-    elif theList[-1] == '2':
+    elif thePath[-1] == '2':
         rotate = ROTATE_180
-    elif theList[-1] == '3':
+    elif thePath[-1] == '3':
         rotate = ROTATE_0 
 
 
@@ -134,24 +147,47 @@ for nTrial in range(10):
 
         # Get back to origin point
         current_point = ORIGIN_POINT
+        response_point= ORIGIN_POINT
 
         # Draw origin point
         origin.draw()
 
-        # Draw continuous lines
-        for direction in range(len(theList)):
+        # Define path length
+        nLine = len(thePath)
+
+        # Draw lines
+        for iLine in range(nLine):
+
+            # Que path (stimuli) ----
             pre_point = current_point
-            current_point = current_point + sti_path[direction]
+            current_point = current_point + sti_path[iLine]
 
-            line_next = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                                         lineColor = green, lineColorSpace = 'rgb255', 
-                                         vertices = (pre_point, current_point),
-                                         closeShape = False, pos = (0, 0))
-            line_next.draw()
-            # print(direction)
+            path_sti = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
+                                        lineColor = green, lineColorSpace = 'rgb255', 
+                                        vertices = (pre_point, current_point),
+                                        closeShape = False, pos = (0, 0)
+                                        )
+            path_sti.draw()
 
+            # Response path (reponse) ----
+            pre_resp_point = response_point
+            response_point = response_point + sti_path[iLine]
 
+            path_resp = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
+                                         lineColor = magenta, lineColorSpace = 'rgb255', 
+                                         vertices = (pre_point, response_point), # Change needed
+                                         closeShape = False, pos = (0,0)
+                                         )
 
+            path_resp.draw()
+
+        # Draw indicator
+        indicator = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2,
+                                     lineColor = yellow, lineColorSpace = 'rgb255',
+                                     vertices = (pre_point, pre_point + four_dict[key_meaning]),
+                                     closeShape = False, pos = (0,0)
+                                     )
+        indicator.draw()
         # Draw ending point (with an arrow)
 
         end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
@@ -180,9 +216,23 @@ for nTrial in range(10):
             # Get current time
             current_time = core.getTime()
             key_meaning = interpret_key(response_hw, response_key) 
+            # response determine the magenta line
+            
+            # resp_direction, loop_Status = determine_nextline(key_meaning, iLine, 
+                                                           # nLine, loop_Status)
+
+            # resp_path.append(four_vector[resp_direction])
+
+
             print(key_meaning)
+
+
+
+
             pre_key = response_key # Button status update
             loop_Status = 0
+
+
 
         pre_status = response_status    
 
