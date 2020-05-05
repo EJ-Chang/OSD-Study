@@ -5,6 +5,11 @@ Created on Tue Apr 7 2020
 Written by EJ_Chang
 """
 
+
+'''
+For RT exp
+'''
+
 # Function : get inputs from all devices
 def getAnything(mouse, joy):
     clicks = mouse.getPressed()
@@ -124,6 +129,9 @@ def determine_behavior(key_meaning, item, nTrials, expStatus):
 
     return item, expStatus
 
+'''
+Customized for ACC exp
+'''
 
 # Function : interpret ----
 def interpret_key_ACC(response_hw, response_key):
@@ -175,3 +183,21 @@ def reponse_checker_ACC(iResp, key_meaning, tag_que):
 
     return final_answer
 
+
+# Function : match or not ----
+def reponse_checker_ACC(response_hw, key_meaning, hw_required, key_required):
+
+    key_judgement = [0, 0]
+    if response_hw == hw_required:
+        key_judgement[0] = 1
+    else:
+        key_judgement[0] = 0
+
+    if key_meaning == key_required:
+        key_judgement[1] = 1
+    else:
+        key_judgement[1] = 0
+
+    final_answer = key_judgement[0] * key_judgement[1]
+
+    return final_answer
