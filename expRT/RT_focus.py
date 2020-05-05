@@ -161,7 +161,7 @@ my_win.close()
 print('Get your responses:', response)
 
 # Experiment record file
-os.chdir('/Users/YJC/Dropbox/ExpRecord')
+os.chdir('/Users/YJC/Dropbox/ExpRecord_RT')
 filename = ('%s_%s.txt' % (today, username))
 filecount = 0
 

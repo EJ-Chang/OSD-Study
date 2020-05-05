@@ -14,6 +14,12 @@ import numpy as np
 from StiGenerator import *
 from ResponseTrigger import *
 
+# Subject profile
+today = date.today()
+print('Today is %s:' % today)
+username = input("Please enter your name:").upper()
+print('Hi %s, welcome to our experiment!' % username)
+
 # Make screen profile ----
 widthPix = 2560 # screen width in px
 heightPix = 1440 # screen height in px
@@ -99,6 +105,7 @@ four_vector = [LINE_UP, LINE_DOWN, LINE_LEFT, LINE_RIGHT]
 four_dict = {'Up': LINE_UP,  'Down': LINE_DOWN,
              'Left': LINE_LEFT, 'Right': LINE_RIGHT, 'None': LINE_NONE}
 
+response = []
 # ===========================
 
 
@@ -132,6 +139,7 @@ for nTrial in range(10):
     iResp = 0
     resp_path = [ORIGIN_POINT, ORIGIN_POINT]
     key_meaning = 'None'
+    preAnswer_time = core.getTime()
     while loopStatus == 1 :
 
         '''
@@ -219,19 +227,28 @@ for nTrial in range(10):
             # Get current time
             print(iResp, N_LINE)
             current_time = core.getTime()
+            
             key_meaning = interpret_key_ACC(response_hw, response_key) 
+            finalanswer = reponse_checker_ACC(iResp, key_meaning, tag_que)
+            # Collect response (data)
+            response.append([nTrial, 
+                iResp, 
+                response_hw,
+                response_key,
+                key_meaning,
+                tag_que[iResp],
+                finalanswer,
+                current_time - preAnswer_time,
+                current_time
+                ]) # correct/not, RT, real time
 
-
-
-            # response determine the magenta line
-            if key_meaning == tag_que[iResp]:
-                key_meaning = 'None'
+            if finalanswer == 1:
+                key_meaning = 'None' # Reset key meaning
                 resp_path.append(sti_path[iResp+2])
                 iResp += 1
                 if iResp >= N_LINE:
                     iResp = N_LINE
 
-                    
                     for iResp in range(len(resp_path)-1):
                         response_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
                                         lineColor = green, lineColorSpace = 'rgb255', 
@@ -242,21 +259,30 @@ for nTrial in range(10):
                     end.draw()
                     my_win.flip()
                     core.wait(1)
-
                     loopStatus = 0
+
             elif key_meaning == 'Abort':
                 loopStatus = 0
 
             print(key_meaning)
             print('resp_path length:', len(resp_path))
             print('iResp:', iResp)
-            # print('sti_path:', sti_path)
-
 
             pre_key = response_key # Button status update
+            preAnswer_time = current_time # Time stampe update
 
         pre_status = response_status  
 
+# Experiment record file
+os.chdir('/Users/YJC/Dropbox/ExpRecord_ACC')
+filename = ('%s_%s.txt' % (today, username))
+filecount = 0
 
+while os.path.isfile(filename):
+    filecount += 1
+    filename = ('%s_%s_%d.txt' % (today, username, filecount))
+
+with open(filename, 'w') as filehandle: # File auto closed
+    filehandle.writelines("%s\n" % key for key in response)
 # Close the window
 my_win.close()

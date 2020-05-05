@@ -162,3 +162,16 @@ def interpret_key_ACC(response_hw, response_key):
             key_meaning = 'Abort'
 
     return key_meaning
+
+
+# Function : match or not ----
+def reponse_checker_ACC(iResp, key_meaning, tag_que):
+
+    final_answer = 0
+    if key_meaning == tag_que[iResp]:
+        final_answer = 1
+    else:
+        final_answer = 0
+
+    return final_answer
+
