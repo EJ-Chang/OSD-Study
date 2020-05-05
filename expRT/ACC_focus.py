@@ -142,9 +142,9 @@ for block in range(2):
     my_win.flip()
     core.wait(2)
 
-    for nTrial in range(2):
-        # Get the ques
+    for nTrial in range(10):
 
+        # Get the ques
         tag_que = [] 
         line_pos = ORIGIN_POINT
         sti_path = [ORIGIN_POINT, ORIGIN_POINT] 
@@ -160,7 +160,6 @@ for block in range(2):
         N_LINE = len(tag_que)
 
         # Rotate along with the last line in this path
-
         rotation_dict = {'Up':ROTATE_270, 'Down':ROTATE_90, 
                          'Left':ROTATE_180, 'Right':ROTATE_0, 
                          'None': ROTATE_NONE}
