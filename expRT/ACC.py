@@ -27,6 +27,7 @@ mon.save()
 
 # Color Palette ----
 base03 = (0,43,54)
+base01 = (88,110,117)
 base0 = (131,148,150)
 yellow = (181,137,0)
 magenta = (211,54,130)
@@ -72,36 +73,41 @@ mouse.clickReset() # Reset to its initials
 ORIGIN_POINT = (0,0)
 ORIGIN = visual.Circle(my_win, units =  'pix',
                        radius = 5, pos = ORIGIN_POINT,
-                       fillColor = base0, fillColorSpace = 'rgb255',
-                       lineColor = base0, lineColorSpace = 'rgb255', 
+                       fillColor = base01, fillColorSpace = 'rgb255',
+                       lineColor = base01, lineColorSpace = 'rgb255', 
                        interpolate = True)
 
 ARROW_WING1 = np.array([-10,10])
 ARROW_WING2 = np.array([-10,-10])
+MINI_WING1 = np.array([-5,5])
+MINI_WING2 = np.array([-5,-5])
+
 
 ROTATE_0 = np.array([[1,0], [0,1]])
 ROTATE_90 = np.array([[0,-1], [1,0]])
 ROTATE_180 = np.array([[-1,0], [0,-1]])
 ROTATE_270 = np.array([[0,1], [-1,0]])
+ROTATE_NONE = np.array([[0,0], [0,0]])
 
 LINE_UP = np.array([0,40])
 LINE_DOWN = np.array([0,-40])
 LINE_LEFT = np.array([-40,0])
 LINE_RIGHT = np.array([40,0])
+LINE_NONE = np.array([0,0])
 
 four_vector = [LINE_UP, LINE_DOWN, LINE_LEFT, LINE_RIGHT]
 four_dict = {'Up': LINE_UP,  'Down': LINE_DOWN,
-             'Left': LINE_LEFT, 'Right': LINE_RIGHT}
+             'Left': LINE_LEFT, 'Right': LINE_RIGHT, 'None': LINE_NONE}
 
 # ===========================
 
 
-for nTrial in range(10):
+for nTrial in range(2):
     # Get the ques
 
     tag_que = [] 
     line_pos = ORIGIN_POINT
-    sti_path = [line_pos, line_pos] 
+    sti_path = [ORIGIN_POINT, ORIGIN_POINT] 
 
     thePath = pathGenerate(dir_DictList)
 
@@ -114,26 +120,23 @@ for nTrial in range(10):
     N_LINE = len(tag_que)
 
     # Rotate along with the last line in this path
-    if thePath[-1] == '0': 
-        rotate = ROTATE_270
-    elif thePath[-1] == '1':
-        rotate = ROTATE_90
-    elif thePath[-1] == '2':
-        rotate = ROTATE_180
-    elif thePath[-1] == '3':
-        rotate = ROTATE_0 
+
+    rotation_dict = {'Up':ROTATE_270, 'Down':ROTATE_90, 
+                     'Left':ROTATE_180, 'Right':ROTATE_0, 
+                     'None': ROTATE_NONE}
+
 
 
     # =========================
     loopStatus = 1
     iResp = 0
     resp_path = [ORIGIN_POINT, ORIGIN_POINT]
-    key_meaning = 'Up'
+    key_meaning = 'None'
     while loopStatus == 1 :
+
         '''
         Stimuli routine
         '''
-
         # Origin point
         ORIGIN.draw()
 
@@ -141,44 +144,63 @@ for nTrial in range(10):
         for iLine in range(N_LINE):
 
             # Que path (stimuli) ----
-            stimuli_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                           lineColor = green, lineColorSpace = 'rgb255', 
+            stimuli_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
+                           lineColor = base01, lineColorSpace = 'rgb255', 
                            vertices = (sti_path[iLine+1], sti_path[iLine+2]),
                            closeShape = False, pos = (0, 0))
             stimuli_path.draw()
 
-        # Response path
+        # End point
+        end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
+              lineColor = base01, lineColorSpace = 'rgb255', 
+              vertices = (sti_path[-1] + np.dot(ARROW_WING1, 
+                                                rotation_dict[tag_que[-1]]), 
+                          sti_path[-1], 
+                          sti_path[-1] + np.dot(ARROW_WING2, 
+                                                rotation_dict[tag_que[-1]])),
+              closeShape = False, pos = (0, 0))
+        end.draw()
+
+        # Response path ====
         for iResp in range(len(resp_path)-1):
-            response_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                            lineColor = magenta, lineColorSpace = 'rgb255', 
+            response_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
+                            lineColor = green, lineColorSpace = 'rgb255', 
                             vertices = (sti_path[iResp], sti_path[iResp+1]),
                             closeShape = False, pos = (0, 0))
             response_path.draw()
 
+
         # Indicator
+        indicator_pos = resp_path[iResp+1]
         indicator_point = visual.Circle(my_win, units =  'pix',
-                           radius = 2, pos = (resp_path[iResp]),
-                           fillColor = yellow, fillColorSpace = 'rgb255',
-                           lineColor = yellow, lineColorSpace = 'rgb255', 
-                           interpolate = True)
-        indicator_line = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2,
-                                     lineColor = yellow, lineColorSpace = 'rgb255',
-                                     vertices = (resp_path[iResp], 
-                                                 resp_path[iResp] + four_dict[key_meaning]),
-                                     closeShape = False, pos = (0,0))
-        # indicator_point.draw()
+                          radius = 4, pos = (indicator_pos),
+                          fillColor = yellow, fillColorSpace = 'rgb255',
+                          lineColor = yellow, lineColorSpace = 'rgb255', 
+                          interpolate = True)
+        indicator_point.draw()
+
+
+        indicator_spine = indicator_pos + four_dict[key_meaning]
+
+        indicator_line = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3,
+                         lineColor = magenta, lineColorSpace = 'rgb255',
+                         vertices = (indicator_pos, indicator_spine),
+                         closeShape = False, pos = (0,0))
         indicator_line.draw()
 
-        # End point
-        end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                               lineColor = green, lineColorSpace = 'rgb255', 
-                               vertices = (sti_path[-1] + np.dot(ARROW_WING1, 
-                                                                  rotate), 
-                                           sti_path[-1], 
-                                           sti_path[-1] + np.dot(ARROW_WING2, 
-                                                                  rotate)),
-                               closeShape = False, pos = (0, 0))
-        end.draw()
+        indicator_arrow = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3,
+                          lineColor = magenta, lineColorSpace = 'rgb255',
+                          vertices = (indicator_spine
+                                      + np.dot(MINI_WING1, 
+                                               rotation_dict[key_meaning]),
+                                      indicator_spine,
+                                      indicator_spine
+                                      + np.dot(MINI_WING2, 
+                                               rotation_dict[key_meaning])),
+                          closeShape = False, pos = (0,0))
+        indicator_arrow.draw()
+
+        
 
         # Flip the window
         my_win.flip()
@@ -199,17 +221,37 @@ for nTrial in range(10):
             current_time = core.getTime()
             key_meaning = interpret_key_ACC(response_hw, response_key) 
 
+
+
             # response determine the magenta line
             if key_meaning == tag_que[iResp]:
+                key_meaning = 'None'
                 resp_path.append(sti_path[iResp+2])
                 iResp += 1
                 if iResp >= N_LINE:
                     iResp = N_LINE
+
+                    
+                    for iResp in range(len(resp_path)-1):
+                        response_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
+                                        lineColor = green, lineColorSpace = 'rgb255', 
+                                        vertices = (sti_path[iResp], sti_path[iResp+1]),
+                                        closeShape = False, pos = (0, 0))
+                        response_path.draw()
+                    ORIGIN.draw()
+                    end.draw()
+                    my_win.flip()
+                    core.wait(1)
+
                     loopStatus = 0
             elif key_meaning == 'Abort':
                 loopStatus = 0
 
             print(key_meaning)
+            print('resp_path length:', len(resp_path))
+            print('iResp:', iResp)
+            # print('sti_path:', sti_path)
+
 
             pre_key = response_key # Button status update
 
