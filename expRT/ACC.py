@@ -102,7 +102,7 @@ four_dict = {'Up': LINE_UP,  'Down': LINE_DOWN,
 # ===========================
 
 
-for nTrial in range(2):
+for nTrial in range(10):
     # Get the ques
 
     tag_que = [] 
