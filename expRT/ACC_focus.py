@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Apr 27 2020
+Main update on Mon May 4 2020
 
 Written by EJ_Chang
 """
@@ -12,6 +13,20 @@ from datetime import date
 import numpy as np
 from StiGenerator import *
 from ResponseTrigger import *
+
+# Subject profile
+today = date.today()
+print('Today is %s:' % today)
+usernum = int(input('Please enter subject number:'))
+username = input("Please enter your name:").upper()
+print('Hi %s, welcome to our experiment!' % username)
+
+if usernum % 2 == 1:
+    hw_required = ['Wheel','dPad']
+elif usernum % 2 == 0:
+    hw_required = ['dPad', 'Wheel']
+
+print(hw_required)
 
 # Make screen profile ----
 widthPix = 2560 # screen width in px
@@ -26,6 +41,7 @@ mon.save()
 
 # Color Palette ----
 base03 = (0,43,54)
+base01 = (88,110,117)
 base0 = (131,148,150)
 yellow = (181,137,0)
 magenta = (211,54,130)
@@ -56,7 +72,6 @@ my_win = visual.Window(size=(800, 800), pos=(880,1040),
                        monitor = mon, units = 'pix', 
                        screen = 1)
 
-
 # Preparing Joystick & Mouse ----
 # - Joysticks setting
 joystick.backend = 'pyglet'
@@ -67,176 +82,248 @@ joy = joystick.Joystick(id) # ID has to be nJoys - 1
 mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
 
+# Preparing pics ----
+img_start = 'start.png'
+img_rest = 'rest.png'
+img_ty = 'thanks.png'
+
+instruction_dict = {
+    'Wheel': 'acc1.png',
+    'dPad':  'acc2.png'}
+
+
 
 # Setting Constants ----
 ORIGIN_POINT = (0,0)
+ORIGIN = visual.Circle(my_win, units =  'pix',
+                       radius = 5, pos = ORIGIN_POINT,
+                       fillColor = base01, fillColorSpace = 'rgb255',
+                       lineColor = base01, lineColorSpace = 'rgb255', 
+                       interpolate = True)
 
 ARROW_WING1 = np.array([-10,10])
 ARROW_WING2 = np.array([-10,-10])
+MINI_WING1 = np.array([-5,5])
+MINI_WING2 = np.array([-5,-5])
+
 
 ROTATE_0 = np.array([[1,0], [0,1]])
 ROTATE_90 = np.array([[0,-1], [1,0]])
 ROTATE_180 = np.array([[-1,0], [0,-1]])
 ROTATE_270 = np.array([[0,1], [-1,0]])
+ROTATE_NONE = np.array([[0,0], [0,0]])
 
 LINE_UP = np.array([0,40])
 LINE_DOWN = np.array([0,-40])
 LINE_LEFT = np.array([-40,0])
 LINE_RIGHT = np.array([40,0])
+LINE_NONE = np.array([0,0])
 
 four_vector = [LINE_UP, LINE_DOWN, LINE_LEFT, LINE_RIGHT]
-four_dict = {'Up': LINE_UP, 
-             'Down': LINE_DOWN,
-             'Left': LINE_LEFT,
-             'Right': LINE_RIGHT}
+four_dict = {'Up': LINE_UP,  'Down': LINE_DOWN,
+             'Left': LINE_LEFT, 'Right': LINE_RIGHT, 'None': LINE_NONE}
 
-# Timer
-MAX_DURATION = 30
-experiment_timer = core.Clock()    
-experiment_timer.reset()
-# Prepare for response
-pre_key = []
-key_meaning = 'Up'
-stimuli_time = core.getTime()
-
+response = []
 # ===========================
-for nTrial in range(10):
 
-    # Get the ques
-    thePath = pathGenerate(dir_DictList)
-    # print(thePath[-1], 'length = ', len(thePath))
+# Welcoming
+img = visual.ImageStim(win = my_win, image = img_start, 
+                       units = 'pix')
+img.draw()
+my_win.flip()
+core.wait(2)
 
-    resp_path = []
-    sti_path = [] # Array of ques
-    tag_que = [] # Word tag of ques
-    line_pos = ORIGIN_POINT
-    for ques in thePath:
-        ques = int(ques)
-        line_pos = line_pos + four_vector[ques]
-        sti_path.append(four_vector[ques])
-        tag_que.append(dir_DictList[ques]['main_meaning'])
+# Make 2 blocks
 
-    print(tag_que) # Direction by name(up, down left, right. in string)
-    print(line_pos)
+for block in range(2):
+    img = visual.ImageStim(win = my_win, image = instruction_dict[hw_required[block]], 
+                           units = 'pix')
+    img.draw()
+    my_win.flip()
+    core.wait(2)
 
-    # Rotate along with the last line in this path
-    if thePath[-1] == '0': 
-        rotate = ROTATE_270
-    elif thePath[-1] == '1':
-        rotate = ROTATE_90
-    elif thePath[-1] == '2':
-        rotate = ROTATE_180
-    elif thePath[-1] == '3':
-        rotate = ROTATE_0 
+    for nTrial in range(2):
+        # Get the ques
+
+        tag_que = [] 
+        line_pos = ORIGIN_POINT
+        sti_path = [ORIGIN_POINT, ORIGIN_POINT] 
+
+        thePath = pathGenerate(dir_DictList)
+
+        for ques in thePath:
+            ques = int(ques)
+            line_pos = line_pos + four_vector[ques]
+            sti_path.append(line_pos) # Coordinates
+            tag_que.append(dir_DictList[ques]['main_meaning'])
+
+        N_LINE = len(tag_que)
+
+        # Rotate along with the last line in this path
+
+        rotation_dict = {'Up':ROTATE_270, 'Down':ROTATE_90, 
+                         'Left':ROTATE_180, 'Right':ROTATE_0, 
+                         'None': ROTATE_NONE}
 
 
-    # Start drawing ---- 
-    current_point = ORIGIN_POINT
-    origin = visual.Circle(my_win, units =  'pix',
-                           radius = 5, pos = (0,0),
-                           fillColor = base0, fillColorSpace = 'rgb255',
-                           lineColor = base0, lineColorSpace = 'rgb255', 
-                           interpolate = True)
 
+        # =========================
+        loopStatus = 1
+        iResp = 0
+        resp_path = [ORIGIN_POINT, ORIGIN_POINT]
+        key_meaning = 'None'
+        preAnswer_time = core.getTime()
+        while loopStatus == 1 :
 
+            '''
+            Stimuli routine
+            '''
+            # Origin point
+            ORIGIN.draw()
 
-    loop_Status = 1
-    # While loop here ---------------
-    # while experiment_timer.getTime() < MAX_DURATION:
-    while loop_Status == 1:
+            # Stimuli path
+            for iLine in range(N_LINE):
 
-        # Get back to origin point
-        current_point = ORIGIN_POINT
-        response_point= ORIGIN_POINT
-
-        # Draw origin point
-        origin.draw()
-
-        # Define path length
-        nLine = len(thePath)
-
-        # Draw lines
-        for iLine in range(nLine):
-
-            # Que path (stimuli) ----
-            pre_point = current_point
-            current_point = current_point + sti_path[iLine]
-
-            path_sti = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                                        lineColor = green, lineColorSpace = 'rgb255', 
-                                        vertices = (pre_point, current_point),
-                                        closeShape = False, pos = (0, 0)
-                                        )
-            path_sti.draw()
-
-            # Response path (reponse) ----
-            pre_resp_point = response_point
-            response_point = response_point + sti_path[iLine]
-
-            path_resp = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                                         lineColor = magenta, lineColorSpace = 'rgb255', 
-                                         vertices = (pre_point, response_point), # Change needed
-                                         closeShape = False, pos = (0,0)
-                                         )
-
-            path_resp.draw()
-
-        # Draw indicator
-        indicator = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2,
-                                     lineColor = yellow, lineColorSpace = 'rgb255',
-                                     vertices = (pre_point, pre_point + four_dict[key_meaning]),
-                                     closeShape = False, pos = (0,0)
-                                     )
-        indicator.draw()
-        # Draw ending point (with an arrow)
-
-        end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 2, 
-                               lineColor = green, lineColorSpace = 'rgb255', 
-                               vertices = (current_point + np.dot(ARROW_WING1, 
-                                                                  rotate), 
-                                           current_point, 
-                                           current_point + np.dot(ARROW_WING2, 
-                                                                  rotate)),
+                # Que path (stimuli) ----
+                stimuli_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
+                               lineColor = base01, lineColorSpace = 'rgb255', 
+                               vertices = (sti_path[iLine+1], sti_path[iLine+2]),
                                closeShape = False, pos = (0, 0))
-        end.draw()
+                stimuli_path.draw()
+
+            # End point
+            end = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
+                  lineColor = base01, lineColorSpace = 'rgb255', 
+                  vertices = (sti_path[-1] + np.dot(ARROW_WING1, 
+                                                    rotation_dict[tag_que[-1]]), 
+                              sti_path[-1], 
+                              sti_path[-1] + np.dot(ARROW_WING2, 
+                                                    rotation_dict[tag_que[-1]])),
+                  closeShape = False, pos = (0, 0))
+            end.draw()
+
+            # Response path ====
+            for iResp in range(len(resp_path)-1):
+                response_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
+                                lineColor = green, lineColorSpace = 'rgb255', 
+                                vertices = (sti_path[iResp], sti_path[iResp+1]),
+                                closeShape = False, pos = (0, 0))
+                response_path.draw()
 
 
-        my_win.flip()
-        # core.wait(2)
+            # Indicator
+            indicator_pos = resp_path[iResp+1]
+            indicator_point = visual.Circle(my_win, units =  'pix',
+                              radius = 4, pos = (indicator_pos),
+                              fillColor = yellow, fillColorSpace = 'rgb255',
+                              lineColor = yellow, lineColorSpace = 'rgb255', 
+                              interpolate = True)
+            indicator_point.draw()
 
-        '''
-        Response Block
-        '''
-        # Get response 
-        response_hw, response_key, response_status = getAnything(mouse, joy)
 
-        
-        # if response_status == 1 and response_key != pre_key:
-        if response_status == 1 and pre_status == 0:
-            # Get current time
-            current_time = core.getTime()
-            key_meaning = interpret_key(response_hw, response_key) 
-            # response determine the magenta line
+            indicator_spine = indicator_pos + four_dict[key_meaning]
+
+            indicator_line = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3,
+                             lineColor = magenta, lineColorSpace = 'rgb255',
+                             vertices = (indicator_pos, indicator_spine),
+                             closeShape = False, pos = (0,0))
+            indicator_line.draw()
+
+            indicator_arrow = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3,
+                              lineColor = magenta, lineColorSpace = 'rgb255',
+                              vertices = (indicator_spine
+                                          + np.dot(MINI_WING1, 
+                                                   rotation_dict[key_meaning]),
+                                          indicator_spine,
+                                          indicator_spine
+                                          + np.dot(MINI_WING2, 
+                                                   rotation_dict[key_meaning])),
+                              closeShape = False, pos = (0,0))
+            indicator_arrow.draw()
+
             
-            # resp_direction, loop_Status = determine_nextline(key_meaning, iLine, 
-                                                           # nLine, loop_Status)
 
-            # resp_path.append(four_vector[resp_direction])
-
-
-            print(key_meaning)
+            # Flip the window
+            my_win.flip()
 
 
+            '''
+            Response routine
+            '''
+
+            # Get response 
+            response_hw, response_key, response_status = getAnything(mouse, joy)
+            
+            # if response_status == 1 and response_key != pre_key:
+            if response_status == 1 and pre_status == 0:
+                # Get current time
+                print(iResp, N_LINE)
+                current_time = core.getTime()
+                
+                key_meaning = interpret_key_ACC(response_hw, response_key) 
+                finalanswer = reponse_checker_ACC(response_hw, key_meaning, 
+                                                  hw_required[block], tag_que[iResp])
+                # Collect response (data)
+                response.append([hw_required[block], nTrial, iResp, 
+                    response_hw, response_key, key_meaning,
+                    tag_que[iResp], finalanswer,
+                    current_time - preAnswer_time, current_time
+                    ]) # correct/not, RT, real time
+
+                if finalanswer == 1:
+                    key_meaning = 'None' # Reset key meaning
+                    resp_path.append(sti_path[iResp+2])
+                    iResp += 1
+                    if iResp >= N_LINE:
+                        iResp = N_LINE
+
+                        for iResp in range(len(resp_path)-1):
+                            response_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
+                                            lineColor = green, lineColorSpace = 'rgb255', 
+                                            vertices = (sti_path[iResp], sti_path[iResp+1]),
+                                            closeShape = False, pos = (0, 0))
+                            response_path.draw()
+                        ORIGIN.draw()
+                        end.draw()
+                        my_win.flip()
+                        core.wait(1)
+                        loopStatus = 0
+
+                elif key_meaning == 'Abort':
+                    loopStatus = 0
+
+                print(key_meaning)
+                print('resp_path length:', len(resp_path))
+                print('iResp:', iResp)
+
+                pre_key = response_key # Button status update
+                preAnswer_time = current_time # Time stampe update
+
+            pre_status = response_status  
+        img = visual.ImageStim(win = my_win, image = img_rest, units = 'pix')
+        img.draw()
+        my_win.flip()
+        core.wait(2)
+
+# Thank u
+
+img = visual.ImageStim(win = my_win, image = img_ty, 
+                       units = 'pix')
+img.draw()
+my_win.flip()
+core.wait(2)
 
 
-            pre_key = response_key # Button status update
-            loop_Status = 0
+# Experiment record file
+os.chdir('/Users/YJC/Dropbox/ExpRecord_ACC')
+filename = ('%s_%s.txt' % (today, username))
+filecount = 0
 
+while os.path.isfile(filename):
+    filecount += 1
+    filename = ('%s_%s_%d.txt' % (today, username, filecount))
 
-
-        pre_status = response_status    
-
-
-
+with open(filename, 'w') as filehandle: # File auto closed
+    filehandle.writelines("%s\n" % key for key in response)
 # Close the window
 my_win.close()
