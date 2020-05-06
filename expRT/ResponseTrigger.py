@@ -201,3 +201,19 @@ def reponse_checker_ACC(response_hw, key_meaning, hw_required, key_required):
     final_answer = key_judgement[0] * key_judgement[1]
 
     return final_answer
+
+
+# # Function : determinant ----
+# def determine_behavior_ACC(key_meaning, item, nTrials, expStatus):
+
+#     # Quit everything 
+#     if key_meaning == 'Abort':
+#         core.quit()
+#     # Change variables 
+#     if finalanswer == 1:
+
+#         key_meaning = 'None' # Reset key meaning
+#         resp_path.append(sti_path[iResp+2])
+#         iResp += 1
+
+#     return item, expStatus

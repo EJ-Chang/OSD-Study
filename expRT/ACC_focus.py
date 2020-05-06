@@ -134,7 +134,6 @@ my_win.flip()
 core.wait(2)
 
 # Make 2 blocks
-
 for block in range(2):
     img = visual.ImageStim(win = my_win, image = instruction_dict[hw_required[block]], 
                            units = 'pix')
@@ -148,7 +147,6 @@ for block in range(2):
         tag_que = [] 
         line_pos = ORIGIN_POINT
         sti_path = [ORIGIN_POINT, ORIGIN_POINT] 
-
         thePath = pathGenerate(dir_DictList)
 
         for ques in thePath:
@@ -165,7 +163,8 @@ for block in range(2):
                          'None': ROTATE_NONE}
 
 
-
+        # =========================
+        #  Trial start !
         # =========================
         loopStatus = 1
         iResp = 0
@@ -201,7 +200,7 @@ for block in range(2):
                   closeShape = False, pos = (0, 0))
             end.draw()
 
-            # Response path ====
+            # Response path 
             for iResp in range(len(resp_path)-1):
                 response_path = visual.ShapeStim(my_win, units = 'pix', lineWidth = 3, 
                                 lineColor = green, lineColorSpace = 'rgb255', 
@@ -289,7 +288,7 @@ for block in range(2):
                         loopStatus = 0
 
                 elif key_meaning == 'Abort':
-                    loopStatus = 0
+                    core.quit()
 
                 print(key_meaning)
                 print('resp_path length:', len(resp_path))
@@ -304,8 +303,8 @@ for block in range(2):
         my_win.flip()
         core.wait(2)
 
-# Thank u
 
+# Thank u
 img = visual.ImageStim(win = my_win, image = img_ty, 
                        units = 'pix')
 img.draw()
