@@ -1,0 +1,8 @@
+sti_1 OSD_ImgFolder/OSDcube1.png
+sti_2 OSD_ImgFolder/OSDcube2.png
+sti_3 OSD_ImgFolder/OSDcube3.png
+sti_4 OSD_ImgFolder/OSDcube4.png
+sti_5 OSD_ImgFolder/OSDcube5.png
+sti_6 OSD_ImgFolder/OSDcube6.png
+sti_7 OSD_ImgFolder/OSDcube7.png
+sti_8 OSD_ImgFolder/OSDcube8.png

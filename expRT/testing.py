@@ -1,10 +1,18 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Wed May 6 2020
 
-import math, numpy, random
-from psychopy.hardware import joystick
-from psychopy import core, event, visual, gui, monitors
-from ResponseTrigger import *
+Written by EJ_Chang
+"""
+
+import os, random
+import numpy as np
 from datetime import date
+from psychopy import visual, event, core, monitors
+from psychopy.hardware import joystick
+from ResponseTrigger import *
+from Solarized import * # Import solarized color palette
+from ExpMaterial import *
 
 # Make screen profile ----
 widthPix = 2560 # screen width in px
@@ -13,65 +21,52 @@ monitorwidth = 60 # monitor width in cm
 viewdist = 60 # viewing distance in cm
 monitorname = 'ProArt27'
 scrn = 0 # 0 to use main screen, 1 to use external screen
-mon = monitors.Monitor(monitorname, width=monitorwidth, distance=viewdist)
+mon = monitors.Monitor(monitorname, width = monitorwidth, distance = viewdist)
 mon.setSizePix((widthPix, heightPix))
 mon.save()
 
 
-
-# Subject profile
-today = date.today()
-print('Today is %s:' % today)
-usernum = int(input('Please enter subject number:'))
-username = input("Please enter your name:").upper()
-print('Hi %s, welcome to our experiment!' % username)
-
-if usernum % 2 == 1:
-    hw_required = ['Wheel','dPad']
-elif usernum % 2 == 0:
-    hw_required = ['dPad', 'Wheel']
-
-print(hw_required)
-
-
 # Preparing Window ----
-my_win = visual.Window(size=(800, 800), pos=(880,1040), 
-                       color=(0,43,54), colorSpace='rgb255', 
-                       monitor = mon, units = 'pix', 
-                       screen = 1)
+my_win = visual.Window(size = (800, 600), pos = (880,1040), 
+                       color = SOLARIZED['base03'], colorSpace = 'rgb255', 
+                       monitor = mon, units = 'pix', screen = 1)
 
 
-# Preparing pics ----
-img_start = 'start.png'
-img_rest = 'rest.png'
-img_ty = 'thanks.png'
+# Import files from sub-folder ---- 
+IMG_START = 'OSD_ImgFolder/start.png'
+IMG_REST = 'OSD_ImgFolder/rest.png'
+IMG_THX = 'OSD_ImgFolder/thanks.png'
 
-instruction_dict = {
-    'Wheel': 'acc1.png',
-    'dPad':  'acc2.png'}
 
-# pic in screen test
-img = visual.ImageStim(win = my_win, image = img_start, 
-                       units = 'pix')
-img.draw()
+for image in range(8):
+
+    img = visual.ImageStim(win = my_win, image = imageLUT[image]['path'],
+                           units = 'pix', pos = pos_list[image])
+
+    img.draw()
+
+
 my_win.flip()
 core.wait(2)
 
-for block in range(2):
-    img = visual.ImageStim(win = my_win, image = instruction_dict[hw_required[block]], 
-                           units = 'pix')
+img = visual.ImageStim(win = my_win, image = imageLUT[5]['path'],
+                           units = 'pix', pos = pos_list[image])
+
+for image in range(8):
+
+    for ruler in range(8):
+
+        rulerimg = visual.ImageStim(win = my_win, image = imageLUT[ruler]['path'],
+                               units = 'pix', pos = pos_list_high[ruler])
+
+        rulerimg.draw()
+
+    img.pos = pos_list[image]
+
     img.draw()
     my_win.flip()
-    core.wait(2)
+    core.wait(1)
 
-    img = visual.ImageStim(win = my_win, image = img_rest, 
-                           units = 'pix')
-    img.draw()
-    my_win.flip()
-    core.wait(2)
 
-img = visual.ImageStim(win = my_win, image = img_ty, 
-                       units = 'pix')
-img.draw()
-my_win.flip()
-core.wait(2)
+# Close the window
+my_win.close()
