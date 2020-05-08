@@ -1,10 +1,10 @@
- 1 Wheel Up w_U.png
- 2 Wheel Down w_D.png
- 3 Wheel Left w_L.png
- 4 Wheel Right w_R.png
- 5 Mouse OK w_OK.png
- 6 dPad Up p_U.png
- 7 dPad Down p_D.png
- 8 dPad Left p_L.png
- 9 dPad Right p_R.png
-10 dPad OK p_OK.png
+ 1 Wheel Up RT_ImgFolder/w_U.png
+ 2 Wheel Down RT_ImgFolder/w_D.png
+ 3 Wheel Left RT_ImgFolder/w_L.png
+ 4 Wheel Right RT_ImgFolder/w_R.png
+ 5 Mouse OK RT_ImgFolder/w_OK.png
+ 6 dPad Up RT_ImgFolder/p_U.png
+ 7 dPad Down RT_ImgFolder/p_D.png
+ 8 dPad Left RT_ImgFolder/p_L.png
+ 9 dPad Right RT_ImgFolder/p_R.png
+10 dPad OK RT_ImgFolder/p_OK.png

@@ -26,7 +26,7 @@ if usernum % 2 == 1:
 elif usernum % 2 == 0:
     hw_required = ['dPad', 'Wheel']
 
-print(hw_required)
+print(hw_required) 
 
 # Make screen profile ----
 widthPix = 2560 # screen width in px
@@ -83,13 +83,13 @@ mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
 
 # Preparing pics ----
-img_start = 'start.png'
-img_rest = 'rest.png'
-img_ty = 'thanks.png'
+img_start = 'ACC_ImgFolder/start.png'
+img_rest = 'ACC_ImgFolder/rest.png'
+img_ty = 'ACC_ImgFolder/thanks.png'
 
 instruction_dict = {
-    'Wheel': 'acc1.png',
-    'dPad':  'acc2.png'}
+    'Wheel': 'ACC_ImgFolder/acc1.png',
+    'dPad':  'ACC_ImgFolder/acc2.png'}
 
 
 

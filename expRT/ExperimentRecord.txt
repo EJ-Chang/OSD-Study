@@ -1,2 +1,0 @@
-[9, 'Mouse', 'Next', 'Wheel', 'Left', 0]
-[9, 'Mouse', 'Abort', 'Wheel', 'Left', 0]

@@ -38,10 +38,10 @@ mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
 
 # Preparing experiment stimulus
-img_start = 'Practice_Start.png'
-img_correct = 'Practice_Correct.png'
-img_wrong = 'Practice_Wrong.png'
-img_end = 'Practice_End.png'
+img_start = 'RT_ImgFolder/Practice_Start.png'
+img_correct = 'RT_ImgFolder/Practice_Correct.png'
+img_wrong = 'RT_ImgFolder/Practice_Wrong.png'
+img_end = 'RT_ImgFolder/Practice_End.png'
 
 lineNumber = 1
 imageLUT = [] # list of image dictionary

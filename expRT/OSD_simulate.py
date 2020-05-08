@@ -25,6 +25,15 @@ mon.setSizePix((widthPix, heightPix))
 mon.save()
 
 
+# Color Palette ----
+base03 = (0,43,54)
+base01 = (88,110,117)
+base0 = (131,148,150)
+yellow = (181,137,0)
+magenta = (211,54,130)
+cyan = (42,161,152)
+green = (133,153,0)
+
 # Preparing Window ----
 my_win = visual.Window(size = (800, 600), pos = (880,1040), 
                        color = base03, colorSpace = 'rgb255', 
@@ -32,7 +41,14 @@ my_win = visual.Window(size = (800, 600), pos = (880,1040),
 
 
 
+# Import files from sub-folder
+Welcome = 'OSD_ImgFolder/start.png'
 
+img = visual.ImageStim(win = my_win, image = Welcome, 
+                       units = 'pix')
+img.draw()
+my_win.flip()
+core.wait(2)
 
 
 
