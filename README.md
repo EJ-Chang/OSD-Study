@@ -35,7 +35,7 @@ OSD-Study
     - [ ] Experimental Trials
 
 ### ACC focused
-- [ ] Practice Trials
+- [x] Practice Trials
 - [x] Experiment Trials
 - [x] Save files & Thanks
 
