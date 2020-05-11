@@ -51,7 +51,7 @@ IMG_THX = 'OSD_ImgFolder/thanks.png'
 # Initial values
 pre_key = []
 expStatus = 1
-nTrials = 4
+nLayers = 4
 item = 0
 
 # Strat the experiment ---- 
@@ -91,7 +91,7 @@ while expStatus == 1:
         # core.quit()
         key_meaning = interpret_key(response_hw, response_key)
         print(key_meaning)
-        item, expStatus = determine_behavior(key_meaning, item, nTrials, expStatus)
+        item, expStatus = determine_behavior(key_meaning, item, nLayers, expStatus)
         # break
 
 

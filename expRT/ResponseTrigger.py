@@ -215,3 +215,24 @@ def reponse_checker_ACC(response_hw, key_meaning, hw_required, key_required):
 #         iResp += 1
 
 #     return item, expStatus
+
+
+'''
+For OSD simulation 
+'''
+
+
+
+# Function : determinant ----
+def determine_behavior_OSD(key_meaning, iRow, nLayers, expStatus):
+
+    if key_meaning == 'Abort':
+        expStatus = 0
+
+    elif key_meaning == 'Up' or 'Down' or 'Left' or 'Right':
+        item += 1
+        if item > nLayers - 1:
+            item = nLayers - 1
+            expStatus = 0
+
+    return item, expStatus
