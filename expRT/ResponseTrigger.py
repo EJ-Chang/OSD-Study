@@ -138,12 +138,10 @@ def interpret_key_ACC(response_hw, response_key):
 
     # Setting key map
     if response_hw == 'Mouse':
-        if response_key[0] == 1:
-            key_meaning = 'Next'
-        elif response_key[1] == 1:
-            key_meaning = 'OK'
-        elif response_key[2] == 1:
+        if response_key[2] == 1:
             key_meaning = 'Abort'
+        else:
+            key_meaning = 'None'
 
     elif response_hw == 'Wheel':
         if response_key[1] < 0:
