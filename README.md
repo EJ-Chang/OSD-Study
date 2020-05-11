@@ -22,17 +22,17 @@ OSD-Study
 ## To-Do list
 
 ### Arduino Preparation
--[x] Get an Arduino UNO (I borrowed it from Clair)
--[ ] Learn how to program Arduino with Python
--[ ] Borrow components from RD/ID (Maybe Hank can help?)
+- [x] Get an Arduino UNO (I borrowed it from Clair)
+- [ ] Learn how to program Arduino with Python
+- [ ] Borrow components from RD/ID (Maybe Hank can help?)
 
 ### OSD simulation
 1.  Path focused
-    -[ ] Practice Trials
-    -[ ] Experimental Trials
+    - [ ] Practice Trials
+    - [ ] Experimental Trials
 2.  UI button focused
-    -[ ] Practice Trials
-    -[ ] Experimental Trials
+    - [ ] Practice Trials
+    - [ ] Experimental Trials
 
 ### ACC focused
 - [ ] Practice Trials
