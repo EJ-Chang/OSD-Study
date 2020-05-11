@@ -21,7 +21,7 @@ imageLUT = [
     {
     'name' : 'Lay_1',
     'position' : (-405, -30),
-    'path' : 'OSD_ImgFolder/OSDLayer_1.png'
+    'path' : 'OSD_ImgFolder/Layer_1.png'
     },
     {
     'name' : 'Lay_2',
@@ -35,8 +35,26 @@ imageLUT = [
     },
     {
     'name' : 'Lay_4',
-   'position' : (305, -30), 
+    'position' : (305, -30), 
     'path' : 'OSD_ImgFolder/OSDLayer_4.png'
+    }
+]
+
+strLUT = [
+    {
+    'name' : 'L1 str',
+    'position' : (-405, -30),
+    'path' : 'OSD_ImgFolder/L1 str.png'
+    },
+    {
+    'name' : 'F1_L2_str',
+    'position' : (-235, -30),
+    'path' : 'OSD_ImgFolder/F1 L2 str.png'
+    },
+    {
+    'name' : 'F2_L2_str',
+    'position' : (-235, -30),
+    'path' : 'OSD_ImgFolder/F2 L2 str.png'
     }
 ]
 

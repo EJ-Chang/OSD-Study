@@ -55,6 +55,16 @@ while 1:
                                units = 'pix', pos = imageLUT[image]['position'])
 
         img.draw()
+
+
+    for image in range(2):
+        img = visual.ImageStim(win = my_win, image = strLUT[image]['path'],
+                               units = 'pix', pos = strLUT[image]['position'])
+
+        img.draw()
+
+
+    # Everything has been drawn. Flip to show.
     my_win.flip()
 
     # Get response
