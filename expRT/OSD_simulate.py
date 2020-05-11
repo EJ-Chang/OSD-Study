@@ -47,31 +47,53 @@ mouse.clickReset() # Reset to its initials
 IMG_START = 'OSD_ImgFolder/start.png'
 IMG_REST = 'OSD_ImgFolder/rest.png'
 IMG_THX = 'OSD_ImgFolder/thanks.png'
-pre_key = []
 
-while 1:
+# Initial values
+pre_key = []
+expStatus = 1
+nTrials = 4
+item = 0
+
+# Strat the experiment ---- 
+while expStatus == 1:
+    # Background OSD
     for image in range(5):
         img = visual.ImageStim(win = my_win, image = imageLUT[image]['path'],
                                units = 'pix', pos = imageLUT[image]['position'])
 
         img.draw()
 
+    # Selection / indicator
+    selection = visual.Rect(my_win, 
+                            width = indicatorLUT[item]['width'], 
+                            height = indicatorLUT[item]['height'], 
+                            fillColor = SOLARIZED['yellow'], fillColorSpace='rgb255', 
+                            lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
+                            pos= indicatorLUT[item]['position'][item], opacity = 50)
 
+    selection.draw()
+
+    # OSD strings
     for image in range(2):
         img = visual.ImageStim(win = my_win, image = strLUT[image]['path'],
                                units = 'pix', pos = strLUT[image]['position'])
 
         img.draw()
 
-
     # Everything has been drawn. Flip to show.
     my_win.flip()
+    # core.wait(2)
 
     # Get response
     response_hw, response_key, response_status = getAnything(mouse, joy)
 
     if response_status == 1 and response_key != pre_key:
-        core.quit()
+        # core.quit()
+        key_meaning = interpret_key(response_hw, response_key)
+        print(key_meaning)
+        item, expStatus = determine_behavior(key_meaning, item, nTrials, expStatus)
+        # break
+
 
 # Close the window
 my_win.close()
