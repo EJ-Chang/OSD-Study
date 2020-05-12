@@ -1,10 +1,30 @@
 # Material
 
-pos_list = [
-    (-405, 110), # Layer 1 Origin
-    (-235, 110), # Layer 2 Origin
-    (35, 110), # Layer 3 Origin
-    (305, 110) # Layer 4 Origin
+requestLUT = [
+    {
+     'name' : 'L1 request',
+     'width' :  68,
+     'height' : 70,
+     'position' : [(-405, 110), (-405, 40), (-405, -30), (-405, -100), (-405, -170)]
+    },
+    {
+     'name' : 'L2 request',
+     'width' :  268,
+     'height' : 70,
+     'position' : [(-235, 110), (-235, 40), (-235, -30), (-235, -100), (-235, -170)] 
+    },
+    {
+     'name' : 'L3 request',
+     'width' :  268,
+     'height' : 70,
+     'position' : [(35, 110), (35, 40), (35, -30), (35, -100), (35, -170)]
+    },
+    {
+     'name' : 'L4 request',
+     'width' :  268,
+     'height' : 70,
+     'position' : [(305, 110), (305, 40), (305, -30), (305, -100), (305, -170)]
+    }
 ]
 
 indicatorLUT = [
@@ -35,7 +55,6 @@ indicatorLUT = [
 ]
 
 
-
 imageLUT = [
     {
     'name' : 'Background',
@@ -50,17 +69,17 @@ imageLUT = [
     {
     'name' : 'Lay_2',
     'position' : (-235, -30),
-    'path' : 'OSD_ImgFolder/OSDLayer_2.png'
+    'path' : 'OSD_ImgFolder/Layer_2.png'
     },
     {
     'name' : 'Lay_3',
     'position' : (35, -30),
-    'path' : 'OSD_ImgFolder/OSDLayer_3.png'
+    'path' : 'OSD_ImgFolder/Layer_3.png'
     },
     {
     'name' : 'Lay_4',
     'position' : (305, -30), 
-    'path' : 'OSD_ImgFolder/OSDLayer_4.png'
+    'path' : 'OSD_ImgFolder/Layer_4.png'
     }
 ]
 

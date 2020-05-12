@@ -14,6 +14,20 @@ from ResponseTrigger import *
 from Solarized import * # Import solarized color palette
 from ExpMaterial import *
 
+# Subject profile
+today = date.today()
+print('Today is %s:' % today)
+usernum = int(input('Please enter subject number:'))
+username = input("Please enter your name:").upper()
+print('Hi %s, welcome to our experiment!' % username)
+
+if usernum % 2 == 1:
+    hw_required = ['Wheel','dPad']
+elif usernum % 2 == 0:
+    hw_required = ['dPad', 'Wheel']
+
+print(hw_required) 
+
 # Make screen profile ----
 widthPix = 2560 # screen width in px
 heightPix = 1440 # screen height in px
@@ -48,52 +62,98 @@ IMG_START = 'OSD_ImgFolder/start.png'
 IMG_REST = 'OSD_ImgFolder/rest.png'
 IMG_THX = 'OSD_ImgFolder/thanks.png'
 
-# Initial values
+# Initial values for the whole experiment
 pre_key = []
-expStatus = 1
-nLayers = 4
-item = 0
+response = []
+
+
 
 # Strat the experiment ---- 
-while expStatus == 1:
-    # Background OSD
-    for image in range(5):
-        img = visual.ImageStim(win = my_win, image = imageLUT[image]['path'],
-                               units = 'pix', pos = imageLUT[image]['position'])
+for block in range(2):
+    print('Block #', block, 'Start!')
+    nRow = 4
+    nCol = 3
+    for trial in range(3):    
+        print(block, '/', trial)
+        # Initial values for every trial
+        trialStatus = 1
+        iRow = 0
+        iCol = 0
+        reqCol = 0
+        reqRow = random.randrange(nRow+1)
+        stimuli_time = core.getTime()
 
-        img.draw()
+        while trialStatus == 1:
+            # Background OSD
+            for image in range(5):
+                img = visual.ImageStim(my_win, image = imageLUT[image]['path'],
+                        pos = imageLUT[image]['position'])
 
-    # Selection / indicator
-    selection = visual.Rect(my_win, 
-                            width = indicatorLUT[item]['width'], 
-                            height = indicatorLUT[item]['height'], 
-                            fillColor = SOLARIZED['yellow'], fillColorSpace='rgb255', 
+                img.draw()
+
+            # Request
+            request = visual.Rect(my_win,
+                            width = requestLUT[reqCol]['width'],
+                            height = requestLUT[reqCol]['height'],
+                            fillColor = SOLARIZED['green'], fillColorSpace='rgb255', 
                             lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
-                            pos= indicatorLUT[item]['position'][item], opacity = 50)
+                            pos= indicatorLUT[reqCol]['position'][reqRow], opacity = 1)
+            request.draw()
+            # Indicator
+            indicator = visual.Rect(my_win, 
+                            width = indicatorLUT[iCol]['width'], 
+                            height = indicatorLUT[iCol]['height'], 
+                            fillColor = SOLARIZED['cyan'], fillColorSpace='rgb255', 
+                            lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
+                            pos= indicatorLUT[iCol]['position'][iRow], opacity = 0.5)
 
-    selection.draw()
+            indicator.draw()
 
-    # OSD strings
-    for image in range(2):
-        img = visual.ImageStim(win = my_win, image = strLUT[image]['path'],
-                               units = 'pix', pos = strLUT[image]['position'])
+            # OSD strings
+            for image in range(2):
+                img = visual.ImageStim(my_win, image = strLUT[image]['path'],
+                          pos = strLUT[image]['position'])
 
-        img.draw()
+                img.draw()
 
-    # Everything has been drawn. Flip to show.
-    my_win.flip()
-    # core.wait(2)
+            # Everything has been drawn. Flip to show.
+            my_win.flip()
 
-    # Get response
-    response_hw, response_key, response_status = getAnything(mouse, joy)
+            # Get response
+            response_hw, response_key, response_status = getAnything(mouse, joy)
 
-    if response_status == 1 and response_key != pre_key:
-        # core.quit()
-        key_meaning = interpret_key(response_hw, response_key)
-        print(key_meaning)
-        item, expStatus = determine_behavior(key_meaning, item, nLayers, expStatus)
-        # break
+            if response_status == 1 and response_key != pre_key:
+                current_time = core.getTime()
 
+                key_meaning = interpret_key(response_hw, response_key)
+
+                # Reveal next que only when Correct answer was pressed
+                key_judgement, final_answer = reponse_checker_OSD(hw_required[block],
+                                                                  response_hw, 
+                                                                  iRow, iCol, 
+                                                                  reqRow, reqCol)
+
+                # Save responses 
+                response.append([
+                                response_hw, key_meaning,
+                                iRow, iCol,
+                                reqRow, reqCol,
+                                final_answer,
+                                current_time - stimuli_time,
+                                current_time
+                                ]) 
+
+                iRow, iCol, trialStatus = determine_behavior_OSD(key_meaning, iRow, iCol)
+
+                # Begin next que
+                if final_answer == 1 and key_meaning == 'OK':
+                    reqCol += 1
+                    if reqCol > nCol:
+                        trialStatus = 0
+                    reqRow = random.randrange(nRow+1)
+                    stimuli_time = core.getTime()
+
+            pre_key = response_key
 
 # Close the window
 my_win.close()

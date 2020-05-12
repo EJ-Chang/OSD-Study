@@ -4,7 +4,7 @@ Created on Tue Apr 7 2020
 
 Written by EJ_Chang
 """
-
+from psychopy import visual, event, core, monitors
 
 '''
 For RT exp
@@ -130,7 +130,7 @@ def determine_behavior(key_meaning, item, nTrials, expStatus):
     return item, expStatus
 
 '''
-Customized for ACC exp
+For ACC exp
 '''
 
 # Function : interpret ----
@@ -201,38 +201,73 @@ def reponse_checker_ACC(response_hw, key_meaning, hw_required, key_required):
     return final_answer
 
 
-# # Function : determinant ----
-# def determine_behavior_ACC(key_meaning, item, nTrials, expStatus):
-
-#     # Quit everything 
-#     if key_meaning == 'Abort':
-#         core.quit()
-#     # Change variables 
-#     if finalanswer == 1:
-
-#         key_meaning = 'None' # Reset key meaning
-#         resp_path.append(sti_path[iResp+2])
-#         iResp += 1
-
-#     return item, expStatus
-
 
 '''
 For OSD simulation 
 '''
 
 
-
 # Function : determinant ----
-def determine_behavior_OSD(key_meaning, iRow, nLayers, expStatus):
+def determine_behavior_OSD(key_meaning, iRow, iCol, 
+    nRow = 4, nCol = 3, trialStatus = 1):
 
     if key_meaning == 'Abort':
-        expStatus = 0
+        trialStatus = 0
+        core.quit()
 
-    elif key_meaning == 'Up' or 'Down' or 'Left' or 'Right':
-        item += 1
-        if item > nLayers - 1:
-            item = nLayers - 1
-            expStatus = 0
+    elif key_meaning == 'Up':
+        iRow -= 1
+        if iRow <= 0:
+            iRow = 0
 
-    return item, expStatus
+    elif key_meaning == 'Down':
+        iRow += 1
+        if iRow >= nRow:
+            iRow = nRow
+
+    elif key_meaning == 'Left':
+        if iCol <= 0:
+            iCol = 0
+        else:
+            iCol -= 1
+            iRow = 0
+
+    elif key_meaning == 'Right' or 'OK':
+        if iCol >= nCol:
+            iCol = nCol
+        else:
+            iCol += 1
+            iRow = 0
+
+    return iRow, iCol, trialStatus
+
+
+# Function : match or not ----
+def reponse_checker_OSD(req_hw, response_hw, iRow, iCol, reqRow, reqCol,
+                        nRow = 4 , nCol = 3):
+    
+    # Initial value
+    key_judgement = [0,0]
+
+    # For key judgement 1
+    if req_hw == 'Wheel': # if wheel
+        if response_hw == req_hw or 'Buttons':  # add buttons as an exception
+            key_judgement[0] = 1
+        else:
+            key_judgement[0] = 0
+    else: # if not wheel 
+        if response_hw == req_hw:
+            key_judgement[0] = 1
+        else:
+            key_judgement[0] = 0
+
+    # For key judgement 2
+    if (iRow == reqRow and iCol == reqCol):
+        key_judgement[1] = 1
+    else:
+        key_judgement[1] = 0
+
+    final_answer = key_judgement[0] * key_judgement[1]
+
+    return key_judgement, final_answer
+
