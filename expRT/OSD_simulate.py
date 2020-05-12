@@ -61,15 +61,24 @@ mouse.clickReset() # Reset to its initials
 IMG_START = 'OSD_ImgFolder/start.png'
 IMG_REST = 'OSD_ImgFolder/rest.png'
 IMG_THX = 'OSD_ImgFolder/thanks.png'
-
+block_ins = {
+    'Wheel': 'OSD_ImgFolder/block_w.png',
+    'dPad' : 'OSD_ImgFolder/block_d.png'
+    }
+    
 # Initial values for the whole experiment
 pre_key = []
 response = []
 
 
-
 # Strat the experiment ---- 
 for block in range(2):
+    # instruction here
+    img = visual.ImageStim(my_win, image = block_ins[hw_required[block]], pos = (0,0))
+    img.draw()
+    my_win.flip()
+    core.wait(3)
+
     print('Block #', block, 'Start!')
     nRow = 4
     nCol = 3
@@ -80,39 +89,41 @@ for block in range(2):
         iRow = 0
         iCol = 0
         reqCol = 0
-        reqRow = random.randrange(nRow+1)
+        reqRow = random.randrange(nRow + 1)
         stimuli_time = core.getTime()
 
         while trialStatus == 1:
             # Background OSD
             for image in range(5):
-                img = visual.ImageStim(my_win, image = imageLUT[image]['path'],
-                        pos = imageLUT[image]['position'])
+                img = visual.ImageStim(my_win,
+                    image = imageLUT[image]['path'],
+                    pos = imageLUT[image]['position'])
 
                 img.draw()
 
             # Request
             request = visual.Rect(my_win,
-                            width = requestLUT[reqCol]['width'],
-                            height = requestLUT[reqCol]['height'],
-                            fillColor = SOLARIZED['green'], fillColorSpace='rgb255', 
-                            lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
-                            pos= indicatorLUT[reqCol]['position'][reqRow], opacity = 1)
+                width = requestLUT[reqCol]['width'],
+                height = requestLUT[reqCol]['height'],
+                fillColor = SOLARIZED['green'], fillColorSpace='rgb255', 
+                lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
+                pos= indicatorLUT[reqCol]['position'][reqRow], opacity = 1)
             request.draw()
             # Indicator
             indicator = visual.Rect(my_win, 
-                            width = indicatorLUT[iCol]['width'], 
-                            height = indicatorLUT[iCol]['height'], 
-                            fillColor = SOLARIZED['cyan'], fillColorSpace='rgb255', 
-                            lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
-                            pos= indicatorLUT[iCol]['position'][iRow], opacity = 0.5)
+                width = indicatorLUT[iCol]['width'], 
+                height = indicatorLUT[iCol]['height'], 
+                fillColor = SOLARIZED['cyan'], fillColorSpace='rgb255', 
+                lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
+                pos= indicatorLUT[iCol]['position'][iRow], opacity = 0.5)
 
             indicator.draw()
 
             # OSD strings
             for image in range(2):
-                img = visual.ImageStim(my_win, image = strLUT[image]['path'],
-                          pos = strLUT[image]['position'])
+                img = visual.ImageStim(my_win,
+                    image = strLUT[image]['path'],
+                    pos = strLUT[image]['position'])
 
                 img.draw()
 
@@ -128,10 +139,12 @@ for block in range(2):
                 key_meaning = interpret_key(response_hw, response_key)
 
                 # Reveal next que only when Correct answer was pressed
-                key_judgement, final_answer = reponse_checker_OSD(hw_required[block],
-                                                                  response_hw, 
-                                                                  iRow, iCol, 
-                                                                  reqRow, reqCol)
+                key_judgement, final_answer = reponse_checker_OSD(
+                                                hw_required[block],
+                                                response_hw, 
+                                                iRow, iCol, 
+                                                reqRow, reqCol
+                                                )
 
                 # Save responses 
                 response.append([
@@ -142,18 +155,31 @@ for block in range(2):
                                 current_time - stimuli_time,
                                 current_time
                                 ]) 
+                # Next que
+                iRow, iCol, trialStatus = determine_behavior_OSD(key_meaning, 
+                                                                 iRow, iCol)
 
-                iRow, iCol, trialStatus = determine_behavior_OSD(key_meaning, iRow, iCol)
-
-                # Begin next que
                 if final_answer == 1 and key_meaning == 'OK':
                     reqCol += 1
                     if reqCol > nCol:
                         trialStatus = 0
-                    reqRow = random.randrange(nRow+1)
+                    reqRow = random.randrange(nRow + 1)
                     stimuli_time = core.getTime()
 
             pre_key = response_key
 
 # Close the window
 my_win.close()
+
+
+# Experiment record file
+os.chdir('/Users/YJC/Dropbox/ExpRecord_OSD')
+filename = ('%s_%s.txt' % (today, username))
+filecount = 0
+
+while os.path.isfile(filename):
+    filecount += 1
+    filename = ('%s_%s_%d.txt' % (today, username, filecount))
+
+with open(filename, 'w') as filehandle: # File auto closed
+    filehandle.writelines("%s\n" % key for key in response)
