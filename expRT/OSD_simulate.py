@@ -105,7 +105,7 @@ for block in range(2):
             request = visual.Rect(my_win,
                 width = requestLUT[reqCol]['width'],
                 height = requestLUT[reqCol]['height'],
-                fillColor = SOLARIZED['green'], fillColorSpace='rgb255', 
+                fillColor = SOLARIZED['yellow'], fillColorSpace='rgb255', 
                 lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
                 pos= indicatorLUT[reqCol]['position'][reqRow], opacity = 1)
             request.draw()
@@ -113,7 +113,7 @@ for block in range(2):
             indicator = visual.Rect(my_win, 
                 width = indicatorLUT[iCol]['width'], 
                 height = indicatorLUT[iCol]['height'], 
-                fillColor = SOLARIZED['cyan'], fillColorSpace='rgb255', 
+                fillColor = SOLARIZED['base01'], fillColorSpace='rgb255', 
                 lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
                 pos= indicatorLUT[iCol]['position'][iRow], opacity = 0.5)
 
