@@ -141,13 +141,14 @@ for block in range(2):
     my_win.flip()
     core.wait(2)
 
-    for nTrial in range(10):
+    for nTrial in range(1):
 
         # Get the ques
         tag_que = [] 
         line_pos = ORIGIN_POINT
         sti_path = [ORIGIN_POINT, ORIGIN_POINT] 
-        thePath = pathGenerate(dir_DictList)
+        # thePath = pathGenerate(dir_DictList)
+        thePath = PseudoRandomPath[nTrial]
 
         for ques in thePath:
             ques = int(ques)

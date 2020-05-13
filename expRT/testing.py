@@ -13,24 +13,35 @@ from psychopy.hardware import joystick
 from ResponseTrigger import *
 from Solarized import * # Import solarized color palette
 from ExpMaterial import *
+from StiGenerator import *
 
-nRow = 5
-nCol = 4
-pseudo_randomList = []
-queNum = 0
-for i in range(1000):
-  reqRow = random.randrange(1, nRow)
-  pseudo_randomList.append(reqRow)
+# Directions ----
+dir_DictList= []
+with open("dir_limit.txt") as f:
+    for line in f:
+        (number, main_dir, ortho_dir_1, ortho_dir_2, \
+         main_meaning, ortho_meaning_1, ortho_meaning_2) = line.split()
 
-# # Experiment record file
-# # os.chdir('/Users/YJC/Dropbox/ExpRecord_OSD')
-# filename = ('PseudoQue.txt')
+        # Write a dictionary
+        sti_Dict = {
+        'number': number,
+        'main_dir': main_dir,
+        'ortho_dir': [ortho_dir_1,ortho_dir_2],
+        'main_meaning': main_meaning,
+        'ortho_meaning': [ortho_meaning_1, ortho_meaning_2]
+        }
+
+        dir_DictList.append(sti_Dict)
+
+PseudoRandomPath = []
+for path in range(30):
+    thePath = pathGenerate(dir_DictList)
+    PseudoRandomPath.append(thePath)
 
 
-# with open(filename, 'w') as filehandle: # File auto closed
-#     filehandle.writelines("%s\n" % key for key in pseudo_randomList)
-for un in range(1,20):
-    reqRow = PseudoRandomRow[queNum]
-    print(reqRow, queNum)
-    queNum += 1
-    
+
+# Experiment record file
+filename = ('PseudoPath.txt')
+
+with open(filename, 'w') as filehandle: # File auto closed
+    filehandle.writelines("%s\n" % key for key in PseudoRandomPath)
