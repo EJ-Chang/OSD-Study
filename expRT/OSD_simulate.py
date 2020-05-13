@@ -70,7 +70,6 @@ block_ins = {
 pre_key = []
 response = []
 
-
 # Strat the experiment ---- 
 for block in range(2):
     # instruction here
@@ -89,7 +88,7 @@ for block in range(2):
         iRow = 0
         iCol = 0
         reqCol = 0
-        reqRow = random.randrange(nRow + 1)
+        reqRow = random.randrange(1, nRow + 1)
         stimuli_time = core.getTime()
 
         while trialStatus == 1:
@@ -105,22 +104,23 @@ for block in range(2):
             request = visual.Rect(my_win,
                 width = requestLUT[reqCol]['width'],
                 height = requestLUT[reqCol]['height'],
-                fillColor = SOLARIZED['yellow'], fillColorSpace='rgb255', 
-                lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
+                lineWidth = 2,
+                fillColor = None,
+                lineColor = '#b58900',
                 pos= indicatorLUT[reqCol]['position'][reqRow], opacity = 1)
             request.draw()
             # Indicator
             indicator = visual.Rect(my_win, 
                 width = indicatorLUT[iCol]['width'], 
                 height = indicatorLUT[iCol]['height'], 
-                fillColor = SOLARIZED['base01'], fillColorSpace='rgb255', 
-                lineColor = SOLARIZED['base01'], lineColorSpace ='rgb255', 
+                fillColor = SOLARIZED['grey01'], fillColorSpace='rgb255', 
+                lineColor = SOLARIZED['grey01'], lineColorSpace ='rgb255', 
                 pos= indicatorLUT[iCol]['position'][iRow], opacity = 0.5)
 
             indicator.draw()
 
             # OSD strings
-            for image in range(2):
+            for image in range(iCol+1):
                 img = visual.ImageStim(my_win,
                     image = strLUT[image]['path'],
                     pos = strLUT[image]['position'])
@@ -163,10 +163,11 @@ for block in range(2):
                     reqCol += 1
                     if reqCol > nCol:
                         trialStatus = 0
-                    reqRow = random.randrange(nRow + 1)
+                    reqRow = random.randrange(1, nRow + 1)
                     stimuli_time = core.getTime()
 
             pre_key = response_key
+
 
 # Close the window
 my_win.close()

@@ -27,6 +27,7 @@ requestLUT = [
     }
 ]
 
+
 indicatorLUT = [
     {
     'name' : 'L1 selector',
@@ -59,7 +60,7 @@ imageLUT = [
     {
     'name' : 'Background',
     'position' : (0, 0),
-    'path' : 'OSD_ImgFolder/OSDMainFrame.png'
+    'path' : 'OSD_ImgFolder/MainFrame.png'
     },
     {
     'name' : 'Lay_1',
@@ -90,14 +91,19 @@ strLUT = [
     'path' : 'OSD_ImgFolder/L1 str.png'
     },
     {
-    'name' : 'F1_L2_str',
+    'name' : 'L2_str',
     'position' : (-235, -30),
-    'path' : 'OSD_ImgFolder/F1 L2 str.png'
+    'path' : 'OSD_ImgFolder/L2 str.png'
     },
     {
-    'name' : 'F2_L2_str',
-    'position' : (-235, -30),
-    'path' : 'OSD_ImgFolder/F2 L2 str.png'
+    'name' : 'L3_str',
+    'position' : (35, -30),
+    'path' : 'OSD_ImgFolder/L3 str.png'
+    },
+    {
+    'name' : 'L4_str',
+    'position' : (305, -30),
+    'path' : 'OSD_ImgFolder/L4 str.png'
     }
 ]
 
