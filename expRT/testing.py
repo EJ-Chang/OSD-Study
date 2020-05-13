@@ -15,6 +15,22 @@ from Solarized import * # Import solarized color palette
 from ExpMaterial import *
 
 nRow = 5
-for i in range(20):
-  reqRow = random.randrange(nRow)
-  print(reqRow)
+nCol = 4
+pseudo_randomList = []
+queNum = 0
+for i in range(1000):
+  reqRow = random.randrange(1, nRow)
+  pseudo_randomList.append(reqRow)
+
+# # Experiment record file
+# # os.chdir('/Users/YJC/Dropbox/ExpRecord_OSD')
+# filename = ('PseudoQue.txt')
+
+
+# with open(filename, 'w') as filehandle: # File auto closed
+#     filehandle.writelines("%s\n" % key for key in pseudo_randomList)
+for un in range(1,20):
+    reqRow = PseudoRandomRow[queNum]
+    print(reqRow, queNum)
+    queNum += 1
+    

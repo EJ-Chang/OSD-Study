@@ -81,14 +81,17 @@ for block in range(2):
     print('Block #', block, 'Start!')
     nRow = 4
     nCol = 3
-    for trial in range(3):    
+    queNum = 0
+
+    for trial in range(10):    
         print(block, '/', trial)
         # Initial values for every trial
         trialStatus = 1
         iRow = 0
         iCol = 0
         reqCol = 0
-        reqRow = random.randrange(1, nRow + 1)
+        # reqRow = random.randrange(1, nRow + 1)
+        reqRow = PseudoRandomRow[queNum]
         stimuli_time = core.getTime()
 
         while trialStatus == 1:
@@ -163,7 +166,9 @@ for block in range(2):
                     reqCol += 1
                     if reqCol > nCol:
                         trialStatus = 0
-                    reqRow = random.randrange(1, nRow + 1)
+                    # reqRow = random.randrange(1, nRow + 1)
+                    queNum += 1
+                    reqRow = PseudoRandomRow[queNum]
                     stimuli_time = core.getTime()
 
             pre_key = response_key
