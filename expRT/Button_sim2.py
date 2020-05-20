@@ -12,7 +12,7 @@ from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
 from ResponseTrigger import *
 from Solarized import * # Import solarized color palette
-from OSD_Material import *
+from ExpMaterial_2 import *
 
 # Subject profile
 today = date.today()
@@ -78,18 +78,18 @@ for block in range(2):
     my_win.flip()
     core.wait(3)
 
-    print('Block #', block, 'Start!')
+    print('Block #',block, 'Start!')
     nRow = 4
     nCol = 3
     queNum = 0
 
-    for trial in range(10):    
+    for trial in range(2): # should be 10
         print(block, '/', trial)
         # Initial values for every trial
         trialStatus = 1
         iRow = 0
         iCol = 0
-        reqCol = 0
+        reqCol = 1
         # reqRow = random.randrange(1, nRow + 1)
         reqRow = PseudoRandomRow[queNum]
         stimuli_time = core.getTime()
@@ -103,15 +103,29 @@ for block in range(2):
 
                 img.draw()
 
+            # OSD strings
+            for image in range(iCol+1):
+                img = visual.ImageStim(my_win,
+                    image = strLUT[image]['path'],
+                    pos = strLUT[image]['position'])
+
+                img.draw()
+
+
             # Request
-            request = visual.Rect(my_win,
-                width = requestLUT[reqCol]['width'],
-                height = requestLUT[reqCol]['height'],
-                lineWidth = 2,
-                fillColor = None,
-                lineColor = '#b58900',
-                pos= requestLUT[reqCol]['position'][reqRow], opacity = 1)
+            request = visual.ImageStim(my_win,
+                image = requestLUT[reqCol]['path'],
+                pos= requestLUT[reqCol]['position'][reqRow]['off'])
             request.draw()
+
+            # Trace
+            trace = visual.ImageStim(my_win,
+                image = requestLUT[reqCol]['path'],,
+                pot = requestLUT[reqCol]['position'][reqRow]['on']
+                                     )
+
+
+
             # Indicator
             indicator = visual.Rect(my_win, 
                 width = indicatorLUT[iCol]['width'], 
@@ -122,13 +136,6 @@ for block in range(2):
 
             indicator.draw()
 
-            # OSD strings
-            for image in range(iCol+1):
-                img = visual.ImageStim(my_win,
-                    image = strLUT[image]['path'],
-                    pos = strLUT[image]['position'])
-
-                img.draw()
 
             # Everything has been drawn. Flip to show.
             my_win.flip()
@@ -162,16 +169,14 @@ for block in range(2):
                 iRow, iCol, trialStatus = determine_behavior_OSD(key_meaning, 
                                                                  iRow, iCol)
 
-                # if final_answer == 1 and key_meaning == 'OK':
-                if final_answer == 1:
-                    if key_meaning == 'OK' or key_meaning == 'Right':
-                        reqCol += 1
-                        if reqCol > nCol:
-                            trialStatus = 0
-                        # reqRow = random.randrange(1, nRow + 1)
-                        queNum += 1
-                        reqRow = PseudoRandomRow[queNum]
-                        stimuli_time = core.getTime()
+                if final_answer == 1 and key_meaning == 'OK':
+                    reqCol += 1
+                    if reqCol > nCol:
+                        trialStatus = 0
+                    # reqRow = random.randrange(1, nRow + 1)
+                    queNum += 1
+                    reqRow = PseudoRandomRow[queNum]
+                    stimuli_time = core.getTime()
 
             pre_key = response_key
 
@@ -180,14 +185,14 @@ for block in range(2):
 my_win.close()
 
 
-# Experiment record file
-os.chdir('/Users/YJC/Dropbox/ExpRecord_OSD')
-filename = ('%s_%s.txt' % (today, username))
-filecount = 0
+# # Experiment record file
+# os.chdir('/Users/YJC/Dropbox/ExpRecord_OSD')
+# filename = ('%s_%s.txt' % (today, username))
+# filecount = 0
 
-while os.path.isfile(filename):
-    filecount += 1
-    filename = ('%s_%s_%d.txt' % (today, username, filecount))
+# while os.path.isfile(filename):
+#     filecount += 1
+#     filename = ('%s_%s_%d.txt' % (today, username, filecount))
 
-with open(filename, 'w') as filehandle: # File auto closed
-    filehandle.writelines("%s\n" % key for key in response)
+# with open(filename, 'w') as filehandle: # File auto closed
+#     filehandle.writelines("%s\n" % key for key in response)

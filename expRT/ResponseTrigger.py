@@ -271,3 +271,46 @@ def reponse_checker_OSD(req_hw, response_hw, iRow, iCol, reqRow, reqCol,
 
     return key_judgement, final_answer
 
+
+'''
+For Button simulation
+'''
+
+# Function : determinant ----
+def determine_behavior_BTS(BUTTON_STATUS, key_meaning, iRow, iCol, 
+    nRow = 4, nCol = 3, trialStatus = 1):
+
+    if key_meaning == 'Abort':
+        trialStatus = 0
+
+    elif key_meaning == 'Up':
+        iRow -= 1
+        if iRow <= 0:
+            iRow = 0
+
+    elif key_meaning == 'Down':
+        iRow += 1
+        if iRow >= nRow:
+            iRow = nRow
+
+    elif key_meaning == 'Left':
+        if iCol <= 0:
+            iCol = 0
+        else:
+            iCol -= 1
+            iRow = 0
+
+    elif key_meaning == 'Right' or 'OK':
+        if iCol >= nCol:
+            iCol = nCol
+        else:
+            iCol += 1
+            iRow = 0
+        if BUTTON_STATUS == 'on':
+            BUTTON_STATUS = 'off'
+        elif BUTTON_STATUS == 'off':
+            BUTTON_STATUS = 'on'
+
+    return iRow, iCol, trialStatus, BUTTON_STATUS
+
+
