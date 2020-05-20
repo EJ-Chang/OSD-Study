@@ -277,7 +277,7 @@ For Button simulation
 '''
 
 # Function : determinant ----
-def determine_behavior_BTS(BUTTON_STATUS, key_meaning, iRow, iCol, 
+def determine_behavior_BTS(key_meaning, iRow, iCol, 
     nRow = 4, nCol = 3, trialStatus = 1):
 
     if key_meaning == 'Abort':
@@ -306,11 +306,28 @@ def determine_behavior_BTS(BUTTON_STATUS, key_meaning, iRow, iCol,
         else:
             iCol += 1
             iRow = 0
-        if BUTTON_STATUS == 'on':
-            BUTTON_STATUS = 'off'
-        elif BUTTON_STATUS == 'off':
-            BUTTON_STATUS = 'on'
 
-    return iRow, iCol, trialStatus, BUTTON_STATUS
+    return iRow, iCol, trialStatus
 
+
+# Function : match or not ----
+def reponse_checker_BTS(BUTTON_STATUS, key_meaning, iRow, iCol, reqRow, reqCol,
+                        nRow = 4 , nCol = 3):
+    
+
+    # For key judgement 2
+    if (iRow == reqRow and iCol == reqCol):
+        key_judgement = 1
+        if key_meaning == 'OK' or key_meaning == 'Right':
+            if BUTTON_STATUS == 'on':
+                BUTTON_STATUS = 'off'
+            elif BUTTON_STATUS == 'off':
+                BUTTON_STATUS = 'on'
+    else:
+        key_judgement = 0
+
+    # final_answer = key_judgement[0] * key_judgement[1]
+
+
+    return key_judgement, BUTTON_STATUS
 

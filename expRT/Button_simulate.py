@@ -44,10 +44,7 @@ mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
 
 # Default value
-BUTTON_STATUS = 'off'
-count = 0
 pre_key = []
-trialStatus = 1
 iCol = 0
 iRow = 0
 
@@ -55,9 +52,11 @@ iRow = 0
 
 for ima in range(10):
     trialStatus = 1
-    reqButton = random.randrange(0,3)
+    reqButton = random.randrange(1,3)
     reqCol = random.randrange(1,3)
     reqRow = random.randrange(0,4)
+
+    BUTTON_STATUS = 'off'
     
 
 
@@ -113,9 +112,9 @@ for ima in range(10):
         if response_status == 1 and response_key != pre_key:
 
             key_meaning = interpret_key(response_hw, response_key)
-
-            iRow, iCol, trialStatus, BUTTON_STATUS = determine_behavior_BTS(
-                BUTTON_STATUS, key_meaning, iRow, iCol)
+            final_answer, BUTTON_STATUS = reponse_checker_BTS(
+                BUTTON_STATUS, key_meaning, iRow, iCol, reqRow, reqCol)
+            iRow, iCol, trialStatus = determine_behavior_BTS(key_meaning, iRow, iCol)
 
         # if response_status == 1:
         #     optLUT[count]['status'][count] = 'on'
