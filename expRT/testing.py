@@ -12,25 +12,9 @@ from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
 from ResponseTrigger import *
 from Solarized import * # Import solarized color palette
-from ExpMaterial import *
-from StiGenerator import *
 
 
-optionLUT = {
-    'name' : 'test',
-    'status' : ['on', 'on'],
-    'default' : ['def', 'def']
-}
-
-
-for i in range(2):
-    print(optionLUT['name'])
-    print(optionLUT['status'][i])
-    stat = input("Please enter status:")
-    optionLUT['status'][i] = stat
-    print(optionLUT['status'])
-
-print('set to default=======')
-optionLUT['status'] = optionLUT['default']
-
-print(optionLUT['status'])
+x = np.array([0,1,2])
+a = np.repeat(x, [2,2,2], axis = 0)
+random.shuffle(a)
+print (a)

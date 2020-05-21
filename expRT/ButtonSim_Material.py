@@ -1,36 +1,33 @@
 # Material
 
 
+
 buttonType = ['Arrow button', 'Radio button', 'Switch button', 'Option']
 
 requestLUT = [
     {
-    'name' : 'Arrow button',
-    'on' : 'OSD_ImgFolder/arrow_on.png', # Chang color maybe?
-    'off' : 'OSD_ImgFolder/arrow_on.png', 
-    'default' : 'off',
-    'hint' : 'OSD_ImgFolder/L4 off.png' # Change maybe
-    },
-    {
-    'name' : 'Radio button',
+    'name' : 'Radio',
     'on' : 'OSD_ImgFolder/radio_on.png', 
     'off' : 'OSD_ImgFolder/radio_off.png',
     'default' : 'off',
-    'hint' : 'OSD_ImgFolder/L4 off.png' # Change maybe
+    'hint_path' : 'OSD_ImgFolder/L4 off.png',
+    'hint': 0
     },
     {
-    'name' : 'Switch button',
+    'name' : 'Switch',
     'on' : 'OSD_ImgFolder/switch_on.png', 
     'off' : 'OSD_ImgFolder/switch_off.png',
     'default' : 'off',
-    'hint' : 'OSD_ImgFolder/L4 off.png' # Change maybe
+    'hint_path' : 'OSD_ImgFolder/L4 off.png',
+    'hint' : 0
     },
     {
-    'name' : 'Option',
-    'on' : 'OSD_ImgFolder/option_on.png', 
-    'off' : 'OSD_ImgFolder/option_off.png',
+    'name' : 'Switch_clue',
+    'on' : 'OSD_ImgFolder/switch_on.png', 
+    'off' : 'OSD_ImgFolder/switch_off.png',
     'default' : 'off',
-    'hint' : 'OSD_ImgFolder/L4 off.png' # Change maybe
+    'hint_path' : 'OSD_ImgFolder/L4 off.png',
+    'hint' : 1
     }
 ]
 
@@ -70,22 +67,26 @@ strLUT = [
     {
     'name' : 'L1 str',
     'position' : (-405, -30),
-    'path' : 'OSD_ImgFolder/aLayer_1.png'
+    'path' : 'OSD_ImgFolder/aLayer_1.png',
+    'hint' : 'OSD_ImgFolder/aLayer_1.png'
     },
     {
     'name' : 'L2_str',
     'position' : (-235, -30),
-    'path' : 'OSD_ImgFolder/L2 str.png'
+    'path' : 'OSD_ImgFolder/L2 str.png',
+    'hint' : 'OSD_ImgFolder/L2 str.png'
     },
     {
     'name' : 'L3_str',
     'position' : (35, -30),
-    'path' : 'OSD_ImgFolder/L3 str.png'
+    'path' : 'OSD_ImgFolder/L3 str.png',
+    'hint' : 'OSD_ImgFolder/L3 off.png'
     },
     {
     'name' : 'L4_str',
     'position' : (305, -30),
-    'path' : 'OSD_ImgFolder/L4 str.png'
+    'path' : 'OSD_ImgFolder/L4 str.png',
+    'hint' : 'OSD_ImgFolder/L4 off.png'
     }
 ]
 

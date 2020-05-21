@@ -251,7 +251,7 @@ def reponse_checker_OSD(req_hw, response_hw, iRow, iCol, reqRow, reqCol,
 
     # For key judgement 1
     if req_hw == 'Wheel': # if wheel
-        if response_hw == req_hw or 'Buttons':  # add buttons as an exception
+        if response_hw == req_hw or response_hw == 'Mouse':  # add buttons as an exception
             key_judgement[0] = 1
         else:
             key_judgement[0] = 0
@@ -281,7 +281,8 @@ def determine_behavior_BTS(key_meaning, iRow, iCol,
     nRow = 4, nCol = 3, trialStatus = 1):
 
     if key_meaning == 'Abort':
-        trialStatus = 0
+        # trialStatus = 0
+        core.quit()
 
     elif key_meaning == 'Up':
         iRow -= 1
@@ -311,23 +312,36 @@ def determine_behavior_BTS(key_meaning, iRow, iCol,
 
 
 # Function : match or not ----
-def reponse_checker_BTS(BUTTON_STATUS, key_meaning, iRow, iCol, reqRow, reqCol,
-                        nRow = 4 , nCol = 3):
-    
+def reponse_checker_BTS(BUTTON_STATUS, req_hw, response_hw, key_meaning, iRow, iCol,
+                        reqRow, reqCol, nRow = 4 , nCol = 3):
+
+    key_judgement = [0,0]
+    # For key judgement 1
+    if req_hw == 'Wheel': # if wheel
+        if response_hw == req_hw or response_hw == 'Mouse':  # add buttons as an exception
+            key_judgement[0] = 1
+        else:
+            key_judgement[0] = 0
+    else: # if not wheel 
+        if response_hw == req_hw:
+            key_judgement[0] = 1
+        else:
+            key_judgement[0] = 0
 
     # For key judgement 2
     if (iRow == reqRow and iCol == reqCol):
-        key_judgement = 1
+        key_judgement[1] = 1
+    else:
+        key_judgement[1] = 0
+
+    final_answer = key_judgement[0] * key_judgement[1]
+
+    if final_answer == 1:
         if key_meaning == 'OK' or key_meaning == 'Right':
             if BUTTON_STATUS == 'on':
                 BUTTON_STATUS = 'off'
             elif BUTTON_STATUS == 'off':
                 BUTTON_STATUS = 'on'
-    else:
-        key_judgement = 0
 
-    # final_answer = key_judgement[0] * key_judgement[1]
-
-
-    return key_judgement, BUTTON_STATUS
+    return final_answer, BUTTON_STATUS
 

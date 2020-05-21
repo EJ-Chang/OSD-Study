@@ -112,6 +112,7 @@ for block in range(2):
                 lineColor = '#b58900',
                 pos= requestLUT[reqCol]['position'][reqRow], opacity = 1)
             request.draw()
+
             # Indicator
             indicator = visual.Rect(my_win, 
                 width = indicatorLUT[iCol]['width'], 
