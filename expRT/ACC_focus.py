@@ -127,15 +127,15 @@ response = []
 # ===========================
 
 # Welcoming
-img = visual.ImageStim(win = my_win, image = img_start, 
-                       units = 'pix')
+img = visual.ImageStim(my_win, image = img_start, units = 'pix')
 img.draw()
 my_win.flip()
 core.wait(2)
 
 # Make 2 blocks
 for block in range(2):
-    img = visual.ImageStim(win = my_win, image = instruction_dict[hw_required[block]], 
+    img = visual.ImageStim(my_win, 
+                           image = instruction_dict[hw_required[block]], 
                            units = 'pix')
     img.draw()
     my_win.flip()
@@ -147,7 +147,6 @@ for block in range(2):
         tag_que = [] 
         line_pos = ORIGIN_POINT
         sti_path = [ORIGIN_POINT, ORIGIN_POINT] 
-        # thePath = pathGenerate(dir_DictList)
         thePath = PseudoRandomPath[nTrial]
 
         for ques in thePath:

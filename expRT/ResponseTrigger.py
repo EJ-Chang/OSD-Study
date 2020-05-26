@@ -12,6 +12,9 @@ For RT exp
 
 # Function : get inputs from all devices
 def getAnything(mouse, joy):
+    '''
+    Get every input device used in this project 
+    '''
     clicks = mouse.getPressed()
     wheel = list(mouse.getWheelRel())
     # dPad = joy.getAllHats()
@@ -45,6 +48,9 @@ def getAnything(mouse, joy):
 
 # Function : interpret ----
 def interpret_key(response_hw, response_key):
+    '''
+    Translate input signals to meaningful words/tags for later usage
+    '''
 
     # Setting key map
     if response_hw == 'Mouse':
@@ -64,18 +70,6 @@ def interpret_key(response_hw, response_key):
             key_meaning = 'Left'
         elif response_key[0] < 0:
             key_meaning = 'Right'
-
-    # elif response_hw == 'dPad':
-    #     if response_key == [(0, 1)]:
-    #         key_meaning = 'Up'
-    #     elif response_key == [(0, -1)]:
-    #         key_meaning = 'Down'
-    #     elif response_key == [(-1, 0)]:
-    #         key_meaning = 'Left'
-    #     elif response_key == [(1, 0)]:
-    #         key_meaning = 'Right'
-    #     elif response_key[0] != 0 and response_key[1] != 0:
-    #         key_meaning = 'OK'
 
     elif response_hw == 'dPad':
         if response_key == [0, 1]:
@@ -98,6 +92,9 @@ def interpret_key(response_hw, response_key):
 
 # Function : match or not ----
 def reponse_checker(response_hw, key_meaning, stimlus_dictionary):
+    '''
+    Check if the response(input) was right or wrong
+    '''
 
     key_judgement = [0, 0]
     if response_hw == stimlus_dictionary['hardware']:
@@ -117,6 +114,9 @@ def reponse_checker(response_hw, key_meaning, stimlus_dictionary):
 
 # Function : determinant ----
 def determine_behavior(key_meaning, item, nTrials, expStatus):
+    '''
+    Determine how should the program react to the input
+    '''
 
     if key_meaning == 'Abort':
         expStatus = 0

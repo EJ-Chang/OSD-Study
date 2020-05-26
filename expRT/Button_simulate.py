@@ -73,8 +73,7 @@ IMG_REST = 'OSD_ImgFolder/rest.png'
 IMG_THX = 'OSD_ImgFolder/thanks.png'
 block_ins = {
     'Wheel': 'OSD_ImgFolder/block_w.png',
-    'dPad' : 'OSD_ImgFolder/block_d.png'
-    }
+    'dPad' : 'OSD_ImgFolder/block_d.png'}
     
 
 
@@ -106,36 +105,41 @@ for block in range(2):
 
             # Background (all blank)
             for image in range(5):
-                img = visual.ImageStim(my_win,
+                img = visual.ImageStim(
+                    my_win,
                     image = backgroundLUT[image]['path'],
                     pos = backgroundLUT[image]['position'])
                 img.draw()
 
             # String (icon)
             for lay in range(reqCol+1):
-                img = visual.ImageStim(my_win,
+                img = visual.ImageStim(
+                    my_win,
                     image = strLUT[lay]['path'],
                     pos = strLUT[lay]['position'])
                 img.draw()
 
-            # UI buttons
+            # UI buttons : On/Off 
             for req in range(2):
-                request = visual.ImageStim(my_win,
-                    image = requestLUT[reqButton][BUTTON_STATUS], # On/Off switch here
+                request = visual.ImageStim(
+                    my_win,
+                    image = requestLUT[reqButton][BUTTON_STATUS], 
                     pos = indicatorLUT[reqCol]['position'][reqRow])
 
                 request.draw()
 
             if requestLUT[reqButton]['hint'] == 1:
                 if (iRow == reqRow and iCol == reqCol):
-                    hint = visual.ImageStim(my_win,
+                    hint = visual.ImageStim(
+                        my_win,
                         image = strLUT[reqCol+1]['hint'],
                         pos = strLUT[reqCol+1]['position'])
                     hint.draw()
 
 
             # Indicator
-            indicator = visual.Rect(my_win, 
+            indicator = visual.Rect(
+                my_win, 
                 width = indicatorLUT[iCol]['width'], 
                 height = indicatorLUT[iCol]['height'], 
                 fillColor = SOLARIZED['grey01'], fillColorSpace='rgb255', 
@@ -144,19 +148,21 @@ for block in range(2):
 
 
             if BUTTON_STATUS == 'on':
-                hint = visual.ImageStim(my_win,
+                hint = visual.ImageStim(
+                        my_win,
                         image = strLUT[reqCol+1]['path'],
                         pos = strLUT[reqCol+1]['position'])
                 hint.draw()
                 my_win.flip()
                 core.wait(1)
-                interval = visual.ImageStim(my_win,
+                interval = visual.ImageStim(
+                    my_win,
                     image = 'OSD_ImgFolder/BetweenTrial.png',
                     pos = (0,0), opacity = 0.9)
-                    # pos = indicatorLUT[iCol]['position'][iRow], opacity = 0.8)
 
                 for image in range(5):
-                    img = visual.ImageStim(my_win,
+                    img = visual.ImageStim(
+                        my_win,
                         image = backgroundLUT[image]['path'],
                         pos = backgroundLUT[image]['position'])
                     img.draw()
@@ -170,7 +176,8 @@ for block in range(2):
                 indicator.draw()
                 my_win.flip()
                 # Get response
-                response_hw, response_key, response_status = getAnything(mouse, joy)
+                response_hw, response_key, response_status = getAnything(
+                    mouse, joy)
 
                 if response_status == 1 and response_key != pre_key:
 
@@ -192,7 +199,8 @@ for block in range(2):
                                         current_time
                                         ]) 
 
-                    iRow, iCol, trialStatus = determine_behavior_BTS(key_meaning, iRow, iCol)
+                    iRow, iCol, trialStatus = determine_behavior_BTS(
+                        key_meaning, iRow, iCol)
 
             pre_key = response_key
 
