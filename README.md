@@ -28,11 +28,11 @@ OSD-Study
 
 ### OSD simulation
 1.  Path focused
-    - [ ] Practice Trials
-    - [ ] Experimental Trials
+    - [x] Practice Trials
+    - [x] Experimental Trials
 2.  UI button focused
-    - [ ] Practice Trials
-    - [ ] Experimental Trials
+    - [x] Practice Trials
+    - [x] Experimental Trials
 
 ### ACC focused
 - [x] Practice Trials
