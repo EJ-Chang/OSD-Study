@@ -45,9 +45,9 @@ mouse = event.Mouse(visible = True, win = my_win)
 mouse.clickReset() # Reset to its initials
 
 # Preparing experiment stimulus
-img_start = 'start.png'
-img_rest = 'rest.png'
-img_ty = 'thanks.png'
+img_start = 'OSD_ImgFolder/start.png'
+img_rest = 'OSD_ImgFolder/rest.png'
+img_ty = 'OSD_ImgFolder/thanks.png'
 lineNumber = 1
 imageLUT = [] # list of image dictionary
 with open("sti_files.txt") as f:
@@ -64,11 +64,12 @@ with open("sti_files.txt") as f:
 
 # Randomizing the list
 nStimulus = len(imageLUT)  # nStimulus = 10
-playList = list(range(nStimulus)) * 10 # playList = [0,1,2,...nStimulus] repeats twice
+playList = list(range(nStimulus)) * 2 # playList = [0,1,2,...nStimulus] repeats twice
 nTrials = len(playList)
 random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable
-print(stimulus_seq)
+
+print(nTrials)
 
 # Preparing experiment timer
 experiment_timer = core.Clock()
@@ -139,7 +140,7 @@ while expStatus == 1:
             my_win.flip()
 
             # Stimulus interval
-            t = 2 + random.randrange(4)
+            t = 0.3 + random.randrange(2)
             core.wait(t)
             # print(t)
             stimuli_time = core.getTime()
@@ -151,14 +152,14 @@ while expStatus == 1:
 img = visual.ImageStim(win = my_win, image = img_ty, units = 'pix')
 img.draw()
 my_win.flip()
-core.wait(3)
+core.wait(2)
 
 # Close window
 my_win.close()
 
 
 # Exp END ----
-print('Get your responses:', response)
+# print('Get your responses:', response)
 
 # Experiment record file
 os.chdir('/Users/YJC/Dropbox/ExpRecord_RT')
