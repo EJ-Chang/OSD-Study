@@ -12,7 +12,7 @@ from psychopy import visual, event, core, monitors
 from psychopy.hardware import joystick
 from ResponseTrigger import *
 from Solarized import * # Import solarized color palette
-from ButtonSim_Material import *
+from BTS_Material import *
 
 
 # Subject profile
@@ -63,7 +63,7 @@ mouse.clickReset() # Reset to its initials
 pre_key = []
 response = []
 x = np.array([0, 1, 2])
-requestList = np.repeat(x, [1, 1, 1], axis = 0)
+requestList = np.repeat(x, [5, 5, 5], axis = 0) # trial =  3*5*2 =30
 random.shuffle(requestList)
 
 

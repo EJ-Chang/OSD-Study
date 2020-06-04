@@ -114,7 +114,7 @@ LINE_NONE = np.array([0,0])
 
 four_vector = [LINE_UP, LINE_DOWN, LINE_LEFT, LINE_RIGHT]
 four_dict = {'Up': LINE_UP,  'Down': LINE_DOWN,
-             'Left': LINE_LEFT, 'Right': LINE_RIGHT, 'None': LINE_NONE}
+             'Left': LINE_LEFT, 'Right': LINE_RIGHT, 'NoMeaning': LINE_NONE}
 
 response = []
 # ===========================
@@ -170,7 +170,7 @@ for block in range(2):
         # Rotate along with the last line in this path
         rotation_dict = {'Up':ROTATE_270, 'Down':ROTATE_90, 
                          'Left':ROTATE_180, 'Right':ROTATE_0, 
-                         'None': ROTATE_NONE}
+                         'NoMeaning': ROTATE_NONE}
 
 
         # =========================
@@ -179,7 +179,7 @@ for block in range(2):
         loopStatus = 1
         iResp = 0
         resp_path = [ORIGIN_POINT, ORIGIN_POINT]
-        key_meaning = 'None'
+        key_meaning = 'NoMeaning'
         preAnswer_time = core.getTime()
         while loopStatus == 1 :
 
@@ -279,7 +279,7 @@ for block in range(2):
                     ]) # correct/not, RT, real time
 
                 if finalanswer == 1:
-                    key_meaning = 'None' # Reset key meaning
+                    key_meaning = 'NoMeaning' # Reset key meaning
                     resp_path.append(sti_path[iResp+2])
                     iResp += 1
                     if iResp >= N_LINE:

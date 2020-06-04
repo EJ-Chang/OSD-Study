@@ -63,7 +63,7 @@ playList = list(range(nStimulus)) * 1 # playList = [0,1,2,...nStimulus] repeats 
 nTrials = len(playList)
 random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable
-print(stimulus_seq)
+
 
 # Preparing experiment timer
 experiment_timer = core.Clock()
@@ -114,8 +114,6 @@ while expStatus == 1:
             item, expStatus = determine_behavior(key_meaning, item,
              nTrials, expStatus)
 
-            print(key_judgement, final_answer, current_time -  stimuli_time)
-
             # Resting time between stimulus
             if final_answer == 0:
                 img = visual.ImageStim(win = my_win, image = img_wrong, units = 'pix')
@@ -130,7 +128,7 @@ while expStatus == 1:
             t = 2
             core.wait(t)
             stimuli_time = core.getTime()
-            print(stimuli_time)
+
 
     pre_key = response_key # Button status update
 

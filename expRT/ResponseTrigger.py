@@ -41,7 +41,7 @@ def getAnything(mouse, joy):
         response_key = buttons
     else:
         response_status = 0
-        response_hw = 'None'
+        response_hw = 'NoMeaning'
         response_key = []
 
     return response_hw, response_key, response_status
@@ -54,12 +54,13 @@ def interpret_key(response_hw, response_key):
 
     # Setting key map
     if response_hw == 'Mouse':
+
         if response_key[0] == 1:
-            key_meaning = 'Next'
+            key_meaning = 'NoMeaning'
         elif response_key[1] == 1:
             key_meaning = 'OK'
         elif response_key[2] == 1:
-            key_meaning = 'Abort'
+            key_meaning = 'NoMeaning'
 
     elif response_hw == 'Wheel':
         if response_key[1] < 0:
@@ -138,10 +139,10 @@ def interpret_key_ACC(response_hw, response_key):
 
     # Setting key map
     if response_hw == 'Mouse':
-        if response_key[2] == 1:
-            key_meaning = 'Abort'
+        if response_key[1] == 1:
+            key_meaning = 'OK'
         else:
-            key_meaning = 'None'
+            key_meaning = 'NoMeaning'
 
     elif response_hw == 'Wheel':
         if response_key[1] < 0:
@@ -232,12 +233,17 @@ def determine_behavior_OSD(key_meaning, iRow, iCol,
             iCol -= 1
             iRow = 0
 
+    elif key_meaning == 'NoMeaning':
+        iCol += 0
+
+
     elif key_meaning == 'Right' or 'OK':
         if iCol >= nCol:
             iCol = nCol
         else:
             iCol += 1
             iRow = 0
+
 
     return iRow, iCol, trialStatus
 
@@ -300,6 +306,9 @@ def determine_behavior_BTS(key_meaning, iRow, iCol,
         else:
             iCol -= 1
             iRow = 0
+            
+    elif key_meaning == 'NoMeaning':
+        iCol += 0
 
     elif key_meaning == 'Right' or 'OK':
         if iCol >= nCol:
