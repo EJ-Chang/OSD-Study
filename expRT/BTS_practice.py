@@ -15,20 +15,9 @@ from Solarized import * # Import solarized color palette
 from BTS_Material import *
 
 
-# Subject profile
-today = date.today()
-print('Today is %s:' % today)
-usernum = int(input('Please enter subject number:'))
-username = input("Please enter your name:").upper()
-print('Hi %s, welcome to our experiment!' % username)
 
-if usernum % 2 == 1:
-    hw_required = ['Wheel','dPad']
-elif usernum % 2 == 0:
-    hw_required = ['dPad', 'Wheel']
-
-print(hw_required) 
-
+usernum = 1
+hw_required = ['Wheel','dPad']
 
 
 # Make screen profile ----
@@ -67,7 +56,7 @@ mouse.clickReset() # Reset to its initials
 pre_key = []
 response = []
 x = np.array([0, 1, 2])
-requestList = np.repeat(x, [5, 5, 5], axis = 0) # trial =  3*5*2 =30
+requestList = np.repeat(x, [1, 1, 1], axis = 0) # trial =  3*5*2 =30
 random.shuffle(requestList)
 
 
@@ -78,7 +67,21 @@ IMG_THX = 'OSD_ImgFolder/thanks.png'
 block_ins = {
     'Wheel': 'OSD_ImgFolder/block_w.png',
     'dPad' : 'OSD_ImgFolder/block_d.png'}
-    
+
+
+IMG_INSTRUCTION = 'OSD_ImgFolder/Instruction_BTS.png'
+
+
+while 1:
+    img = visual.ImageStim(my_win, image = IMG_INSTRUCTION)
+    img.draw()
+    my_win.flip()
+    # Get response 
+    response_hw, response_key, response_status = getAnything(mouse, joy)
+    if response_status == 1:
+        break
+
+
 
 
 # Strat the experiment ---- 
@@ -211,17 +214,4 @@ for block in range(2):
 
 # Close the window
 my_win.close()
-
-
-# Experiment record file
-os.chdir('/Users/YJC/Dropbox/ExpRecord_BTS')
-filename = ('%s_%s.txt' % (today, username))
-filecount = 0
-
-while os.path.isfile(filename):
-    filecount += 1
-    filename = ('%s_%s_%d.txt' % (today, username, filecount))
-
-with open(filename, 'w') as filehandle: # File auto closed
-    filehandle.writelines("%s\n" % key for key in response)
 

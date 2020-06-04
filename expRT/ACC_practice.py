@@ -55,10 +55,17 @@ with open("dir_limit.txt") as f:
         dir_DictList.append(sti_Dict)
 
 # Preparing Window ----
-my_win = visual.Window(size=(800, 800), pos=(880,1040), 
+# my_win = visual.Window(size=(800, 800), pos=(880,1040), 
+#                        color=base03, colorSpace='rgb255', 
+#                        monitor = mon, units = 'pix', 
+#                        screen = 1)
+
+my_win = visual.Window(size=(2560, 1440), pos=(0,0), 
                        color=base03, colorSpace='rgb255', 
                        monitor = mon, units = 'pix', 
-                       screen = 1)
+                       screen = 0, fullscr = 1)
+
+
 
 # Preparing Joystick & Mouse ----
 # - Joysticks setting
@@ -247,7 +254,7 @@ for block in range(2):
                                           + np.dot(MINI_WING2, 
                                                    rotation_dict[key_meaning])),
                               closeShape = False, pos = (0,0))
-            indicator_arrow.draw()
+            # indicator_arrow.draw()
 
             
 
@@ -265,7 +272,7 @@ for block in range(2):
             # if response_status == 1 and response_key != pre_key:
             if response_status == 1 and pre_status == 0:
                 # Get current time
-                print(iResp, N_LINE)
+                # print(iResp, N_LINE)
                 current_time = core.getTime()
                 
                 key_meaning = interpret_key_ACC(response_hw, response_key) 
@@ -303,9 +310,9 @@ for block in range(2):
                 elif key_meaning == 'Abort':
                     core.quit()
 
-                print(key_meaning)
-                print('resp_path length:', len(resp_path))
-                print('iResp:', iResp)
+                # print(key_meaning)
+                # print('resp_path length:', len(resp_path))
+                # print('iResp:', iResp)
 
                 pre_key = response_key # Button status update
                 preAnswer_time = current_time # Time stampe update

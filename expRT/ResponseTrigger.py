@@ -83,6 +83,8 @@ def interpret_key(response_hw, response_key):
             key_meaning = 'Right'
         elif response_key[0] != 0 and response_key[1] != 0:
             key_meaning = 'OK'
+        else:
+            key_meaning = 'NoMeaning'
 
     elif response_hw == 'Buttons':
         if response_key[0] == 1:
@@ -139,10 +141,11 @@ def interpret_key_ACC(response_hw, response_key):
 
     # Setting key map
     if response_hw == 'Mouse':
-        if response_key[1] == 1:
-            key_meaning = 'OK'
-        else:
-            key_meaning = 'NoMeaning'
+        key_meaning = 'NoMeaning'
+        # if response_key[1] == 1:
+        #     key_meaning = 'OK'
+        # else:
+        #     key_meaning = 'NoMeaning'
 
     elif response_hw == 'Wheel':
         if response_key[1] < 0:
@@ -163,6 +166,8 @@ def interpret_key_ACC(response_hw, response_key):
             key_meaning = 'Left'
         elif response_key == [1, 0]:
             key_meaning = 'Right'
+        else:
+            key_meaning = 'NoMeaning'
 
     elif response_hw == 'Buttons':
         if response_key[0] == 1:

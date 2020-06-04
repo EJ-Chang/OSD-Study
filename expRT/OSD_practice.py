@@ -14,18 +14,10 @@ from ResponseTrigger import *
 from Solarized import * # Import solarized color palette
 from OSD_Material import *
 
-# Subject profile
-today = date.today()
-print('Today is %s:' % today)
-usernum = int(input('Please enter subject number:'))
-username = input("Please enter your name:").upper()
-print('Hi %s, welcome to our experiment!' % username)
 
-if usernum % 2 == 1:
-    hw_required = ['Wheel','dPad']
-elif usernum % 2 == 0:
-    hw_required = ['dPad', 'Wheel']
 
+usernum = 1
+hw_required = ['Wheel','dPad']
 
 
 # Make screen profile ----
@@ -69,7 +61,21 @@ block_ins = {
     'Wheel': 'OSD_ImgFolder/block_w.png',
     'dPad' : 'OSD_ImgFolder/block_d.png'
     }
-    
+
+
+IMG_INSTRUCTION = 'OSD_ImgFolder/Instruction_OSD.png'
+
+
+while 1:
+    img = visual.ImageStim(my_win, image = IMG_INSTRUCTION)
+    img.draw()
+    my_win.flip()
+    # Get response 
+    response_hw, response_key, response_status = getAnything(mouse, joy)
+    if response_status == 1:
+        break
+
+
 # Initial values for the whole experiment
 pre_key = []
 response = []
@@ -87,7 +93,7 @@ for block in range(2):
     nCol = 3
     queNum = 0
 
-    for trial in range(10):    
+    for trial in range(1):    
         # print(block, '/', trial)
         # Initial values for every trial
         trialStatus = 1
@@ -183,16 +189,3 @@ for block in range(2):
 
 # Close the window
 my_win.close()
-
-
-# Experiment record file
-os.chdir('/Users/YJC/Dropbox/ExpRecord_OSD')
-filename = ('%s_%s.txt' % (today, username))
-filecount = 0
-
-while os.path.isfile(filename):
-    filecount += 1
-    filename = ('%s_%s_%d.txt' % (today, username, filecount))
-
-with open(filename, 'w') as filehandle: # File auto closed
-    filehandle.writelines("%s\n" % key for key in response)
