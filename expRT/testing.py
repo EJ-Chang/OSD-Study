@@ -13,8 +13,13 @@ from psychopy.hardware import joystick
 from ResponseTrigger import *
 from Solarized import * # Import solarized color palette
 
+demoList = [
+    ['dPad', 0, 0, 'dPad', [0, -1], 'Down', 'Down', 1, 0.6018327439996938, 9.388065637998807],
+    ['dPad', 0, 1, 'dPad', [0, -1], 'Down', 'Down', 1, 0.15018101300302078, 9.538246651001828]
+    ]
 
-x = np.array([0,1,2])
-a = np.repeat(x, [2,2,2], axis = 0)
-random.shuffle(a)
-print (a)
+with open('test.txt', 'w') as filehandle: # File auto closed
+    for key in demoList:
+        for item in key:
+            filehandle.writelines("%s " % item)
+        filehandle.writelines("\n")

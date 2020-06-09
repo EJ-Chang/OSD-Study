@@ -294,9 +294,6 @@ for block in range(2):
                 elif key_meaning == 'Abort':
                     core.quit()
 
-                # print(key_meaning)
-                # print('resp_path length:', len(resp_path))
-                # print('iResp:', iResp)
 
                 pre_key = response_key # Button status update
                 preAnswer_time = current_time # Time stampe update
@@ -316,6 +313,9 @@ my_win.flip()
 core.wait(2)
 
 
+# Close the window
+my_win.close()
+
 # Experiment record file
 os.chdir('/Users/YJC/Dropbox/ExpRecord_ACC')
 filename = ('%s_%s.txt' % (today, username))
@@ -325,7 +325,9 @@ while os.path.isfile(filename):
     filecount += 1
     filename = ('%s_%s_%d.txt' % (today, username, filecount))
 
-with open(filename, 'w') as filehandle: # File auto closed
-    filehandle.writelines("%s\n" % key for key in response)
-# Close the window
-my_win.close()
+
+with open(filename, 'w') as filehandle: 
+    for key in response:
+        for item in key:
+            filehandle.writelines("%s " % item)
+        filehandle.writelines("\n")

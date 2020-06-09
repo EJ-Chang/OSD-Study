@@ -170,5 +170,9 @@ while os.path.isfile(filename):
     filecount += 1
     filename = ('%s_%s_%d.txt' % (today, username, filecount))
 
-with open(filename, 'w') as filehandle: # File auto closed
-    filehandle.writelines("%s\n" % key for key in response)
+
+with open(filename, 'w') as filehandle: 
+    for key in response:
+        for item in key:
+            filehandle.writelines("%s " % item)
+        filehandle.writelines("\n")
