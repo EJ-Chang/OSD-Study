@@ -87,13 +87,17 @@ for block in range(2):
     nCol = 3
     queNum = 0
 
-    for trial in range(10):    
+    for trial in range(1):    
         # print(block, '/', trial)
         # Initial values for every trial
         trialStatus = 1
         iRow = 0
         iCol = 0
         reqCol = 0
+        clue = []
+        traCol = 0
+        traRow = 0
+        stepToGoal = 0
         # reqRow = random.randrange(1, nRow + 1)
         reqRow = PseudoRandomRow[queNum]
         stimuli_time = core.getTime()
@@ -114,8 +118,24 @@ for block in range(2):
                 lineWidth = 2,
                 fillColor = None,
                 lineColor = '#b58900',
-                pos= requestLUT[reqCol]['position'][reqRow], opacity = 1)
+                pos = requestLUT[reqCol]['position'][reqRow], opacity = 1)
             request.draw()
+
+            # Trace
+            if len(clue) >= 1:
+                for footstep in range(len(clue)):
+                    traCol = clue[footstep][0]
+                    traRow = clue[footstep][1]
+
+                    trace = visual.Rect(my_win,
+                        width = requestLUT[traCol]['width'],
+                        height = requestLUT[traCol]['height'],
+                        lineWidth = 2,
+                        fillColor = None,
+                        lineColor = '#586e75',
+                        pos = requestLUT[traCol]['position'][traRow], opacity = 1)
+                    trace.draw()
+
 
             # Indicator
             indicator = visual.Rect(my_win, 
@@ -160,6 +180,7 @@ for block in range(2):
                                 iRow, iCol,
                                 reqRow, reqCol,
                                 final_answer,
+                                stepToGoal,
                                 current_time - stimuli_time,
                                 current_time
                                 ]) 
@@ -168,9 +189,13 @@ for block in range(2):
                                                                  iRow, iCol)
 
                 # if final_answer == 1 and key_meaning == 'OK':
-                if final_answer == 1:
+                if final_answer == 0:
+                    stepToGoal += 1
+                elif final_answer == 1:
                     if key_meaning == 'OK' or key_meaning == 'Right':
+                        clue.append([reqCol, reqRow])
                         reqCol += 1
+                        stepToGoal = 0
                         if reqCol > nCol:
                             trialStatus = 0
                         # reqRow = random.randrange(1, nRow + 1)

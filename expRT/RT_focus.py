@@ -67,7 +67,7 @@ with open("sti_files.txt") as f:
 
 # Randomizing the list
 nStimulus = len(imageLUT)  # nStimulus = 10
-playList = list(range(nStimulus)) * 5 # playList = [0,1,2,...nStimulus] repeats twice
+playList = list(range(nStimulus)) * 10 # playList = [0,1,2,...nStimulus] repeats twice
 nTrials = len(playList)
 random.shuffle(playList) # Shuffle the playList
 stimulus_seq = tuple(playList) # Make it unchangable
