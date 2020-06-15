@@ -87,7 +87,7 @@ for block in range(2):
     nCol = 3
     queNum = 0
 
-    for trial in range(1):    
+    for trial in range(10):    
         # print(block, '/', trial)
         # Initial values for every trial
         trialStatus = 1
