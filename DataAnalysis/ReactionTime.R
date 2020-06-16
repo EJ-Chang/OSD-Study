@@ -1,7 +1,7 @@
 # RT analysis
 # read data
-
-dat <- read.table('/Users/YJC/Dropbox/ExpRecord_RT/2020-06-09_EJ.txt',
+setwd('/Users/YJC/Dropbox/ExpRecord_RT/')
+dat <- read.table('/Users/YJC/Dropbox/ExpRecord_RT/RT_Merge.txt',
            header = FALSE)
 
 dat <- dat[c(1,5,6,7,8)]
@@ -9,7 +9,7 @@ colnames(dat) <- c('ID','Device', 'Direction', 'Answer', 'RT')
 dat <-dat[order(dat$Device, dat$Direction,dat$Answer),]
 # Get RT mean by condition
 tapply(dat$RT, list(dat$Device, dat$Direction), mean)
-
+tapply(dat$RT, list(dat$Device, dat$Direction), sd)
 RTanova<-aov(dat$RT~dat$Direction*dat$Device)
 
 anova(RTanova)
