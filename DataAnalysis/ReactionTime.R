@@ -10,6 +10,8 @@ dat <-dat[order(dat$Device, dat$Direction,dat$Answer),]
 # Get RT mean by condition
 tapply(dat$RT, list(dat$Device, dat$Direction), mean)
 tapply(dat$RT, list(dat$Device, dat$Direction), sd)
+
+
 RTanova<-aov(dat$RT~dat$Direction*dat$Device)
 
 anova(RTanova)
@@ -80,7 +82,7 @@ res.aov2 <- aov(RT ~ Device + Direction, data = dat.mean)
 summary(res.aov2)
 
 abv<-aov(RT ~ Device*Direction + Error(ID/(Device*Direction)),
-         data=dat.mean)
+         data=dat)
 
 summary(abv)
 # I don't have enough degree of freedom
