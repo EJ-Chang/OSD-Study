@@ -7,6 +7,11 @@ dat <- dat[c(1,2,8,10)]
 colnames(dat) <- c('ID','Device', 'Direction', 'Answer')
 dat <-dat[order(dat$Device, dat$Direction,dat$Answer),]
 
+tapply(dat$Answer, list(dat$Device, dat$Direction), mean)
+tapply(dat$Answer, list(dat$Device, dat$Direction), sd)
+
+
+
 # Get RT mean by condition
 tapply(dat$Answer, list(dat$Device, dat$Direction, dat$ID), mean)
 tapply(dat$Answer, list(dat$Device, dat$Direction, dat$ID), sd)
@@ -29,3 +34,4 @@ abv<-aov(mean_acc ~ Device*Direction + Error(ID/(Device*Direction)),
          data=ndat)
 
 summary(abv)
+
