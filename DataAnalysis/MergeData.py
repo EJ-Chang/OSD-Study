@@ -57,11 +57,14 @@ for data in dataFiles:
 
     # Merge them
     for line in dataSet:
-        dataMerge.append([ID,line[:-1]])
-        # Save lines
-        with open(fileMapping[whichExp]['MergeName'], 'w') as filehandle: 
-            for key in dataMerge:
-                for item in key:
-                    filehandle.writelines('%s ' % item)
-                filehandle.writelines('\n')
+        if 'NoMeaning' in line:
+            pass
+        else:
+            dataMerge.append([ID,line[:-1]])
+            # Save lines
+            with open(fileMapping[whichExp]['MergeName'], 'w') as filehandle: 
+                for key in dataMerge:
+                    for item in key:
+                        filehandle.writelines('%s ' % item)
+                    filehandle.writelines('\n')
 
