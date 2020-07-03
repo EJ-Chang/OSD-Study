@@ -46,8 +46,8 @@ OSD-Study
 
 
 ### Data Analysis
-- [ ] Baseline of RT
-- [ ] Baseline of ACC
+- [x] Baseline of RT
+- [x] Baseline of ACC
 
 ### Special thanks to:
 > *4/30 Borrowed an Arduino set from Clair_Lin.*

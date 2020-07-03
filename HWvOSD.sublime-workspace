@@ -1,0 +1,1096 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tra",
+				"traRow"
+			],
+			[
+				"req",
+				"reqRow"
+			],
+			[
+				"lin",
+				"lineWidth"
+			],
+			[
+				"re",
+				"requestLUT"
+			],
+			[
+				"Mer",
+				"MergeName"
+			],
+			[
+				"as",
+				"astring"
+			],
+			[
+				"data",
+				"dataMerge"
+			],
+			[
+				"file",
+				"filehandle"
+			],
+			[
+				"dat",
+				"dataMerge"
+			],
+			[
+				"respon",
+				"response_key"
+			],
+			[
+				"key",
+				"key_meaning"
+			],
+			[
+				"R",
+				"RClick"
+			],
+			[
+				"resp",
+				"response_key"
+			],
+			[
+				"ra",
+				"random"
+			],
+			[
+				"on",
+				"on"
+			],
+			[
+				"Bu",
+				"BUTTON_STATUS"
+			],
+			[
+				"rand",
+				"randrange"
+			],
+			[
+				"Im",
+				"ImageStim"
+			],
+			[
+				"de",
+				"default"
+			],
+			[
+				"stat",
+				"status"
+			],
+			[
+				"o",
+				"optionLUT"
+			],
+			[
+				"O",
+				"OSD_ImgFolder"
+			],
+			[
+				"radio",
+				"radio_on"
+			],
+			[
+				"vid",
+				"video_id"
+			],
+			[
+				"Layer",
+				"Layer_1"
+			],
+			[
+				"que",
+				"queNum"
+			],
+			[
+				"don",
+				"doneLayer"
+			],
+			[
+				"pre",
+				"pre_Col"
+			],
+			[
+				"res",
+				"response_hw"
+			],
+			[
+				"k",
+				"key_judgement"
+			],
+			[
+				"requ",
+				"requestLUT"
+			],
+			[
+				"ran",
+				"randRow"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"ini",
+				"indicatorLUT"
+			],
+			[
+				"response",
+				"response_hw"
+			],
+			[
+				"image",
+				"image"
+			],
+			[
+				"pos",
+				"pos_list"
+			],
+			[
+				"img",
+				"imgName"
+			],
+			[
+				"So",
+				"SOLARIZED"
+			],
+			[
+				"Color",
+				"ColorPalette"
+			],
+			[
+				"user",
+				"usernum"
+			],
+			[
+				"ge",
+				"getTime"
+			],
+			[
+				"pr",
+				"preAnswer_time"
+			],
+			[
+				"indicat",
+				"indicator_line"
+			],
+			[
+				"four",
+				"four_dict"
+			],
+			[
+				"l",
+				"loopStatus"
+			],
+			[
+				"li",
+				"line_pos"
+			],
+			[
+				"sti",
+				"sti_path"
+			],
+			[
+				"line",
+				"line_pos"
+			],
+			[
+				"clo",
+				"closeShape"
+			],
+			[
+				"current",
+				"current_point"
+			],
+			[
+				"ort",
+				"ortho_meaning_2"
+			],
+			[
+				"orth",
+				"ortho_meaning_1"
+			],
+			[
+				"main_",
+				"main_meaning"
+			],
+			[
+				"ex",
+				"exp_Status"
+			],
+			[
+				"r",
+				"rgb255"
+			],
+			[
+				"rota",
+				"rotate"
+			],
+			[
+				"ro",
+				"rotate_180"
+			],
+			[
+				"the",
+				"theList"
+			],
+			[
+				"rotate",
+				"rotate_270"
+			],
+			[
+				"rot",
+				"rotate"
+			],
+			[
+				"th",
+				"theList"
+			],
+			[
+				"rotat",
+				"rotate_90"
+			],
+			[
+				"qu",
+				"que_pool"
+			],
+			[
+				"q",
+				"que_pool"
+			],
+			[
+				"next",
+				"next_pool"
+			],
+			[
+				"ne",
+				"next_pool"
+			],
+			[
+				"or",
+				"ortho_que"
+			],
+			[
+				"main",
+				"main_que"
+			],
+			[
+				"dir",
+				"dir_DictList"
+			],
+			[
+				"num",
+				"numberList"
+			],
+			[
+				"cro",
+				"crosshair_color"
+			],
+			[
+				"node",
+				"node_1"
+			],
+			[
+				"nod",
+				"node_1"
+			],
+			[
+				"no",
+				"node_1"
+			],
+			[
+				"fir",
+				"first_ban"
+			],
+			[
+				"col",
+				"collect"
+			],
+			[
+				"hidd",
+				"hiddenLayer"
+			],
+			[
+				"ar",
+				"arrow_down"
+			],
+			[
+				"arr",
+				"arrow_up"
+			],
+			[
+				"colo",
+				"colorSpace"
+			],
+			[
+				"u",
+				"username"
+			],
+			[
+				"to",
+				"today"
+			],
+			[
+				"st",
+				"stimuli_time"
+			],
+			[
+				"me",
+				"meaning"
+			],
+			[
+				"fi",
+				"final_answer"
+			],
+			[
+				"el",
+				"else"
+			],
+			[
+				"determin",
+				"determinant_var"
+			],
+			[
+				"ke",
+				"key_meaning"
+			],
+			[
+				"wh",
+				"wholeList"
+			],
+			[
+				"thi",
+				"thisList"
+			],
+			[
+				"m",
+				"meaning"
+			],
+			[
+				"pre_",
+				"pre_key"
+			],
+			[
+				"dP",
+				"dpad"
+			],
+			[
+				"but",
+				"buttons"
+			],
+			[
+				"respons",
+				"response_hw"
+			],
+			[
+				"reson",
+				"response_status"
+			],
+			[
+				"repon",
+				"response_status"
+			],
+			[
+				"bu",
+				"buttons"
+			],
+			[
+				"wheel",
+				"wheel_y"
+			],
+			[
+				"place",
+				"place_b"
+			],
+			[
+				"repo",
+				"response_key"
+			],
+			[
+				"whe",
+				"wheel_y"
+			],
+			[
+				"get",
+				"getTime"
+			],
+			[
+				"test",
+				"testd"
+			],
+			[
+				"us",
+				"userResponse"
+			],
+			[
+				"Tri",
+				"Trim_Off"
+			],
+			[
+				"Pr",
+				"PreviousResponse"
+			],
+			[
+				"var",
+				"var1"
+			],
+			[
+				"n",
+				"nStimulus"
+			],
+			[
+				"stim",
+				"stimuli"
+			],
+			[
+				"stimu",
+				"stimuli"
+			],
+			[
+				"imga",
+				"imageList"
+			],
+			[
+				"exp",
+				"expStatus"
+			],
+			[
+				"ima",
+				"imageList"
+			],
+			[
+				"e",
+				"experiment_timer"
+			],
+			[
+				"joy",
+				"joystick"
+			],
+			[
+				"base",
+				"base01"
+			],
+			[
+				"bas",
+				"base01"
+			],
+			[
+				"p",
+				"prevY"
+			],
+			[
+				"Indi",
+				"IndiY"
+			],
+			[
+				"bo",
+				"botton_b"
+			],
+			[
+				"im",
+				"imageList"
+			],
+			[
+				"Behavioral",
+				"Behavioral_Pos"
+			],
+			[
+				"ta",
+				"task_length"
+			],
+			[
+				"task",
+				"task_stat"
+			],
+			[
+				"wf",
+				"waitingForReason"
+			],
+			[
+				"mis",
+				"mission_stat"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 896,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Syntax Check"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ever",
+				"Evernote: New empty note"
+			],
+			[
+				"op",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"OPEN",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"re",
+				"Package Control: Remove Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"open",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"pack",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"mat",
+				"Material Theme: Configuration"
+			],
+			[
+				"upg",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"package li",
+				"Package Control: List Packages"
+			],
+			[
+				"package co",
+				"Package Control: List Packages"
+			],
+			[
+				"ope",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"color",
+				"UI: Select Color Scheme"
+			],
+			[
+				"package",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package con",
+				"Package Control: Remove Package"
+			],
+			[
+				"package ",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"package control insta",
+				"Package Control: Install Package"
+			],
+			[
+				"select theme",
+				"UI: Select Theme"
+			],
+			[
+				"eve",
+				"Evernote: New empty note"
+			],
+			[
+				"updat",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"EVERNOTE",
+				"Evernote: New empty note"
+			],
+			[
+				"evernote",
+				"Evernote: Open Evernote Note"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"evernote ",
+				"Evernote: Update Evernote Note"
+			],
+			[
+				"evernote new",
+				"Evernote: New empty note"
+			],
+			[
+				"IN",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"UP",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"un",
+				"Package Control: List Unmanaged Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 496.0
+	},
+	"console":
+	{
+		"height": 253.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/YJC/Dropbox/UsabilityTesting"
+	],
+	"file_history":
+	[
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/BTS_simulation.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/OSD_simulate.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/PseudoQue.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/DataAnalysis/MergeData.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/DataAnalysis/ReactionTime.R",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/ResponseTrigger.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/PseudoPath.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-18_RACHEL.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-18_YUHSUAN.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-18_ST.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/BTS_Material.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/BTS_practice.py",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/OSD_Merge.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-09_EJ.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-15_BRENDA.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/DataAnalysis/testing.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/OSD_practice.py",
+		"/Users/YJC/Dropbox/ExpRecord_BTS/BTS_Merge.txt",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/ACC_Merge.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/DataAnalysis/testMerge.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/DataAnalysis/testDATA.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/RT_Merge.txt",
+		"/Volumes/GoogleDrive/My Drive/2020 HFD/HW&UI exp/DATAforLIFE/ExpRecord_BTS/2020-06-18_RACHEL.txt",
+		"/Volumes/GoogleDrive/My Drive/2020 HFD/HW&UI exp/DATAforLIFE/ExpRecord_BTS/2020-06-15_BRENDA.txt",
+		"/Volumes/GoogleDrive/My Drive/2020 HFD/HW&UI exp/DATAforLIFE/ExpRecord_BTS/2020-06-18_JACK.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-16_YUKI.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/2020-06-16_6.txt",
+		"/Users/YJC/Dropbox/ExpRecord_BTS/2020-06-15_JASON.txt",
+		"/Users/YJC/Dropbox/ExpRecord_BTS/2020-06-09_EJ.txt",
+		"/Volumes/GoogleDrive/My Drive/2020 HFD/DATAforLIFE/ExpRecord_RT/RT_Merge.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/2020-06-17_9.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/2020-06-09_EJ.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/2020-06-15_JASON.txt",
+		"/Volumes/GoogleDrive/My Drive/2020 HFD/DATAforLIFE/ExpRecord_BTS/2020-06-15_JASON.txt",
+		"/Volumes/GoogleDrive/My Drive/2020 HFD/DATAforLIFE/ExpRecord_BTS/2020-06-15_MARY.txt",
+		"/Volumes/GoogleDrive/My Drive/2020 HFD/DATAforLIFE/ExpRecord_BTS/2020-06-15_BRENDA.txt",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-06-15_JASON.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-15_JASON.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-12_TW.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-12_TE.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/MergeData.py",
+		"/Users/YJC/Dropbox/ExpRecord_RT/BTS_Merge.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/ACC_Merge.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/OSD_Merge.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/dir_limit.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/testMerge.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/testing.py",
+		"/Users/YJC/Dropbox/ExpRecord_RT/2020-06-09_EJ_1.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/2020-06-04_ERIN.txt",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-06-09_EJ.txt",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-06-04_ERIN.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/RT_focus.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/ACC_focus.py",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-06-04_EJ.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/test.txt",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-06-04_EJ.txt",
+		"/Users/YJC/Dropbox/ExpRecord_BTS/2020-06-04_EJ.txt",
+		"/Users/YJC/Dropbox/ExpRecord_RT/2020-06-04_EJ.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/README.md",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/RT_practice.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/ACC_practice.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/Button_simulate.py",
+		"/Users/YJC/Dropbox/ExpRecord_BTS/2020-06-04_EJ_1.txt",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-06-04_EJ_1.txt",
+		"/Users/YJC/Dropbox/ExpRecord_BTS/2020-05-21_TW.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/ButtonSim_Material.py",
+		"/Users/YJC/Dropbox/ExpRecord_BTS/2020-05-21_TW_2.txt",
+		"/Users/YJC/Dropbox/ExpRecord_BTS/2020-05-21_TW_1.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/OSD_Material.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/Button_sim2.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/ExpMaterial_2.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/img_file.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/ExpMaterial.py",
+		"/Users/YJC/Dropbox/BoringTask/LazyWoker.py",
+		"/Users/YJC/Dropbox/BoringTask/YTscript_all.txt",
+		"/Users/YJC/Dropbox/BoringTask/YTreview_script.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/StiGenerator.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/Solarized Color Palette.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/Solarized.py",
+		"/Users/YJC/Dropbox/ExpRecord_OSD/2020-05-12_TEST.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/DPadReleasedVer.py",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Solarized Color Scheme/Solarized (light).sublime-color-scheme",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Solarized Color Scheme/Solarized (dark).sublime-color-scheme",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/SolarizedColorDictionary.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/sti_files.txt",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Pylinter/Pylinter.sublime-settings",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Pylinter/Default (OSX).sublime-keymap",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/ACC.py",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-05-05_EJ.txt",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-05-05_EJ_1.txt",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-05-05_EJ_2.txt",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-05-05_TEST.txt",
+		"/Users/YJC/Dropbox/ExpRecord_ACC/2020-05-05_EJTEST.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/Practice_Wrong.png",
+		"/Users/YJC/Dropbox/ExpRecord_RT/2020-04-20_EJ.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/testThingsOut.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/dir_lim_num.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/ExperimentRecord.txt",
+		"/Users/YJC/Downloads/kanizsa-square.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/ACC_pathGenerator.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/testFile.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/test_wheel.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/DirGenerator.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/Practice_End.png",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Print to HTML/Print to HTML.sublime-settings",
+		"/Users/YJC/Downloads/pygments-style-solarized-0.1.1/pygments_style_solarized/light.py",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Print to HTML/pygments/styles/default.py",
+		"/Users/YJC/Downloads/pygments-style-solarized-0.1.1/pygments_style_solarized/__init__.py",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Print to HTML/pygments/styles/arduino.py",
+		"/Users/YJC/Downloads/pygments-style-solarized-0.1.1/setup.py",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/User/Print to HTML.sublime-settings",
+		"/Users/YJC/Library/Application Support/Sublime Text 3/Packages/Print to HTML/Default (OSX).sublime-keymap",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/wrongACC_focus.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/StimulusDict.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/WheelReleasedVer.py",
+		"/Users/YJC/Dropbox/ExpRecord/2020-04-21_JASON.txt",
+		"/Users/YJC/Dropbox/ExpRecord/2020-04-20_EJ.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/Record/2020-04-17_EJ.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/2020-04-17_EJ.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/2020-04-17_EJ_2.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/2020-04-17_EJ_1.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/2020-04-17_EJ.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/expRT/hello.txt",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/Code Unused/mouseTest.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/StimulusDict.py",
+		"/Users/YJC/Dropbox/UsabilityTesting/WheelOSDtest/sti_files.txt"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 176.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 896,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 75.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 210.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python 3/Python3.sublime-build",
+	"project": "HWvOSD.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"洗滌蔬果選擇彈性者"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 256.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
