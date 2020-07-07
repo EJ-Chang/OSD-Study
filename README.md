@@ -24,7 +24,7 @@ OSD-Study
 ### Arduino Preparation
 - [x] Get an Arduino UNO (I borrowed it from Clair)
 - [ ] Learn how to program Arduino with Python
-- [ ] Borrow components from RD/ID (Maybe Hank can help?)
+- [x] Borrow components from RD/ID (Maybe Hank can help?)
 
 ### OSD simulation
 1.  Path focused

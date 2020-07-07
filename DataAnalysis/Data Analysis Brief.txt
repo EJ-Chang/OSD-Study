@@ -1,0 +1,53 @@
+Data Analysis Brief
+
+> chisq.test(M)
+
+    Pearson's Chi-squared test
+
+data:  M
+X-squared = 148.52, df = 3, p-value < 2.2e-16
+
+> chisq.posthoc.test(M)
+  Dimension     Value      Down              Left             Right               Up
+1      dPad Residuals -1.923396  6.73595749892886  4.92622828834198 -10.480547361809
+2      dPad  p values  0.435400                0*                0*               0*
+3     Wheel Residuals  1.923396 -6.73595749892886 -4.92622828834198  10.480547361809
+4     Wheel  p values  0.435400                0*                0*               0*
+> M
+       Direction
+Device  Down Left Right  Up
+  dPad   249  198   172  39
+  Wheel  254   83    87 164
+
+=====
+
+Let's look at our raw data.
+
+I found that almost every response with its RT lower than 0.1 second, is leading 
+by an 'OK'.
+
+Others are leading by a 'Right'.
+
+==> Which fits my theory: people making error during pressing 'Enter'.
+That might because of the force needed on the task.
+
+============2020.07.06================
+
+
+Q: Does ACC rate differed between keys in OSD_exp?
+
+=====
+> table(dat$Device, dat$QueType, dat$Direction)
+, ,  = OK
+
+       
+        Radio Switch Switch_clue
+  dPad     68     48          46
+  Wheel    73     55          59
+
+, ,  = Right
+
+       
+        Radio Switch Switch_clue
+  dPad     17     37          39
+  Wheel    12     30          26
