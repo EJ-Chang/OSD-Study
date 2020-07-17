@@ -37,30 +37,33 @@ for data in dataFiles:
     # Merge them
     for line in dataSet:
 
-        fields = line.split(" ")
-        Direction = fields[1]
-        reqRow = int(fields[4])
-        reqCol = int(fields[5])
-        Answer = int(fields[6])
-        ReactionTime = float(fields[8])
-        
-        if [reqRow, reqCol] == [tarRow, tarCol] :
+        if 'NoMeaning' in line:
             pass
         else:
-            tarRow = 6
-            tarCol = 6
-            if [reqRow, reqCol] != [preRow, preCol]:
-                dataMerge.append([ID, line[:-1], reqRow])
-            else:
+
+            fields = line.split(" ")
+            Direction = fields[1]
+            reqRow = int(fields[4])
+            reqCol = int(fields[5])
+            Answer = int(fields[6])
+            ReactionTime = float(fields[8])
+
+            if ReactionTime <= 0.1:
+                tarRow = reqRow
+                tarCol = reqCol
+
+            if [reqRow, reqCol] == [tarRow, tarCol] :
                 dataMerge.append([ID, line[:-1], 0])
-            
+            else:
+                tarRow = 6
+                tarCol = 6
+                dataMerge.append([ID, line[:-1], 1])
 
-        if ReactionTime <= 0.1:  # Mark unqualified lines
-            tarRow = reqRow
-            tarCol = reqCol
+            preRow = reqRow
+            preCol = reqCol
+#DelibrateTrigger
+#AccidentTrigger
 
-        preRow = reqRow
-        preCol = reqCol
 
 with open('DelibrateTrigger.txt', 'w') as filehandle: 
     for key in dataMerge:
