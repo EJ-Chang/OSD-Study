@@ -8,29 +8,58 @@ colnames(dat) <- c('ID','Device', 'Direction', 'Answer', 'Step', 'Time')
 dat <-dat[order(dat$Device,dat$Answer),]
 
 
-correctDat <- dat[dat$Direction=='OK',]
-correctDat <- correctDat[correctDat$Step>=1,]
-tapply(correctDat$Time/correctDat$Step, list(correctDat$Device), mean)
-tapply(correctDat$Time/correctDat$Step, list(correctDat$Device), sd)
 
-
-# Test
+# Get RT mean by condition
+tapply(dat$Answer, list(dat$Device, dat$Direction, dat$ID), mean)
+tapply(dat$Answer, list(dat$Device, dat$Direction, dat$ID), sd)
 
 # Data manipulation
 library(dplyr)
 
-ndat <- correctDat %>%
-  group_by(Device, ID) %>%
-  summarize(mean_acc = mean(correctDat$Time/correctDat$Step, na.rm = TRUE))
+ndat <-dat %>%
+  group_by(Device, Direction, ID) %>%
+  summarize(mean_acc = mean(Answer, na.rm = TRUE))
 
 # Method 1
-ACCanova<-aov(ndat$mean_acc~ndat$Device)
+ACCanova<-aov(ndat$mean_acc~ndat$Direction*ndat$Device)
 
 anova(ACCanova)
 
 
+
 # Method 2
-abv<-aov(mean_acc ~ Device + Error(ID/(Device)),
+abv<-aov(mean_acc ~ Device*Direction + 
+           Error(ID/(Device*Direction)),
          data=ndat)
 
+library(tidyverse)
+library(ggpubr)
+library(rstatix)
+a %>%
+  pairwise_t_test(
+    Freq ~ Direction, paired = TRUE, 
+    p.adjust.method = "bonferroni"
+  )
+
+
+
+subsetdata <- dat[dat$Direction!='OK',]
+# Method 2
+abv<-aov(Time ~ Device*Direction + 
+           Error(ID/(Device*Direction)),
+         data = subsetdata)
+
 summary(abv)
+
+subsetdata %>% 
+  pairwise_t_test(
+    Time ~ Device,
+    p.adjust.method = 'bonferroni'
+  )
+
+subsetdata %>% 
+  pairwise_t_test(
+    Time ~ Direction,
+    p.adjust.method = 'bonferroni'
+  )
+

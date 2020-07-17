@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jun 10 2020
+Created on Mon Jul 13 2020
 
 Written by EJ_Chang
 """
@@ -28,43 +28,48 @@ ID = 0
 for data in dataFiles:
     f = open(data, 'r')
     ID += 1
-    # print(ID)
+    print(ID)
     dataSet = f.readlines()
     tarRow = 6
     tarCol = 6
     preRow = 0
     preCol = 0
     # Merge them
-    for line in dataSet:
+    for line in reversed(dataSet):
 
         fields = line.split(" ")
+        Direction = fields[1]
         reqRow = int(fields[4])
         reqCol = int(fields[5])
-        ReactionTime = float(fields[8])
+        Answer = int(fields[6])
+        Step = int(fields[7])
         
         if [reqRow, reqCol] == [tarRow, tarCol] :
             # print(line)
-            dataMerge.append([ID,line[:-1]])
-            # Save lines
-            with open('AccidentTrigger.txt', 'w') as filehandle: 
-                for key in dataMerge:
-                    for item in key:
-                        filehandle.writelines('%s ' % item)
-                    filehandle.writelines('\n')
+            if Direction == 'OK' and Answer == 1:
+                pass
+            else:
+                dataMerge.append([ID, line[:-1], 0])
+                # Save lines
+                with open('Rev.txt', 'w') as filehandle: 
+                    for key in dataMerge:
+                        for item in key:
+                            filehandle.writelines('%s ' % item)
+                        filehandle.writelines('\n')
         else:
             tarRow = 6
             tarCol = 6
             pass
 
-        if ReactionTime <= 0.1:
+        if Step > reqRow:
             tarRow = reqRow
             tarCol = reqCol
             # print('Get!')
             # print(line)
-            dataMerge.append([ID,line[:-1]])
+            dataMerge.append([ID, line[:-1], reqRow])
             # print('GET:', tarRow, tarCol, ReactionTime)
             # Save lines
-            with open('AccidentTrigger.txt', 'w') as filehandle: 
+            with open('Rev.txt', 'w') as filehandle: 
                 for key in dataMerge:
                     for item in key:
                         filehandle.writelines('%s ' % item)
@@ -72,7 +77,3 @@ for data in dataFiles:
 
         preRow = reqRow
         preCol = reqCol
-
-
-
-

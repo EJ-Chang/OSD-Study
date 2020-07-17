@@ -51,3 +51,18 @@ Q: Does ACC rate differed between keys in OSD_exp?
         Radio Switch Switch_clue
   dPad     17     37          39
   Wheel    12     30          26
+
+
+=======
+
+> table(dat$Device)
+
+ dPad Wheel 
+ 2924  2780 
+
+--> so... dPad isn't more efficient in this task(OSD navigation). due to the 'OK' 
+
+while dPad indeed performed better in ACC_focus task. 
+
+
+

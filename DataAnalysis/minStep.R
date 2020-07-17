@@ -36,7 +36,7 @@ table(StiQue)
 
 # residual steps
 # res<-dat[dat$Direction!='OK',]
-res<-dat
+res<-dat[dat$Time>0.1,]
 
 res_dpad <- res[res$Device=='dPad',]
 count_dpad<- table(res_dpad$Direction)
@@ -64,3 +64,6 @@ dimnames(M) <- list(Device = c("dPad", "Wheel"),
                     Direction = c("Down","Left","Right","Up"))
 chisq.test(M)
 chisq.posthoc.test(M)
+# ----
+
+

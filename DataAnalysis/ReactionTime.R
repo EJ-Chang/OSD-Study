@@ -11,7 +11,12 @@ dat <-dat[order(dat$Device, dat$Direction,dat$Answer),]
 tapply(dat$RT, list(dat$Device, dat$Direction), mean)
 tapply(dat$RT, list(dat$Device, dat$Direction), sd)
 
+# Get RT response accuracy rate
+tapply(dat$Answer, list(dat$Device, dat$Direction), mean)
+tapply(dat$Answer, list(dat$Device, dat$Direction), sd)
 
+
+# RT anova ====
 RTanova<-aov(dat$RT~dat$Direction*dat$Device)
 
 anova(RTanova)
@@ -85,4 +90,28 @@ abv<-aov(RT ~ Device*Direction + Error(ID/(Device*Direction)),
          data=dat)
 
 summary(abv)
-# I don't have enough degree of freedom
+# Response accuracy rate
+
+
+dat.acc <- aggregate(dat$Answer,
+                      by = list(dat$ID, dat$Device,
+                                dat$Direction),
+                      FUN = 'mean')
+
+colnames(dat.acc) <- c("ID","Device","Direction","Answer")
+
+dat.acc <- dat.acc[order(dat.acc$ID), ]
+
+
+reaction.aov <- with(dat.acc,
+                     aov(RT ~ Device * Direction +
+                           Error(ID))
+)
+summary(reaction.aov)
+res.aov2 <- aov(Answer ~ Device + Direction, data = dat.acc)
+summary(res.aov2)
+
+abv<-aov(Answer ~ Device*Direction + Error(ID/(Device*Direction)),
+         data=dat)
+
+summary(abv)
