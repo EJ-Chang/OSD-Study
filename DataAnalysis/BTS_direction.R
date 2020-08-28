@@ -20,8 +20,7 @@ library(dplyr)
 
 ndat <- dat %>%
   group_by(Device, Direction, ID) %>%
-  summarize(mean_RT = mean(Answer, na.rm = TRUE))
-
+  count()
 
 # Method 2
 abv<-aov(mean_RT ~ Device*Direction + Error(ID/(Device*Direction)),
