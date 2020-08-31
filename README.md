@@ -62,7 +62,4 @@ OSD-Study
 
 ### Special thanks to:
 > *4/30 Borrowed an Arduino set from Clair_Lin.*
-
-![](https://img.shields.io/badge/Plays-Overwatch-orange?style=for-the-badge)
-
-
+![](https://img.shields.io/badge/Dev%20with-Arduino-blue?style=for-the-badge&logo=arduino)
