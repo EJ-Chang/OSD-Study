@@ -5,7 +5,8 @@ OSD-Study
 ![ForTheBadge built-with-science](http://ForTheBadge.com/images/badges/built-with-science.svg)
 
 ![](https://img.shields.io/github/license/EJ-Chang/OSD-Study?color=green&style=for-the-badge)
-![](https://img.shields.io/github/v/tag/EJ-Chang/OSD-Study?style=for-the-badge)
+![](https://img.shields.io/github/v/tag/EJ-Chang/OSD-Study?style=for-the-badge&logo=github)
+
 
 
 ### Hardware: button types
@@ -57,3 +58,7 @@ OSD-Study
 
 ### Special thanks to:
 > *4/30 Borrowed an Arduino set from Clair_Lin.*
+
+![](https://img.shields.io/badge/Plays-Overwatch-orange?style=for-the-badge)
+
+
