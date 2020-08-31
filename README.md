@@ -1,12 +1,15 @@
 OSD-Study
 ===========
 
+###
+
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 ![ForTheBadge built-with-science](http://ForTheBadge.com/images/badges/built-with-science.svg)
 
+![](https://img.shields.io/badge/analyzed%20with-Rstudio-9cf?style=for-the-badge&logo=rstudio)
+
 ![](https://img.shields.io/github/license/EJ-Chang/OSD-Study?color=green&style=for-the-badge)
 ![](https://img.shields.io/github/v/tag/EJ-Chang/OSD-Study?style=for-the-badge&logo=github)
-
 
 
 ### Hardware: button types
