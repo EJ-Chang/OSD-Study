@@ -32,7 +32,7 @@ OSD-Study
 
 ### Arduino Preparation
 - [x] Get an Arduino UNO (I borrowed it from Clair)
-- [ ] Learn how to program Arduino with Python
+- [X] Learn how to program Arduino with Python
 - [x] Borrow components from RD/ID (Maybe Hank can help?)
 
 ### OSD simulation
